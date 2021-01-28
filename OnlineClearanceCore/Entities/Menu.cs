@@ -1,11 +1,11 @@
-﻿using EdoTrafficMgtCore.Core.Entities;
+﻿using OnlineClearanceCore.Core.Entities;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace EdoTrafficMgtCore.Core.Entities
+namespace OnlineClearanceCore.Core.Entities
 {
     public class Menu
     {

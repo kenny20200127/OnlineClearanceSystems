@@ -1,11 +1,11 @@
-﻿using EdoTrafficMgtCore.Core.Entities;
+﻿using OnlineClearanceCore.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace EdoTrafficMgtCore.Models
+namespace OnlineClearanceCore.Models
 {
-    public class IncidentTypeView:IncidentType
+    public class DepartmentView:Department
     {
         public string name { get; set; }
         public string description { get; set; }

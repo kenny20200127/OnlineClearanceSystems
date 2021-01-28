@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EdoTrafficMgtCore.Core.Entities;
-using EdoTrafficMgtWeb.IServices;
-using EdoTrafficMgtCore.Core.Extention;
-using EdoTrafficMgtWeb.ViewModels.Roles;
+using OnlineClearanceCore.Core.Entities;
+using OnlineClearanceWeb.IServices;
+using OnlineClearanceCore.Core.Extention;
+using OnlineClearanceWeb.ViewModels.Roles;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EdoTrafficMgtWeb.Controllers
+namespace OnlineClearanceWeb.Controllers
 {
     [Authorize(Roles = "Administrator")]
     public class RoleController : BaseController

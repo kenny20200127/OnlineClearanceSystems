@@ -3,7 +3,7 @@
     <div>
         <div v-if="errors" class="has-error"> {{ [errors] }}</div>
         <div v-if="responseMessage" class="has-error"> {{ responseMessage }}</div>
-        <form @submit="checkForm" action="/IncidentType/CreateIncidentType" method="post">
+        <form @submit="checkForm" action="/Department/CreateDepartment" method="post">
             <div class="card-body">
                 <div class="row">
                     <div class="col-12 col-xl-6">
@@ -72,7 +72,7 @@
 	postPost() {
 
 	if(this.submitorUpdate == 'Submit'){
-	axios.post(`/api/IncidentType/createIncidentType`, this.postBody )
+	axios.post(`/api/Department/createDepartment`, this.postBody )
 	.then(response => {
 	this.responseMessage = response.data.responseDescription;this.canProcess = true;
 	if(response.data.responseCode == '200'){
@@ -85,7 +85,7 @@
 	});
 	}
 	if(this.submitorUpdate == 'Update'){
-	axios.put(`/api/IncidentType/updateIncidentType`, this.postBody )
+	axios.put(`/api/Department/updateDepartment`, this.postBody )
 	.then(response => {
 	this.responseMessage = response.data.responseDescription;this.canProcess = true;
 	if(response.data.responseCode == '200'){

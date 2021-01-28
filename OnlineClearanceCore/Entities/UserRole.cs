@@ -1,4 +1,4 @@
-﻿using EdoTrafficMgtCore.Core.Entities;
+﻿using OnlineClearanceCore.Core.Entities;
 using Microsoft.AspNetCore.Identity;
 using Newtonsoft.Json;
 using System;
@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace EdoTrafficMgtCore.Core.Entities
+namespace OnlineClearanceCore.Core.Entities
 {
     public class UserRole:IdentityUserRole<int>
     {

@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EdoTrafficMgtCore.Core.Data;
-using EdoTrafficMgtWeb.IServices;
-using EdoTrafficMgtWeb.ViewModels;
+using OnlineClearanceCore.Core.Data;
+using OnlineClearanceWeb.IServices;
+using OnlineClearanceWeb.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Rewrite.Internal.UrlActions;
 
-namespace EdoTrafficMgtWeb.Controllers
+namespace OnlineClearanceWeb.Controllers
 {
     public class AuthenticationController : Controller
     {
@@ -37,8 +37,12 @@ namespace EdoTrafficMgtWeb.Controllers
                 TempData["ErrorMessage"] = auth.Message;
                 return RedirectToAction("Login", "Authentication");
             }
-           
-            return RedirectToAction("Index", "Home");
+            if (login.type == "Admin")
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return RedirectToAction("Index", "Student");
+
         }
 
         public async Task<IActionResult> Logout()

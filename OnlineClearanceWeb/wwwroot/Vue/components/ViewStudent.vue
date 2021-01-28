@@ -21,7 +21,7 @@
                         <td>{{ incident.firstName }}  {{ incident.otherName }}</td>
                         <td>{{ incident.address }}</td>
                         <td>{{ incident.incidentDate }}</td>
-                        <td>{{ incident.incidentType }}</td>
+                        <td>{{ incident.Department }}</td>
                         
                         <td>
                             <button type="button" class="btn btn-submit btn-primary" @click="processRetrieve(incident)">Edit</button>

@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EdoTrafficMgtCore.Core.Extention;
-using EdoTrafficMgtCore.Core.Entities;
-using EdoTrafficMgtWeb.IServices;
-using EdoTrafficMgtWeb.ViewModels.Users;
+using OnlineClearanceCore.Core.Extention;
+using OnlineClearanceCore.Core.Entities;
+using OnlineClearanceWeb.IServices;
+using OnlineClearanceWeb.ViewModels.Users;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 
-namespace EdoTrafficMgtWeb.Controllers
+namespace OnlineClearanceWeb.Controllers
 {
     public class UserController : BaseController
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace EdoTrafficMgtWeb.Models
+namespace OnlineClearanceWeb.Models
 {
     public class ErrorViewModel
     {

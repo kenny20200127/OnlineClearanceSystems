@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace EdoTrafficMgtCore.Core.Entities
+namespace OnlineClearanceCore.Core.Entities
 {
     public class Role: IdentityRole<int>
     {

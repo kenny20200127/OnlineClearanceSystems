@@ -1,17 +1,17 @@
-﻿using EdoTrafficMgtCore.Core.Entities;
-using EdoTrafficMgtCore.Models;
+﻿using OnlineClearanceCore.Core.Entities;
+using OnlineClearanceCore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EdoTrafficMgtCore.Core.IRepositories
+namespace OnlineClearanceCore.Core.IRepositories
 {
-    public interface IIncidentTypeRepository : IRepository<IncidentType>
+    public interface IDepartmentRepository : IRepository<Department>
     {
-        Task<IncidentType> GetIncidentTypeByCode(Expression<Func<IncidentType, bool>> predicate);
-        IncidentType GetIncidentTypeByDesc(string desc);
-        List<IncidentTypeView> GetIncidentTypeForReport();
+        Task<Department> GetDepartmentByCode(Expression<Func<Department, bool>> predicate);
+        Department GetDepartmentByDesc(string desc);
+        List<DepartmentView> GetDepartmentForReport();
     }
 }

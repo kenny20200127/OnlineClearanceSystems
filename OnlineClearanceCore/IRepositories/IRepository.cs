@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EdoTrafficMgtCore.Core.IRepositories
+namespace OnlineClearanceCore.Core.IRepositories
 {
     public interface IRepository<T>
     {

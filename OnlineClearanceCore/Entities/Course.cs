@@ -7,7 +7,7 @@ using System.Text;
 namespace OnlineClearanceCore.Core.Entities
 {
 
-    public class States
+    public class Course
     {
         [Key]
         public int Id { get; set; }

@@ -6,21 +6,53 @@
         <form @submit="checkForm"  method="post">
             <div class="card-body">
                 <div class="row">
+                     <div class="col-12 col-xl-3">
+                        <div class="form-group">
+                            <label class="form-label">Student Id</label>
+                            <input type="text" name="studentid" class="form-control" v-model="postBody.studentid" required  />
+                        </div>
+                        </div>
                           <div class="col-12 col-xl-3">
                         <div class="form-group">
-                            <label class="form-label">Incident</label>
-                            <select class="form-control" v-model="postBody.incident" required @change="SelectedValue">
-                              <option v-for="subt in incidentList" v-bind:value="subt.incident" v-bind:key="subt.incident"> {{ subt.incident }} </option>
+                            <label class="form-label">Department</label>
+                            <select class="form-control" v-model="postBody.department" required @change="SelectedValue">
+                              <option v-for="dept in departmentList" v-bind:value="dept.name" v-bind:key="dept.name"> {{ dept.description }} </option>
                            </select>
                           
                         </div>
                     </div>
                     <div class="col-12 col-xl-3">
+                    <div class="form-group">
+                            <label class="form-label">Course</label>
+                            <select class="form-control" v-model="postBody.course" required @change="SelectedValue">
+                              <option v-for="dept in courseList" v-bind:value="dept.name" v-bind:key="dept.name"> {{ dept.description }} </option>
+                           </select>
+                          
+                        </div>
+                    </div>
+                </div>
+                 <div class="row">
+                   <div class="col-12 col-xl-3">
                         <div class="form-group">
-                            <label class="form-label">Code</label>
-                            <input type="text" name="incidentCode" class="form-control" v-model="postBody.incidentCode" required :readonly="submitorUpdate == 'Update'" />
+                            <label class="form-label">Graduation Date</label>
+                             <vuejsDatepicker type="text" name="graduationdate" class="form-control" v-model="postBody.graduationdate" ></vuejsDatepicker>
                         </div>
                         </div>
+                        
+                        <div class="col-12 col-xl-3">
+                        <div class="form-group">
+                            <label class="form-label">Campus</label>
+                            <input type="text" name="campus" class="form-control" v-model="postBody.campus" required  />
+                        </div>
+                        </div>
+                        <div class="col-12 col-xl-3">
+                        <div class="form-group">
+                            <label class="form-label">College</label>
+                            <input type="text" name="college" class="form-control" v-model="postBody.college" required  />
+                        </div>
+                        </div>
+                 </div>
+                 <div class="row">
                     <div class="col-12 col-xl-3">
                         <div class="form-group">
                             <label class="form-label">First Name</label>
@@ -33,13 +65,13 @@
                             <input class="form-control" name="otherName" v-model="postBody.otherName" placeholder="" />
                         </div>
                     </div>
-
-                     <div class="col-12 col-xl-3">
+                    <div class="col-12 col-xl-3">
                         <div class="form-group">
-                            <label class="form-label">Address</label>
-                            <input type="text" name="address" class="form-control" v-model="postBody.address"  />
+                            <label class="form-label">DOB</label>
+                           <vuejsDatepicker type="text" name="dob" class="form-control" v-model="postBody.dob" ></vuejsDatepicker>
                         </div>
                         </div>
+                     
                     
                 </div>
                  <div class="row">
@@ -47,12 +79,6 @@
                         <div class="form-group">
                             <label class="form-label">Phone Number</label>
                             <input class="form-control" name="tel" v-model="postBody.tel" placeholder="" />
-                        </div>
-                    </div>
-                     <div class="col-12 col-xl-3">
-                        <div class="form-group">
-                            <label class="form-label">town</label>
-                            <input type="text" name="town" class="form-control" v-model="postBody.town"  />
                         </div>
                     </div>
                     <div class="col-12 col-xl-3">
@@ -72,66 +98,21 @@
                 <div class="row">
                     <div class="col-12 col-xl-3">
                         <div class="form-group">
+                            <label class="form-label">Address</label>
+                            <input type="text" name="address" class="form-control" v-model="postBody.address"  />
+                        </div>
+                        </div>
+                    <div class="col-12 col-xl-3">
+                        <div class="form-group">
                             <label class="form-label">Email</label>
                             <input class="form-control" name="email" v-model="postBody.email" placeholder="" />
                         </div>
                     </div>
-                     <div class="col-12 col-xl-3">
-                        <div class="form-group">
-                            <label class="form-label">Incident Date</label>
-                            <input type="text" name="incidentDate" class="form-control" v-model="postBody.incidentDate"  />
-                        </div>
-                        </div>
-                    <div class="col-12 col-xl-3">
-                        <div class="form-group">
-                            <label class="form-label">Incident Type</label>
-                            <select class="form-control" v-model="postBody.incidentType" required>
-                              <option v-for="subt in incidentTypeList" v-bind:value="subt.name" v-bind:key="subt.name"> {{ subt.description }} </option>
-                           </select>
-                          
-                        </div>
-                    </div>
                     
-                     <div class="col-12 col-xl-3">
-                        <div class="form-group">
-                            <label class="form-label">Incident Location</label>
-                            <input type="text" name="incidentLocation" class="form-control" v-model="postBody.incidentLocation"  />
-                        </div>
-                        </div>
-                    
-                </div>
-               
-                <div class="row">
-                    <div class="col-12 col-xl-3">
-                        <div class="form-group">
-                            <label class="form-label">Reported By</label>
-                           <input type="text" name="reportedBy" class="form-control" v-model="postBody.reportedBy"  />
-
-                        </div>
-                    </div>
-                     <div class="col-12 col-xl-3">
-                        <div class="form-group">
-                            <label class="form-label">Incident Nearest Bus Stop</label>
-                            <input class="form-control" name="nearestBusStop" v-model="postBody.nearestBusStop" placeholder="" />
-                        </div>
-                    </div>
-                     <div class="col-12 col-xl-6">
-                        <div class="form-group">
-                            <label class="form-label">Anyother Info</label>
-                            <input class="form-control" name="anyotherInfo" v-model="postBody.anyotherInfo" placeholder="" />
-                        </div>
-                    </div>
-                     
 
                 </div>
                 <div class="row">
-                      <div class="col-12 col-xl-3">
-                        <div class="form-group">
-                            <label class="form-label">Upload Photo</label>
-                            <input type="file" class="form-control" name="anyotherInfo" />
-                        </div>
-                    </div>
-                        <div class="col-12 col-xl-3">
+                     <div class="col-12 col-xl-3">
                         <div class="form-group">
                             <label class="form-label">Upload Photo2</label>
                             <input type="file" class="form-control" name="anyotherInfo" />
@@ -166,12 +147,12 @@
             responseMessage:'',
             submitorUpdate : 'Submit',
             canProcess : true,
-            incidentTypeList:null,
+            DepartmentList:null,
             incidentList:null,
             records:["Yes","No"],
             autoselectenabled:false,
             postBody: {
-                incidentCode:'',
+                studentid:'',
                 firstName:'',
                 OtherName:'',
                 address:'',
@@ -179,14 +160,12 @@
                 email:'',
                 state:'',
                 lga:'',
-                town:'',
-                nearestBusStop:'',
-                anyOtherInfo:'',
-                incidentType:'',
-                incidentDate:'',
-                incidentLocation:'',
-                reportedBy:'',
-                photo1:'',
+                campus:'',
+                course:'',
+                department:'',
+                college:'',
+                graduationdate:'',
+                dob:'',
                 photo2:''
          
             }
@@ -195,13 +174,13 @@
     },
   mounted(){
         //  alert('i am here');
-        axios.get(`/api/IncidentType/getAllIncidentTypes`)
+        axios.get(`/api/Department/getAllDepartments`)
         .then(response=>{
-            this.incidentTypeList=response.data
+            this.DepartmentList=response.data
         }),
-           axios.get(`/api/ReportIncident/getAllReportIncidentbyCase`)
+           axios.get(`/api/course/getAllCourse`)
         .then(response=>{
-            this.incidentList=response.data
+            this.courseList=response.data
 
         })
    
@@ -209,23 +188,21 @@
     watch:{
          '$store.state.objectToUpdate':function (newVal, oldVal) {
          this.postBody.address = this.$store.state.objectToUpdate.address,
-         this.postBody.incidentCode = this.$store.state.objectToUpdate.incidentCode,
+         this.postBody.studentid = this.$store.state.objectToUpdate.studentid,
          this.postBody.firstName = this.$store.state.objectToUpdate.firstName,
          this.postBody.OtherName = this.$store.state.objectToUpdate.OtherName,
          this.postBody.tel = this.$store.state.objectToUpdate.tel,
          this.postBody.email = this.$store.state.objectToUpdate.email,
          this.postBody.state = this.$store.state.objectToUpdate.state,
-          this.postBody.town = this.$store.state.objectToUpdate.town,
+          this.postBody.campus = this.$store.state.objectToUpdate.campus,
          this.postBody.lga = this.$store.state.objectToUpdate.lga,
-         this.postBody.nearestBusStop = this.$store.state.objectToUpdate.nearestBusStop,
-          this.postBody.anyOtherInfo = this.$store.state.objectToUpdate.anyOtherInfo,
-          this.postBody.box = this.$store.state.objectToUpdate.box,
+         this.postBody.course = this.$store.state.objectToUpdate.course,
+          this.postBody.graduationdate = this.$store.state.objectToUpdate.graduationdate,
+          this.postBody.dob = this.$store.state.objectToUpdate.dob,
           this.postBody.tel = this.$store.state.objectToUpdate.tel,
-          this.postBody.incidentType = this.$store.state.objectToUpdate.incidentType,
-          this.postBody.incidentDate = this.$store.state.objectToUpdate.incidentDate,
-           this.postBody.incidentLocation = this.$store.state.objectToUpdate.incidentLocation,
-          this.postBody.reportedBy = this.$store.state.objectToUpdate.reportedBy
-
+          this.postBody.department = this.$store.state.objectToUpdate.department,
+          this.postBody.college = this.$store.state.objectToUpdate.college,
+          
           this.submitorUpdate = 'Update';
                
         }
@@ -233,25 +210,25 @@
 
     methods: {
          SelectedValue(){
-      axios.get(`/api/ReportIncident/getAllReportIncidentbyCase/${this.postBody.incident}`)
+      axios.get(`/api/Student/getAllStudentbyCase/${this.postBody.studentid}`)
         .then(response=>{
-            this.incidentList=response.data
-            this.postBody.incidentCode=response.data.incidentCode
-            this.postBody.reportedBy=response.data.reportedBy
-            this.postBody.incidentDate=response.data.incidentDate
-            this.postBody.reporterNumber=response.data.reporterNumber
-            this.postBody.town=response.data.town
+            this.studentList=response.data
+            this.postBody.firstName=response.data.firstName
+            this.postBody.OtherName=response.data.OtherName
+            this.postBody.dob=response.data.dob
+            this.postBody.campus=response.data.campus
+            this.postBody.course=response.data.course
             this.postBody.lga=response.data.lga
             this.postBody.state=response.data.state
-            this.postBody.incidentLocation=response.data.incidentLocation
-            this.postBody.nearestBusStop=response.data.nearestBusStop
+            this.postBody.address=response.data.ad
+  
             
         })
 
     },  
         checkForm: function (e) {
             
-         if (this.postBody.incidentCode) {
+         if (this.postBody.studentid) {
               e.preventDefault();
               this.canProcess = false;
               this.postPost();
@@ -259,32 +236,30 @@
           else{
 
           this.errors = [];
-            this.errors.push('ReportIncident Code is Required');
+            this.errors.push('Student ID is Required');
           }
         },
         postPost() {
 
                 if(this.submitorUpdate == 'Submit'){
-                    axios.post(`/api/ReportIncident/createReportIncident`, this.postBody )
+                    axios.post(`/api/Student/createStudent`, this.postBody )
                         .then(response => {
                             this.responseMessage = response.data.responseDescription;this.canProcess = true;
                             if(response.data.responseCode == '200'){
-                                this.postBody.incidentCode=''; 
+                                this.postBody.studentid=''; 
                                 this.postBody.firstName='';
                                 this.postBody.address='';
                                 this.postBody.OtherName='';
                                 this.postBody.tel='';
-                                this.postBody.incidentDate='';
-                                this.postBody.incidentType='';
-                                this.postBody.incidentLocation='';
-                                this.postBody.town='';
+                                this.postBody.dob='';
+                                this.postBody.department='';
+                                this.postBody.college='';
+                                this.postBody.course='';
                                 this.postBody.lga='';
                                 this.postBody.state='';
                                 this.postBody.email='';
-                                this.postBody.reportedBy='';
-                                this.postBody.anyOtherInfo='';
-                                this.postBody.email='';
-                                this.postBody.nearestBusStop='';
+                                this.postBody.campus='';
+                                
                                 
                                 
                             }
@@ -294,26 +269,23 @@
                         });
                 }
                 if(this.submitorUpdate == 'Update'){
-                    axios.put(`/api/ReportIncident/updateReportIncident`, this.postBody )
+                    axios.put(`/api/Student/updateStudent`, this.postBody )
                         .then(response => {
                             this.responseMessage = response.data.responseDescription;this.canProcess = true;
                             if(response.data.responseCode == '200'){
-                                 this.postBody.incidentCode=''; 
+                                  this.postBody.studentid=''; 
                                 this.postBody.firstName='';
                                 this.postBody.address='';
                                 this.postBody.OtherName='';
                                 this.postBody.tel='';
-                                this.postBody.incidentDate='';
-                                this.postBody.incidentType='';
-                                this.postBody.incidentLocation='';
-                                this.postBody.town='';
+                                this.postBody.dob='';
+                                this.postBody.department='';
+                                this.postBody.college='';
+                                this.postBody.course='';
                                 this.postBody.lga='';
                                 this.postBody.state='';
                                 this.postBody.email='';
-                                this.postBody.reportedBy='';
-                                this.postBody.anyOtherInfo='';
-                                this.postBody.email='';
-                                this.postBody.nearestBusStop='';
+                                this.postBody.campus='';
                                 this.$store.state.objectToUpdate = "update";
                             }
                         })
@@ -326,10 +298,10 @@
         computed: {
             setter(){
                 let objecttoedit = this.$store.state.objectToUpdate;
-                if(objecttoedit.incidentCode){
+                if(objecttoedit.studentid){
                    
         this.postBody.address = objecttoedit.address,
-         this.postBody.incidentCode =objecttoedit.incidentCode,
+         this.postBody.studentid =objecttoedit.studentid,
          this.postBody.firstName = objecttoedit.firstName,
          this.postBody.OtherName = objecttoedit.OtherName,
          this.postBody.tel = objecttoedit.tel,
@@ -337,13 +309,11 @@
          this.postBody.state = objecttoedit.state,
           this.postBody.town = objecttoedit.town,
          this.postBody.lga = objecttoedit.lga,
-         this.postBody.nearestBusStop = objecttoedit.nearestBusStop,
-          this.postBody.anyOtherInfo = objecttoedit.anyOtherInfo,
-          this.postBody.incidentType = objecttoedit.incidentType,
-          this.postBody.incidentDate = objecttoedit.incidentDate,
-           this.postBody.incidentLocation = objecttoedit.incidentLocation,
-          this.postBody.reportedBy = objecttoedit.reportedBy
-        
+         this.postBody.college = objecttoedit.college,
+          this.postBody.campus = objecttoedit.campus,
+          this.postBody.department = objecttoedit.department,
+          this.postBody.course = objecttoedit.course
+                 
                 }
             }
         }

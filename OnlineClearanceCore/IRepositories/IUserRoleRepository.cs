@@ -1,9 +1,9 @@
-﻿using EdoTrafficMgtCore.Core.Entities;
+﻿using OnlineClearanceCore.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace EdoTrafficMgtCore.Core.IRepositories
+namespace OnlineClearanceCore.Core.IRepositories
 {
     public interface IUserRoleRepository:IRepository<UserRole>
     {

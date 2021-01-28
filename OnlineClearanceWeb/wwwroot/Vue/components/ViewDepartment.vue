@@ -13,14 +13,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(IncidentType,index) in IncidentTypeList" :key="index">
-                        <td>{{ IncidentType.name }}</td>
-                        <td>{{ IncidentType.description }}</td>
+                    <tr v-for="(Department,index) in DepartmentList" :key="index">
+                        <td>{{ Department.name }}</td>
+                        <td>{{ Department.description }}</td>
                        
                        
                         <td>
-                            <button type="button" class="btn btn-submit btn-primary" @click="processRetrieve(IncidentType)">Edit</button>
-                            <button type="button" class="btn btn-submit btn-primary" @click="processDelete(IncidentType.id)">Delete</button></td>
+                            <button type="button" class="btn btn-submit btn-primary" @click="processRetrieve(Department)">Edit</button>
+                            <button type="button" class="btn btn-submit btn-primary" @click="processDelete(Department.id)">Delete</button></td>
                     </tr>
                 </tbody>
               
@@ -37,7 +37,7 @@ export default {
     
             data() {
                 return {
-                    IncidentTypeList: null,
+                    DepartmentList: null,
                     responseMessage:''
                 };
             },
@@ -46,36 +46,36 @@ export default {
         },
     watch:{
          '$store.state.objectToUpdate':function (newVal, oldVal) {
-            this.getAllIncidentTypes();
+            this.getAllDepartments();
             this.processDelete();
         }
     },
     mounted () {
-        this.getAllIncidentTypes();
+        this.getAllDepartments();
         this.processDelete();
      },
      methods: {
  
-        processRetrieve : function (IncidentType) {
-            this.$store.state.objectToUpdate = IncidentType;
+        processRetrieve : function (Department) {
+            this.$store.state.objectToUpdate = Department;
          },
          processDelete: function (id) {
 
-             axios.get(`/api/IncidentType/RemoveIncidentType/${id}`)
+             axios.get(`/api/Department/RemoveDepartment/${id}`)
                  .then(response => {
                      if (response.data.responseCode == '200') {
                          alert("balance sheet successfully deleted");
-                         this.getAllIncidentTypes();
+                         this.getAllDepartments();
                      }
                  }).catch(e => {
                             this.errors.push(e)
                         });
 
          },
-         getAllIncidentTypes: function () {
+         getAllDepartments: function () {
              axios
-            .get('/api/IncidentType/getAllIncidentTypes')
-            .then(response => (this.IncidentTypeList = response.data))
+            .get('/api/Department/getAllDepartments')
+            .then(response => (this.DepartmentList = response.data))
          }
     }  
 };

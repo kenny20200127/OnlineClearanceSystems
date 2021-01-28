@@ -1,9 +1,9 @@
-﻿using EdoTrafficMgtCore.Models;
+﻿using OnlineClearanceCore.Models;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 
-namespace EdoTrafficMgtCore.Core.Extention
+namespace OnlineClearanceCore.Core.Extention
 {
     public static class EntityExtention
     {

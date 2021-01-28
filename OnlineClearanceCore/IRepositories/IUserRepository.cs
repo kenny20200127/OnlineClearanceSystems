@@ -1,11 +1,11 @@
-﻿using EdoTrafficMgtCore.Core.Entities;
+﻿using OnlineClearanceCore.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EdoTrafficMgtCore.Core.IRepositories
+namespace OnlineClearanceCore.Core.IRepositories
 {
     public interface IUserRepository:IRepository<User>
     {

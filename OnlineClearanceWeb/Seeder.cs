@@ -1,12 +1,12 @@
-﻿using EdoTrafficMgtCore.Core.Data;
-using EdoTrafficMgtCore.Core.Entities;
+﻿using OnlineClearanceCore.Core.Data;
+using OnlineClearanceCore.Core.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 
 
-namespace EdoTrafficMgtWeb
+namespace OnlineClearanceWeb
 {
     public static class Seeder
     {

@@ -1,12 +1,12 @@
-﻿using EdoTrafficMgtCore.Core.Data;
-using EdoTrafficMgtCore.Core.Entities;
-using EdoTrafficMgtCore.Core.IRepositories;
-using EdoTrafficMgtCore.Core.Repositories;
+﻿using OnlineClearanceCore.Core.Data;
+using OnlineClearanceCore.Core.Entities;
+using OnlineClearanceCore.Core.IRepositories;
+using OnlineClearanceCore.Core.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace EdoTrafficMgtCore.Core.Repositories
+namespace OnlineClearanceCore.Core.Repositories
 {
     public class MenuRepository : Repository<Menu>, IMenuRepository
     {

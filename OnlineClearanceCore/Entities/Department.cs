@@ -4,10 +4,10 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace EdoTrafficMgtCore.Core.Entities
+namespace OnlineClearanceCore.Core.Entities
 {
 
-    public class IncidentType
+    public class Department
     {
         [Key]
         public int Id { get; set; }

@@ -1,12 +1,12 @@
-﻿using EdoTrafficMgtCore.Core.Entities;
-using EdoTrafficMgtCore.Models;
+﻿using OnlineClearanceCore.Core.Entities;
+using OnlineClearanceCore.Models;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EdoTrafficMgtWeb.IServices
+namespace OnlineClearanceWeb.IServices
 {
     public interface IUserService
     {

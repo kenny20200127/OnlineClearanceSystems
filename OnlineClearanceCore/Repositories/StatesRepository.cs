@@ -1,7 +1,7 @@
-﻿using EdoTrafficMgtCore.Core.Data;
-using EdoTrafficMgtCore.Core.Entities;
-using EdoTrafficMgtCore.Core.IRepositories;
-using EdoTrafficMgtCore.Models;
+﻿using OnlineClearanceCore.Core.Data;
+using OnlineClearanceCore.Core.Entities;
+using OnlineClearanceCore.Core.IRepositories;
+using OnlineClearanceCore.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EdoTrafficMgtCore.Core.Repositories
+namespace OnlineClearanceCore.Core.Repositories
 {
     public class StatesRepository:Repository<States>,IStatesRepository
     {
@@ -32,8 +32,8 @@ namespace EdoTrafficMgtCore.Core.Repositories
 
         //public List<StatesView> GetStatesForReport()
         //{
-        //    string ReportIncidentname = context.ReportedIncidents.FirstOrDefault().FirstName;
-        //    string address = context.ReportedIncidents.FirstOrDefault().Address;
+        //    string ReportIncidentname = context.Students.FirstOrDefault().FirstName;
+        //    string address = context.Students.FirstOrDefault().Address;
 
         //    return (from p in context.Statess
         //            select new StatesView

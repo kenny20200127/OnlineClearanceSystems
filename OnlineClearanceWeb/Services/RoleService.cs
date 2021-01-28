@@ -1,6 +1,6 @@
-﻿using EdoTrafficMgtCore.Core.Data;
-using EdoTrafficMgtCore.Core.Entities;
-using EdoTrafficMgtWeb.IServices;
+﻿using OnlineClearanceCore.Core.Data;
+using OnlineClearanceCore.Core.Entities;
+using OnlineClearanceWeb.IServices;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EdoTrafficMgtWeb.Services
+namespace OnlineClearanceWeb.Services
 {
     public class RoleService : IRoleService
     {

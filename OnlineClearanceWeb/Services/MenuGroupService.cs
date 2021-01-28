@@ -1,9 +1,9 @@
-﻿using EdoTrafficMgtCore.Core.Data;
-using EdoTrafficMgtCore.Core.Entities;
-using EdoTrafficMgtWeb.IServices;
+﻿using OnlineClearanceCore.Core.Data;
+using OnlineClearanceCore.Core.Entities;
+using OnlineClearanceWeb.IServices;
 using System.Collections.Generic;
 
-namespace EdoTrafficMgtWeb.Services
+namespace OnlineClearanceWeb.Services
 {
     public class MenuGroupService : IMenuGroupService
     {

@@ -1,13 +1,13 @@
-﻿using EdoTrafficMgtCore.Core.Entities;
-using EdoTrafficMgtCore.Models;
-using EdoTrafficMgtWeb.IServices;
+﻿using OnlineClearanceCore.Core.Entities;
+using OnlineClearanceCore.Models;
+using OnlineClearanceWeb.IServices;
 using Microsoft.AspNetCore.Identity;
 using System;
 
 using System.Threading.Tasks;
-using EdoTrafficMgtCore.Core.Extention;
+using OnlineClearanceCore.Core.Extention;
 
-namespace EdoTrafficMgtWeb.Services
+namespace OnlineClearanceWeb.Services
 {
     public class AuthenticationService: IAuthenticationService
     {

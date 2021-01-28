@@ -2,7 +2,7 @@
 using System;
 
 
-namespace EdoTrafficMgtCore.Core.Data
+namespace OnlineClearanceCore.Core.Data
 {
     public interface IDbContext :IDisposable
     {

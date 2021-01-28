@@ -1,12 +1,12 @@
-﻿using EdoTrafficMgtCore.Core.Entities;
-using EdoTrafficMgtCore.Models;
+﻿using OnlineClearanceCore.Core.Entities;
+using OnlineClearanceCore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EdoTrafficMgtCore.Core.IRepositories
+namespace OnlineClearanceCore.Core.IRepositories
 {
     public interface ILocalGovtRepository : IRepository<LocalGovernment>
     {

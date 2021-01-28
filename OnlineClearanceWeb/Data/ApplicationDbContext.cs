@@ -1,13 +1,13 @@
-﻿using EdoTrafficMgtCore.Core.Data;
-using EdoTrafficMgtCore.Core.Entities;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using OnlineClearanceCore.Core.Data;
+using OnlineClearanceCore.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EdoTrafficMgtWeb.Data
+namespace OnlineClearanceWeb.Data
 {
     public class ApplicationDbContext: IdentityDbContext<User,Role, int>,ITrafficMgtDbContext
     {
@@ -24,8 +24,8 @@ namespace EdoTrafficMgtWeb.Data
     public DbSet<MenuGroup> MenuGroups { get; set; }
     public DbSet<Menu> Menus { get; set; }
     public DbSet<RoleMenu> RoleMenus { get; set; }
-    public DbSet<ReportedIncidents> ReportedIncidents { get; set; }
-    public DbSet<IncidentType> IncidentTypes { get; set; }
+    public DbSet<Student> Students { get; set; }
+    public DbSet<Department> Departments { get; set; }
     public  DbSet<States> States { get; set; }
     public  DbSet<LocalGovernment> LocalGovernments { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)

@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace EdoTrafficMgtWeb.Migrations
+namespace OnlineClearanceWeb.Migrations
 {
     public partial class initialcreation : Migration
     {
@@ -60,6 +60,35 @@ namespace EdoTrafficMgtWeb.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Departments",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(maxLength: 5, nullable: true),
+                    Description = table.Column<string>(maxLength: 50, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Departments", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "LocalGovernments",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(maxLength: 5, nullable: true),
+                    Description = table.Column<string>(maxLength: 50, nullable: true),
+                    statecode = table.Column<string>(maxLength: 5, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LocalGovernments", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "MenuGroups",
                 columns: table => new
                 {
@@ -73,6 +102,49 @@ namespace EdoTrafficMgtWeb.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_MenuGroups", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "States",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(maxLength: 5, nullable: true),
+                    Description = table.Column<string>(maxLength: 50, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_States", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Students",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    StudentId = table.Column<string>(nullable: true),
+                    FirstName = table.Column<string>(nullable: true),
+                    OtherNames = table.Column<string>(nullable: true),
+                    DOB = table.Column<DateTime>(nullable: false),
+                    Address = table.Column<string>(nullable: true),
+                    College = table.Column<string>(nullable: true),
+                    Campus = table.Column<string>(nullable: true),
+                    department = table.Column<string>(nullable: true),
+                    CourseProgram = table.Column<string>(nullable: true),
+                    Photo = table.Column<string>(nullable: true),
+                    lga = table.Column<string>(nullable: true),
+                    state = table.Column<string>(nullable: true),
+                    email = table.Column<string>(nullable: true),
+                    tel = table.Column<string>(nullable: true),
+                    remarks = table.Column<string>(nullable: true),
+                    datecreated = table.Column<DateTime>(nullable: false),
+                    createdby = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Students", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -321,7 +393,19 @@ namespace EdoTrafficMgtWeb.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Departments");
+
+            migrationBuilder.DropTable(
+                name: "LocalGovernments");
+
+            migrationBuilder.DropTable(
                 name: "RoleMenus");
+
+            migrationBuilder.DropTable(
+                name: "States");
+
+            migrationBuilder.DropTable(
+                name: "Students");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

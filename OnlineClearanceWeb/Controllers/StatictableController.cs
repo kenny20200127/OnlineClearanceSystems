@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EdoTrafficMgtWeb.Controllers
+namespace OnlineClearanceWeb.Controllers
 {
     public class StatictableController : Controller
     {
@@ -13,7 +13,7 @@ namespace EdoTrafficMgtWeb.Controllers
             return View();
         }
 
-        public IActionResult IncidentType()
+        public IActionResult Department()
         {
             return View();
         }

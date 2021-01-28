@@ -2,50 +2,50 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EdoTrafficMgtCore.Core.Entities;
-using EdoTrafficMgtWeb.IServices;
+using OnlineClearanceCore.Core.Entities;
+using OnlineClearanceWeb.IServices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EdoTrafficMgtWeb.Controllers.Api.ReferenceTable
+namespace OnlineClearanceWeb.Controllers.Api.ReferenceTable
 {
-    [Route("api/ReportIncident")]
+    [Route("api/Student")]
     [ApiController]
-    public class ReportIncidentController : ControllerBase
+    public class StudentController : ControllerBase
     {
-        private readonly IReportIncidentService service;
-        public ReportIncidentController(IReportIncidentService service)
+        private readonly IStudentService service;
+        public StudentController(IStudentService service)
         {
             this.service = service;
         }
 
-        //api/ReportIncident/getAllReportIncident
-        [Route("getAllReportIncident")]
+        //api/Student/getAllStudent
+        [Route("getAllStudent")]
         [HttpGet]
-        public IEnumerable<ReportedIncidents> Get()
+        public IEnumerable<Student> Get()
         {
             return service.GetReportIncident();
         }
-        //api/ReportIncident/getAllReportIncident
-        [Route("getAllReportIncidentbyCase")]
+        //api/Student/getAllStudent
+        [Route("getAllStudentbyCase")]
         [HttpGet]
-        public IEnumerable<ReportedIncidents> GetByCase()
+        public IEnumerable<Student> GetByCase()
         {
             return service.GetReportIncidentByCase();
         }
 
-        //api/ReportIncident/createReportIncident
-        [Route("createReportIncident")]
+        //api/Student/createStudent
+        [Route("createStudent")]
         [HttpPost]
-        public IActionResult createReportIncident([FromBody] ReportedIncidents value)
+        public IActionResult createReportIncident([FromBody] Student value)
         {
             try
             {
-                if (String.IsNullOrEmpty(value.IncidentType))
+                if (String.IsNullOrEmpty(value.StudentId))
                 {
-                    return Ok(new { responseCode = 500, responseDescription = "Kindly Supply Incident Type" });
+                    return Ok(new { responseCode = 500, responseDescription = "Kindly Supply Student" });
                 }
-                value.IncidentCode = "CAS" + "/" + DateTime.Now.Day.ToString() + "/" + DateTime.Now.Year.ToString() + 0001;
+                value.StudentId = "SPY" + "/" + "CS" + DateTime.Now.Day.ToString() + "/" + DateTime.Now.Year.ToString() + 0001;
                 value.datecreated = DateTime.Now;
                 value.createdby = User.Identity.Name;
                 service.AddReportIncident(value);
@@ -58,8 +58,8 @@ namespace EdoTrafficMgtWeb.Controllers.Api.ReferenceTable
             }
         }
 
-        //api/ReportIncident/RemoveReportIncident/7
-        [Route("RemoveReportIncident/{id:int}")]
+        //api/Student/Student/7
+        [Route("RemoveStudent/{id:int}")]
         [HttpGet]
         public IActionResult Remove(int id)
         {
@@ -71,35 +71,30 @@ namespace EdoTrafficMgtWeb.Controllers.Api.ReferenceTable
         }
 
 
-        // PUT: api/BalanceSheet/5
-        [Route("updateReportIncident")]
+        // PUT: api/Student/5
+        [Route("updateStudent")]
         [HttpPut]
-        public IActionResult Put([FromBody] ReportedIncidents value)
+        public IActionResult Put([FromBody] Student value)
         {
             try
             {
                
-                var getbal = service.GetReportedIncidentByCode(value.IncidentCode.Trim()).Result;
+                var getbal = service.GetStudentByCode(value.StudentId.Trim()).Result;
 
-                getbal.IncidentCode = value.IncidentCode;
+                getbal.StudentId = value.StudentId;
                 getbal.FirstName = value.FirstName;
                 getbal.OtherNames = value.OtherNames;
                 getbal.Address = value.Address;
-                getbal.IncidentDate = value.IncidentDate;
-                getbal.IncidentLocation = value.IncidentLocation;
-                getbal.IncidentType = value.IncidentType;
-                getbal.box = value.box;
+                getbal.DOB = value.DOB;
+                getbal.Campus = value.Campus;
+                getbal.department = value.department;
+                getbal.CourseProgram = value.CourseProgram;
                 getbal.email = value.email;
-                getbal.NearestBusStop = value.NearestBusStop;
                 getbal.lga = value.lga;
-                getbal.Photo1 = value.Photo1;
-                getbal.Photo2 = value.Photo2;
-                getbal.ReportedBy = value.ReportedBy;
-                getbal.state = value.state;
-                getbal.AnyotherInfo = value.AnyotherInfo;
+                getbal.Photo = value.Photo;
                 getbal.state = value.state;
                 getbal.tel = value.tel;
-                getbal.town = value.town;
+                getbal.College = value.College;
                 getbal.createdby = value.createdby;
                 getbal.datecreated = value.datecreated;
 

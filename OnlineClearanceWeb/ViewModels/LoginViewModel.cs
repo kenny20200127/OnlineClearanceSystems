@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EdoTrafficMgtWeb.ViewModels
+namespace OnlineClearanceWeb.ViewModels
 {
     public class LoginViewModel
     {
@@ -17,6 +17,7 @@ namespace EdoTrafficMgtWeb.ViewModels
         public string Password { get; set; }
 
         public string Client { get; set; }
+        public string type { get; set; }
 
         public string MacAddress { get; set; }
     }

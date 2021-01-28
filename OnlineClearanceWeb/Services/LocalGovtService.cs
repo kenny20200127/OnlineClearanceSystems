@@ -1,13 +1,13 @@
-﻿using EdoTrafficMgtCore.Core.Data;
-using EdoTrafficMgtCore.Core.Entities;
-using EdoTrafficMgtCore.Models;
-using EdoTrafficMgtWeb.IServices;
+﻿using OnlineClearanceCore.Core.Data;
+using OnlineClearanceCore.Core.Entities;
+using OnlineClearanceCore.Models;
+using OnlineClearanceWeb.IServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EdoTrafficMgtWeb.Services
+namespace OnlineClearanceWeb.Services
 {
     public class LocalGovtService : ILocalGovtService
     {

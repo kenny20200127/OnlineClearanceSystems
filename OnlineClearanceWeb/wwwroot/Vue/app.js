@@ -2,18 +2,18 @@ window.Vue = require('vue')
 window.axios = require('axios')
 import store from './store'
 
-import CreateReportIncidentComponent from './components/CreateReportIncidentComponent.vue';
-import ViewReportIncidentComponent from './components/ViewReportIncidentComponent.vue';
-import CreateIncidentType from './components/CreateIncidentType.vue';
-import ViewIncidentType from './components/ViewIncidentType.vue';
+import CreateStudent from './components/CreateStudent.vue';
+import ViewStudent from './components/ViewStudent.vue';
+import CreateDepartment from './components/CreateDepartment.vue';
+import ViewDepartment from './components/ViewDepartment.vue';
 
 const files = require.context('./', true, /\.vue$/i)
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('create-report-Iicident-component', CreateReportIncidentComponent);
-Vue.component('view-report-incident-component',ViewReportIncidentComponent);
-Vue.component('create-incident-type',CreateIncidentType);
-Vue.component('view-incident-type',ViewIncidentType);
+Vue.component('create-student', CreateStudent);
+Vue.component('view-student',ViewStudent);
+Vue.component('create-department',CreateDepartment);
+Vue.component('view-department',ViewDepartment);
  
 const app = new Vue({
     el: "#app",

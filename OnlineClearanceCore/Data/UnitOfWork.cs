@@ -1,11 +1,11 @@
-﻿using EdoTrafficMgtCore.Core.IRepositories;
-using EdoTrafficMgtCore.Core.Repositories;
+﻿using OnlineClearanceCore.Core.IRepositories;
+using OnlineClearanceCore.Core.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EdoTrafficMgtCore.Core.Data
+namespace OnlineClearanceCore.Core.Data
 {
     public class UnitOfWork : IUnitOfWork
     {
@@ -19,8 +19,8 @@ namespace EdoTrafficMgtCore.Core.Data
             RoleMenus = new RoleMenuRepository(context);
             MenuGroups = new MenuGroupRepository(context);
             UserRoles = new UserRoleRepository(context);
-            Ind = new IncidentTypeRepository(context);
-            ReportIncidents = new ReportIncidentRepository(context);
+            Ind = new DepartmentRepository(context);
+            ReportIncidents = new StudentRepository(context);
             States = new StatesRepository(context);
             LocalGovernments = new LocalGovtRepository(context);
         }
@@ -34,8 +34,8 @@ namespace EdoTrafficMgtCore.Core.Data
         public IRoleMenuRepository RoleMenus { get; set; }
 
         public IMenuGroupRepository MenuGroups { get; set; }
-        public IReportIncident ReportIncidents { get; set; }
-        public IIncidentTypeRepository Ind { get; set; }
+        public IStudent ReportIncidents { get; set; }
+        public IDepartmentRepository Ind { get; set; }
         public IStatesRepository States { get; set; }
         public ILocalGovtRepository LocalGovernments { get; set; }
 

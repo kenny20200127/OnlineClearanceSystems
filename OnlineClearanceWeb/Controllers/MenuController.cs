@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EdoTrafficMgtWeb.IServices;
-using EdoTrafficMgtCore.Core.Extention;
+using OnlineClearanceWeb.IServices;
+using OnlineClearanceCore.Core.Extention;
 using Microsoft.AspNetCore.Mvc;
-using EdoTrafficMgtWeb.ViewModels.Menus;
-using EdoTrafficMgtCore.Core.Entities;
+using OnlineClearanceWeb.ViewModels.Menus;
+using OnlineClearanceCore.Core.Entities;
 
-namespace EdoTrafficMgtWeb.Controllers
+namespace OnlineClearanceWeb.Controllers
 {
     public class MenuController : BaseController
     {

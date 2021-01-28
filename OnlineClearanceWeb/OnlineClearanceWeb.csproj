@@ -199,7 +199,8 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\EdoTrafficMgtCore\EdoTrafficMgtCore.csproj" />
+    <ProjectReference Include="..\OnlineClearanceCore\OnlineClearanceCore.csproj" />
+    <ProjectReference Include="..\OnlineClearanceCore\OnlineClearanceCore.csproj" />
   </ItemGroup>
 
 </Project>

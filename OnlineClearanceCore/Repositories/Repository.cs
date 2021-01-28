@@ -1,5 +1,5 @@
-﻿using EdoTrafficMgtCore.Core.Data;
-using EdoTrafficMgtCore.Core.IRepositories;
+﻿using OnlineClearanceCore.Core.Data;
+using OnlineClearanceCore.Core.IRepositories;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EdoTrafficMgtCore.Core.Repositories
+namespace OnlineClearanceCore.Core.Repositories
 {
     public abstract class Repository<T> : IRepository<T> where T : class
     {

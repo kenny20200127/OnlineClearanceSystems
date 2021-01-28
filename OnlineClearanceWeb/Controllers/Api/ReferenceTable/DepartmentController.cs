@@ -2,36 +2,36 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EdoTrafficMgtCore.Core.Entities;
-using EdoTrafficMgtWeb.IServices;
+using OnlineClearanceCore.Core.Entities;
+using OnlineClearanceWeb.IServices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EdoTrafficMgtWeb.Controllers.Api.ReferenceTable
+namespace OnlineClearanceWeb.Controllers.Api.ReferenceTable
 {
-    [Route("api/IncidentType")]
+    [Route("api/Department")]
     [ApiController]
-    public class IncidentTypeController : ControllerBase
+    public class DepartmentController : ControllerBase
     {
-        private readonly IIncidentTypeService IncidentTypeService;
-        public IncidentTypeController(IIncidentTypeService IncidentTypeService)
+        private readonly IDepartmentService DepartmentService;
+        public DepartmentController(IDepartmentService DepartmentService)
         {
 
-            this.IncidentTypeService = IncidentTypeService;
+            this.DepartmentService = DepartmentService;
         }
-        [Route("getAllIncidentTypes")]
+        [Route("getAllDepartments")]
         [HttpGet]
-        public IEnumerable<IncidentType> Get()
+        public IEnumerable<Department> Get()
         {
-            return IncidentTypeService.GetIncidentTypes();
+            return DepartmentService.GetDepartments();
         }
 
-        // GET: api/IncidentType
-        [Route("getIncidentTypeByCode/{id}")]
+        // GET: api/Department
+        [Route("getDepartmentByCode/{id}")]
         [HttpGet]
-        public IActionResult GetIncidentTypeByCode(string id)
+        public IActionResult GetDepartmentByCode(string id)
         {
-            var balsheet = IncidentTypeService.GetIncidentTypeByCode(id).Result;
+            var balsheet = DepartmentService.GetDepartmentByCode(id).Result;
 
             if (balsheet == null)
             {
@@ -40,7 +40,7 @@ namespace EdoTrafficMgtWeb.Controllers.Api.ReferenceTable
             return Ok(new { responseCode = 200, responseDescription = "Successfully", Data = balsheet });
         }
 
-        // GET: api/IncidentType/5
+        // GET: api/Department/5
         [Route("Getl")]
         [HttpGet("{id}")]
         public string Get(int id)
@@ -48,10 +48,10 @@ namespace EdoTrafficMgtWeb.Controllers.Api.ReferenceTable
             return "value";
         }
 
-        // POST: api/IncidentType
-        [Route("createIncidentType")]
+        // POST: api/Department
+        [Route("createDepartment")]
         [HttpPost]
-        public IActionResult createIncidentType([FromBody] IncidentType value)
+        public IActionResult createDepartment([FromBody] Department value)
         {
             try
             {
@@ -59,12 +59,12 @@ namespace EdoTrafficMgtWeb.Controllers.Api.ReferenceTable
                 {
                     return Ok(new { responseCode = 500, responseDescription = "Kindly Supply Code" });
                 }
-                if (IncidentTypeService.GetIncidentTypeByCode(value.Name.Trim()).Result != null)
+                if (DepartmentService.GetDepartmentByCode(value.Name.Trim()).Result != null)
                 {
                     return Ok(new { responseCode = 400, responseDescription = "Code already Exist" });
                 }
                 // value.datecreated = DateTime.Now;
-                IncidentTypeService.AddIncidentType(value);
+                DepartmentService.AddDepartment(value);
 
                 return Ok(new { responseCode = 200, responseDescription = "Created Successfully" });
             }
@@ -74,23 +74,23 @@ namespace EdoTrafficMgtWeb.Controllers.Api.ReferenceTable
             }
         }
 
-        //api/IncidentType/RemoveBalsheet/7
-        [Route("RemoveIncidentType/{id:int}")]
+        //api/Department/RemoveBalsheet/7
+        [Route("RemoveDepartment/{id:int}")]
         [HttpGet]
         public IActionResult Remove(int id)
         {
-            var balsheet = IncidentTypeService.GetIncidentTypeById(id).Result;
+            var balsheet = DepartmentService.GetDepartmentById(id).Result;
             if (balsheet == null) return NotFound();
 
-            IncidentTypeService.RemoveIncidentType(balsheet);
+            DepartmentService.RemoveDepartment(balsheet);
             return Ok(new { responseCode = 200, responseDescription = "Deleted Successful" });
         }
 
 
-        // PUT: api/IncidentType/5
-        [Route("updateIncidentType")]
+        // PUT: api/Department/5
+        [Route("updateDepartment")]
         [HttpPut]
-        public IActionResult Put([FromBody] IncidentType value)
+        public IActionResult Put([FromBody] Department value)
         {
             try
             {
@@ -98,9 +98,9 @@ namespace EdoTrafficMgtWeb.Controllers.Api.ReferenceTable
                 {
                     return Ok(new { responseCode = 500, responseDescription = "Kindly Supply Cost Center Code" });
                 }
-                var getbal = IncidentTypeService.GetIncidentTypeByCode(value.Name.Trim()).Result;
+                var getbal = DepartmentService.GetDepartmentByCode(value.Name.Trim()).Result;
                 getbal.Description = value.Description;
-                IncidentTypeService.UpdateIncidentType(getbal);
+                DepartmentService.UpdateDepartment(getbal);
                 return Ok(new { responseCode = 200, responseDescription = "Updated Successfully" });
             }
             catch (Exception ex)

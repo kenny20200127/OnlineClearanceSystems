@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EdoTrafficMgtCore.Core.Data;
-using EdoTrafficMgtCore.Core.Entities;
-using EdoTrafficMgtCore.Core.IRepositories;
-using EdoTrafficMgtCore.Core.Repositories;
-using EdoTrafficMgtWeb.Data;
-using EdoTrafficMgtWeb.IServices;
-using EdoTrafficMgtWeb.Services;
+using OnlineClearanceCore.Core.Data;
+using OnlineClearanceCore.Core.Entities;
+using OnlineClearanceCore.Core.IRepositories;
+using OnlineClearanceCore.Core.Repositories;
+using OnlineClearanceWeb.Data;
+using OnlineClearanceWeb.IServices;
+using OnlineClearanceWeb.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -19,7 +19,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace EdoTrafficMgtWeb
+namespace OnlineClearanceWeb
 {
     public class Startup
     {
@@ -65,8 +65,8 @@ namespace EdoTrafficMgtWeb
             services.AddScoped<IMenuRepository, MenuRepository>();
             services.AddScoped<ITrafficMgtDbContext, ApplicationDbContext>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
-            services.AddScoped<IIncidentTypeService, IncidentTypeService>();
-            services.AddScoped<IReportIncidentService, ReportIncidentService>();
+            services.AddScoped<IDepartmentService, DepartmentService>();
+            services.AddScoped<IStudentService, StudentService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IStatesService, StatesService>();
             services.AddScoped<ILocalGovtService, LocalGovtService>();

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EdoTrafficMgtCore.Models
+namespace OnlineClearanceCore.Models
 {
     public class ResponseModel<T> where T : class
     {

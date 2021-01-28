@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EdoTrafficMgtCore.Core.Entities;
-using EdoTrafficMgtWeb.IServices;
+using OnlineClearanceCore.Core.Entities;
+using OnlineClearanceWeb.IServices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EdoTrafficMgtWeb.Controllers.Api.ReferenceTable
+namespace OnlineClearanceWeb.Controllers.Api.ReferenceTable
 {
     [Route("api/LocalGovernment")]
     [ApiController]

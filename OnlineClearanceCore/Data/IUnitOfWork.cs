@@ -1,10 +1,10 @@
-﻿using EdoTrafficMgtCore.Core.IRepositories;
+﻿using OnlineClearanceCore.Core.IRepositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EdoTrafficMgtCore.Core.Data
+namespace OnlineClearanceCore.Core.Data
 {
     public interface IUnitOfWork
     {
@@ -13,8 +13,8 @@ namespace EdoTrafficMgtCore.Core.Data
         IMenuRepository Menus { get; }
         IRoleMenuRepository RoleMenus { get; }
         IMenuGroupRepository MenuGroups { get; }
-        IReportIncident ReportIncidents { get; }
-        IIncidentTypeRepository Ind { get; }
+        IStudent ReportIncidents { get; }
+        IDepartmentRepository Ind { get; }
         IStatesRepository States { get; }
         ILocalGovtRepository LocalGovernments { get; }
 

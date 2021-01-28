@@ -1,10 +1,10 @@
-﻿using EdoTrafficMgtCore.Core.Entities;
+﻿using OnlineClearanceCore.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace EdoTrafficMgtCore.Core.Data
+namespace OnlineClearanceCore.Core.Data
 {
     public interface ITrafficMgtDbContext:IDbContext
     {
@@ -14,8 +14,8 @@ namespace EdoTrafficMgtCore.Core.Data
         DbSet<Menu> Menus { get; set; }
         DbSet<RoleMenu> RoleMenus { get; set; }
         DbSet<MenuGroup> MenuGroups { get; set; }
-        DbSet<ReportedIncidents> ReportedIncidents { get; set; }
-        DbSet<IncidentType> IncidentTypes { get; set; }
+        DbSet<Student> Students { get; set; }
+        DbSet<Department> Departments { get; set; }
         DbSet<States> States { get; set; }
         DbSet<LocalGovernment> LocalGovernments { get; set; }
     }
