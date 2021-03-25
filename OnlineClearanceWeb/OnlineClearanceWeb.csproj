@@ -186,6 +186,15 @@
     <None Include="wwwroot\css\bower_components\swiper\js\swiper.min.js" />
     <None Include="wwwroot\css\bower_components\switchery\js\switchery.min.js" />
     <None Include="wwwroot\css\bower_components\underscore\js\underscore-min.js" />
+    <None Include="wwwroot\dist\fonts\.DS_Store" />
+    <None Include="wwwroot\dist\images\.DS_Store" />
+    <None Include="wwwroot\dist\images\bg-login-page-dark.svg" />
+    <None Include="wwwroot\dist\images\bg-login-page.svg" />
+    <None Include="wwwroot\dist\images\error-illustration.svg" />
+    <None Include="wwwroot\dist\images\illustration.svg" />
+    <None Include="wwwroot\dist\images\logo.svg" />
+    <None Include="wwwroot\dist\images\placeholders\.DS_Store" />
+    <None Include="wwwroot\dist\js\app.js" />
     <None Include="wwwroot\js\bootstrap.min.js" />
     <None Include="wwwroot\js\icheck-active.js" />
     <None Include="wwwroot\js\icheck.min.js" />
