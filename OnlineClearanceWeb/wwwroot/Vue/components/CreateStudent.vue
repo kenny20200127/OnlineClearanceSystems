@@ -4,130 +4,117 @@
         <div v-if="errors" class="has-error"> {{ [errors] }}</div>
         <div v-if="responseMessage" class="has-error"> {{ responseMessage }}</div>
         <form @submit="checkForm"  method="post">
-            <div class="card-body">
-                <div class="row">
-                     <div class="col-12 col-xl-3">
-                        <div class="form-group">
-                            <label class="form-label">Student Id</label>
-                            <input type="text" name="studentid" class="form-control" v-model="postBody.studentid" required  />
+            <div class="p-5" id="vertical-form">
+        <div class="preview">
+               <div class="grid grid-cols-12 gap-2">
+                      <div class="intro-y col-span-12 sm:col-span-4">
+                             <div class="mb-2">Student Id </div>
+                            <input type="text" name="studentid" class="input w-full border col-span-4" v-model="postBody.studentid" required  />
                         </div>
-                        </div>
-                          <div class="col-12 col-xl-3">
-                        <div class="form-group">
-                            <label class="form-label">Department</label>
-                            <select class="form-control" v-model="postBody.department" required @change="SelectedValue">
+                        <div class="intro-y col-span-12 sm:col-span-4">
+                       
+                             <div class="mb-2">Department </div>
+                            <select class="input w-full border col-span-4" v-model="postBody.department" required @change="SelectedValue">
                               <option v-for="dept in departmentList" v-bind:value="dept.name" v-bind:key="dept.name"> {{ dept.description }} </option>
                            </select>
-                          
-                        </div>
                     </div>
-                    <div class="col-12 col-xl-3">
-                    <div class="form-group">
-                            <label class="form-label">Course</label>
-                            <select class="form-control" v-model="postBody.course" required @change="SelectedValue">
+                     <div class="intro-y col-span-12 sm:col-span-4">
+                   
+                             <div class="mb-2">Course </div>
+                            <select class="input w-full border col-span-4" v-model="postBody.course" required @change="SelectedValue">
                               <option v-for="dept in courseList" v-bind:value="dept.name" v-bind:key="dept.name"> {{ dept.description }} </option>
                            </select>
                           
                         </div>
-                    </div>
+                  
                 </div>
-                 <div class="row">
-                   <div class="col-12 col-xl-3">
-                        <div class="form-group">
-                            <label class="form-label">Graduation Date</label>
-                             <vuejsDatepicker type="text" name="graduationdate" class="form-control" v-model="postBody.graduationdate" ></vuejsDatepicker>
+           <div class="grid grid-cols-12 gap-2">
+                    <div class="intro-y col-span-12 sm:col-span-4">
+                             <div class="mb-2">Graduation Date </div>
+                             <vuejsDatepicker type="text" name="graduationdate" class="input w-full border col-span-4" v-model="postBody.graduationdate" ></vuejsDatepicker>
                         </div>
+                         <div class="intro-y col-span-12 sm:col-span-4">
+                       
+                             <div class="mb-2">Campus </div>
+                            <input type="text" name="campus" class="input w-full border col-span-4" v-model="postBody.campus" required  />
                         </div>
                         
-                        <div class="col-12 col-xl-3">
-                        <div class="form-group">
-                            <label class="form-label">Campus</label>
-                            <input type="text" name="campus" class="form-control" v-model="postBody.campus" required  />
+                         <div class="intro-y col-span-12 sm:col-span-4">
+                       
+                             <div class="mb-2">College </div>
+                            <input type="text" name="college" class="input w-full border col-span-4" v-model="postBody.college" required  />
                         </div>
-                        </div>
-                        <div class="col-12 col-xl-3">
-                        <div class="form-group">
-                            <label class="form-label">College</label>
-                            <input type="text" name="college" class="form-control" v-model="postBody.college" required  />
-                        </div>
-                        </div>
+                       
                  </div>
-                 <div class="row">
-                    <div class="col-12 col-xl-3">
-                        <div class="form-group">
-                            <label class="form-label">First Name</label>
-                            <input class="form-control" name="firstName" v-model="postBody.firstName" placeholder="" />
+             <div class="grid grid-cols-12 gap-2">
+                     <div class="intro-y col-span-12 sm:col-span-4">
+                       
+                             <div class="mb-2">First Name </div>
+                            <input class="input w-full border col-span-4" name="firstName" v-model="postBody.firstName" placeholder="" />
                         </div>
-                    </div>
-                    <div class="col-12 col-xl-3">
-                        <div class="form-group">
-                            <label class="form-label">Other Name</label>
-                            <input class="form-control" name="otherName" v-model="postBody.otherName" placeholder="" />
+                   
+                     <div class="intro-y col-span-12 sm:col-span-4">
+                       
+                             <div class="mb-2">Other Name </div>
+                            <input class="input w-full border col-span-4" name="otherName" v-model="postBody.otherName" placeholder="" />
                         </div>
-                    </div>
-                    <div class="col-12 col-xl-3">
-                        <div class="form-group">
-                            <label class="form-label">DOB</label>
-                           <vuejsDatepicker type="text" name="dob" class="form-control" v-model="postBody.dob" ></vuejsDatepicker>
+                
+                     <div class="intro-y col-span-12 sm:col-span-4">
+                       
+                             <div class="mb-2">DOB </div>
+                           <vuejsDatepicker type="text" name="dob" class="input w-full border col-span-4" v-model="postBody.dob" ></vuejsDatepicker>
                         </div>
+                </div>
+            <div class="grid grid-cols-12 gap-2">
+                      <div class="intro-y col-span-12 sm:col-span-4">
+                       
+                             <div class="mb-2">Phone Number </div>
+                            <input class="input w-full border col-span-4" name="tel" v-model="postBody.tel" placeholder="" />
                         </div>
-                     
                     
-                </div>
-                 <div class="row">
-                     <div class="col-12 col-xl-3">
-                        <div class="form-group">
-                            <label class="form-label">Phone Number</label>
-                            <input class="form-control" name="tel" v-model="postBody.tel" placeholder="" />
+                     <div class="intro-y col-span-12 sm:col-span-4">
+                       
+                             <div class="mb-2">Local Government </div>
+                            <input class="input w-full border col-span-4" name="lga" v-model="postBody.lga" placeholder="" />
                         </div>
-                    </div>
-                    <div class="col-12 col-xl-3">
-                        <div class="form-group">
-                            <label class="form-label">Local Government</label>
-                            <input class="form-control" name="lga" v-model="postBody.lga" placeholder="" />
+           
+                      <div class="intro-y col-span-12 sm:col-span-4">
+                       
+                             <div class="mb-2">State </div>
+                            <input class="input w-full border col-span-4" name="state" v-model="postBody.state" placeholder="" />
                         </div>
-                    </div>
-                     <div class="col-12 col-xl-3">
-                        <div class="form-group">
-                            <label class="form-label">State</label>
-                            <input class="form-control" name="state" v-model="postBody.state" placeholder="" />
-                        </div>
-                    </div>
+                 
                      
                 </div>
-                <div class="row">
-                    <div class="col-12 col-xl-3">
-                        <div class="form-group">
-                            <label class="form-label">Address</label>
-                            <input type="text" name="address" class="form-control" v-model="postBody.address"  />
+            <div class="grid grid-cols-12 gap-2">
+                     <div class="intro-y col-span-12 sm:col-span-4">
+                       
+                             <div class="mb-2">Address </div>
+                            <input type="text" name="address" class="input w-full border col-span-4" v-model="postBody.address"  />
                         </div>
-                        </div>
-                    <div class="col-12 col-xl-3">
-                        <div class="form-group">
-                            <label class="form-label">Email</label>
-                            <input class="form-control" name="email" v-model="postBody.email" placeholder="" />
-                        </div>
-                    </div>
-                    
-
-                </div>
-                <div class="row">
-                     <div class="col-12 col-xl-3">
-                        <div class="form-group">
-                            <label class="form-label">Upload Photo2</label>
-                            <input type="file" class="form-control" name="anyotherInfo" />
-                        </div>
-                    </div>
-                    </div>
-                <div class="row">
                      
-                    <div class="col-12 ">
-                        <div class="btn-group mr-2 sw-btn-group-extra" v-if="canProcess" role="group">
-                            <button class="btn btn-submit btn-primary" v-on:click="checkForm" type="submit">{{submitorUpdate}}</button>
+                     <div class="intro-y col-span-12 sm:col-span-4">
+                       
+                             <div class="mb-2">Email </div>
+                            <input class="input w-full border col-span-4" name="email" v-model="postBody.email" placeholder="" />
                         </div>
-                    </div>
                 </div>
+             <div class="grid grid-cols-12 gap-2">
+                      <div class="intro-y col-span-12 sm:col-span-4">
+                       
+                             <div class="mb-2">Upload Photo2 </div>
+                            <input type="file" class="input w-full border col-span-4" name="anyotherInfo" />
+                        </div>
+                   
+                    </div>
+                
+                        <div v-if="canProcess" role="group">
+                            <button class="button bg-theme-1 text-white mt-5" v-on:click="checkForm" type="submit">{{submitorUpdate}}</button>
+                     
+                        </div>
             </div>
+            </div>
+            
         </form>
     </div>
 							

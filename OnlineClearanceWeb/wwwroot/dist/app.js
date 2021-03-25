@@ -1996,6 +1996,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       if (this.submitorUpdate == 'Submit') {
+        alert("i am here");
         axios.post("/api/Department/createDepartment", this.postBody).then(function (response) {
           _this.responseMessage = response.data.responseDescription;
           _this.canProcess = true;
@@ -2031,7 +2032,7 @@ __webpack_require__.r(__webpack_exports__);
     setter: function setter() {
       var objecttoedit = this.$store.state.objectToUpdate;
 
-      if (objecttoedit.unitcode) {
+      if (objecttoedit.id) {
         this.postBody.name = objecttoedit.name;
         this.postBody.description = objecttoedit.description;
       }
@@ -2051,19 +2052,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuejs_datepicker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuejs-datepicker */ "./node_modules/vuejs-datepicker/dist/vuejs-datepicker.esm.js");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2474,7 +2462,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      ReportIncidentList: null,
+      StudentsList: null,
       responseMessage: ''
     };
   },
@@ -2483,11 +2471,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   watch: {
     '$store.state.objectToUpdate': function $storeStateObjectToUpdate(newVal, oldVal) {
-      this.getAllReportIncident(); //this.processDelete();
+      this.getAllStudents(); //this.processDelete();
     }
   },
   mounted: function mounted() {
-    this.getAllReportIncident(); // this.processDelete();
+    this.getAllStudents(); // this.processDelete();
   },
   methods: {
     processRetrieve: function processRetrieve(incident) {
@@ -2496,21 +2484,21 @@ __webpack_require__.r(__webpack_exports__);
     processDelete: function processDelete(id) {
       var _this = this;
 
-      axios.get("/api/ReportIncident/RemoveReportIncident/".concat(id)).then(function (response) {
+      axios.get("/api/Students/RemoveStudents/".concat(id)).then(function (response) {
         if (response.data.responseCode == '200') {
-          alert("ReportIncident successfully deleted");
+          alert("Students successfully deleted");
 
-          _this.getAllReportIncident();
+          _this.getAllStudents();
         }
       })["catch"](function (e) {
         _this.errors.push(e);
       });
     },
-    getAllReportIncident: function getAllReportIncident() {
+    getAllStudents: function getAllStudents() {
       var _this2 = this;
 
-      axios.get('/api/ReportIncident/getAllReportIncident').then(function (response) {
-        return _this2.ReportIncidentList = response.data;
+      axios.get('/api/Students/getAllStudents').then(function (response) {
+        return _this2.StudentsList = response.data;
       });
     }
   }
@@ -3150,13 +3138,11 @@ var render = function() {
       : _vm._e(),
     _vm._v(" "),
     _c("form", { attrs: { method: "post" }, on: { submit: _vm.checkForm } }, [
-      _c("div", { staticClass: "card-body" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-12 col-xl-3" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { staticClass: "form-label" }, [
-                _vm._v("Student Id")
-              ]),
+      _c("div", { staticClass: "p-5", attrs: { id: "vertical-form" } }, [
+        _c("div", { staticClass: "preview" }, [
+          _c("div", { staticClass: "grid grid-cols-12 gap-2" }, [
+            _c("div", { staticClass: "intro-y col-span-12 sm:col-span-4" }, [
+              _c("div", { staticClass: "mb-2" }, [_vm._v("Student Id ")]),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -3167,7 +3153,7 @@ var render = function() {
                     expression: "postBody.studentid"
                   }
                 ],
-                staticClass: "form-control",
+                staticClass: "input w-full border col-span-4",
                 attrs: { type: "text", name: "studentid", required: "" },
                 domProps: { value: _vm.postBody.studentid },
                 on: {
@@ -3179,14 +3165,10 @@ var render = function() {
                   }
                 }
               })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-12 col-xl-3" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { staticClass: "form-label" }, [
-                _vm._v("Department")
-              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "intro-y col-span-12 sm:col-span-4" }, [
+              _c("div", { staticClass: "mb-2" }, [_vm._v("Department ")]),
               _vm._v(" "),
               _c(
                 "select",
@@ -3199,7 +3181,7 @@ var render = function() {
                       expression: "postBody.department"
                     }
                   ],
-                  staticClass: "form-control",
+                  staticClass: "input w-full border col-span-4",
                   attrs: { required: "" },
                   on: {
                     change: [
@@ -3233,12 +3215,10 @@ var render = function() {
                 }),
                 0
               )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-12 col-xl-3" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { staticClass: "form-label" }, [_vm._v("Course")]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "intro-y col-span-12 sm:col-span-4" }, [
+              _c("div", { staticClass: "mb-2" }, [_vm._v("Course ")]),
               _vm._v(" "),
               _c(
                 "select",
@@ -3251,7 +3231,7 @@ var render = function() {
                       expression: "postBody.course"
                     }
                   ],
-                  staticClass: "form-control",
+                  staticClass: "input w-full border col-span-4",
                   attrs: { required: "" },
                   on: {
                     change: [
@@ -3286,21 +3266,19 @@ var render = function() {
                 0
               )
             ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-12 col-xl-3" }, [
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "grid grid-cols-12 gap-2" }, [
             _c(
               "div",
-              { staticClass: "form-group" },
+              { staticClass: "intro-y col-span-12 sm:col-span-4" },
               [
-                _c("label", { staticClass: "form-label" }, [
-                  _vm._v("Graduation Date")
+                _c("div", { staticClass: "mb-2" }, [
+                  _vm._v("Graduation Date ")
                 ]),
                 _vm._v(" "),
                 _c("vuejsDatepicker", {
-                  staticClass: "form-control",
+                  staticClass: "input w-full border col-span-4",
                   attrs: { type: "text", name: "graduationdate" },
                   model: {
                     value: _vm.postBody.graduationdate,
@@ -3312,12 +3290,10 @@ var render = function() {
                 })
               ],
               1
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-12 col-xl-3" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { staticClass: "form-label" }, [_vm._v("Campus")]),
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "intro-y col-span-12 sm:col-span-4" }, [
+              _c("div", { staticClass: "mb-2" }, [_vm._v("Campus ")]),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -3328,7 +3304,7 @@ var render = function() {
                     expression: "postBody.campus"
                   }
                 ],
-                staticClass: "form-control",
+                staticClass: "input w-full border col-span-4",
                 attrs: { type: "text", name: "campus", required: "" },
                 domProps: { value: _vm.postBody.campus },
                 on: {
@@ -3340,12 +3316,10 @@ var render = function() {
                   }
                 }
               })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-12 col-xl-3" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { staticClass: "form-label" }, [_vm._v("College")]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "intro-y col-span-12 sm:col-span-4" }, [
+              _c("div", { staticClass: "mb-2" }, [_vm._v("College ")]),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -3356,7 +3330,7 @@ var render = function() {
                     expression: "postBody.college"
                   }
                 ],
-                staticClass: "form-control",
+                staticClass: "input w-full border col-span-4",
                 attrs: { type: "text", name: "college", required: "" },
                 domProps: { value: _vm.postBody.college },
                 on: {
@@ -3369,15 +3343,11 @@ var render = function() {
                 }
               })
             ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-12 col-xl-3" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { staticClass: "form-label" }, [
-                _vm._v("First Name")
-              ]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "grid grid-cols-12 gap-2" }, [
+            _c("div", { staticClass: "intro-y col-span-12 sm:col-span-4" }, [
+              _c("div", { staticClass: "mb-2" }, [_vm._v("First Name ")]),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -3388,7 +3358,7 @@ var render = function() {
                     expression: "postBody.firstName"
                   }
                 ],
-                staticClass: "form-control",
+                staticClass: "input w-full border col-span-4",
                 attrs: { name: "firstName", placeholder: "" },
                 domProps: { value: _vm.postBody.firstName },
                 on: {
@@ -3400,14 +3370,10 @@ var render = function() {
                   }
                 }
               })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-12 col-xl-3" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { staticClass: "form-label" }, [
-                _vm._v("Other Name")
-              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "intro-y col-span-12 sm:col-span-4" }, [
+              _c("div", { staticClass: "mb-2" }, [_vm._v("Other Name ")]),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -3418,7 +3384,7 @@ var render = function() {
                     expression: "postBody.otherName"
                   }
                 ],
-                staticClass: "form-control",
+                staticClass: "input w-full border col-span-4",
                 attrs: { name: "otherName", placeholder: "" },
                 domProps: { value: _vm.postBody.otherName },
                 on: {
@@ -3430,18 +3396,16 @@ var render = function() {
                   }
                 }
               })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-12 col-xl-3" }, [
+            ]),
+            _vm._v(" "),
             _c(
               "div",
-              { staticClass: "form-group" },
+              { staticClass: "intro-y col-span-12 sm:col-span-4" },
               [
-                _c("label", { staticClass: "form-label" }, [_vm._v("DOB")]),
+                _c("div", { staticClass: "mb-2" }, [_vm._v("DOB ")]),
                 _vm._v(" "),
                 _c("vuejsDatepicker", {
-                  staticClass: "form-control",
+                  staticClass: "input w-full border col-span-4",
                   attrs: { type: "text", name: "dob" },
                   model: {
                     value: _vm.postBody.dob,
@@ -3454,15 +3418,11 @@ var render = function() {
               ],
               1
             )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-12 col-xl-3" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { staticClass: "form-label" }, [
-                _vm._v("Phone Number")
-              ]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "grid grid-cols-12 gap-2" }, [
+            _c("div", { staticClass: "intro-y col-span-12 sm:col-span-4" }, [
+              _c("div", { staticClass: "mb-2" }, [_vm._v("Phone Number ")]),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -3473,7 +3433,7 @@ var render = function() {
                     expression: "postBody.tel"
                   }
                 ],
-                staticClass: "form-control",
+                staticClass: "input w-full border col-span-4",
                 attrs: { name: "tel", placeholder: "" },
                 domProps: { value: _vm.postBody.tel },
                 on: {
@@ -3485,14 +3445,10 @@ var render = function() {
                   }
                 }
               })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-12 col-xl-3" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { staticClass: "form-label" }, [
-                _vm._v("Local Government")
-              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "intro-y col-span-12 sm:col-span-4" }, [
+              _c("div", { staticClass: "mb-2" }, [_vm._v("Local Government ")]),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -3503,7 +3459,7 @@ var render = function() {
                     expression: "postBody.lga"
                   }
                 ],
-                staticClass: "form-control",
+                staticClass: "input w-full border col-span-4",
                 attrs: { name: "lga", placeholder: "" },
                 domProps: { value: _vm.postBody.lga },
                 on: {
@@ -3515,12 +3471,10 @@ var render = function() {
                   }
                 }
               })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-12 col-xl-3" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { staticClass: "form-label" }, [_vm._v("State")]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "intro-y col-span-12 sm:col-span-4" }, [
+              _c("div", { staticClass: "mb-2" }, [_vm._v("State ")]),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -3531,7 +3485,7 @@ var render = function() {
                     expression: "postBody.state"
                   }
                 ],
-                staticClass: "form-control",
+                staticClass: "input w-full border col-span-4",
                 attrs: { name: "state", placeholder: "" },
                 domProps: { value: _vm.postBody.state },
                 on: {
@@ -3544,13 +3498,11 @@ var render = function() {
                 }
               })
             ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-12 col-xl-3" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { staticClass: "form-label" }, [_vm._v("Address")]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "grid grid-cols-12 gap-2" }, [
+            _c("div", { staticClass: "intro-y col-span-12 sm:col-span-4" }, [
+              _c("div", { staticClass: "mb-2" }, [_vm._v("Address ")]),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -3561,7 +3513,7 @@ var render = function() {
                     expression: "postBody.address"
                   }
                 ],
-                staticClass: "form-control",
+                staticClass: "input w-full border col-span-4",
                 attrs: { type: "text", name: "address" },
                 domProps: { value: _vm.postBody.address },
                 on: {
@@ -3573,12 +3525,10 @@ var render = function() {
                   }
                 }
               })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-12 col-xl-3" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { staticClass: "form-label" }, [_vm._v("Email")]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "intro-y col-span-12 sm:col-span-4" }, [
+              _c("div", { staticClass: "mb-2" }, [_vm._v("Email ")]),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -3589,7 +3539,7 @@ var render = function() {
                     expression: "postBody.email"
                   }
                 ],
-                staticClass: "form-control",
+                staticClass: "input w-full border col-span-4",
                 attrs: { name: "email", placeholder: "" },
                 domProps: { value: _vm.postBody.email },
                 on: {
@@ -3602,34 +3552,23 @@ var render = function() {
                 }
               })
             ])
-          ])
-        ]),
-        _vm._v(" "),
-        _vm._m(0),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-12 " }, [
-            _vm.canProcess
-              ? _c(
-                  "div",
+          ]),
+          _vm._v(" "),
+          _vm._m(0),
+          _vm._v(" "),
+          _vm.canProcess
+            ? _c("div", { attrs: { role: "group" } }, [
+                _c(
+                  "button",
                   {
-                    staticClass: "btn-group mr-2 sw-btn-group-extra",
-                    attrs: { role: "group" }
+                    staticClass: "button bg-theme-1 text-white mt-5",
+                    attrs: { type: "submit" },
+                    on: { click: _vm.checkForm }
                   },
-                  [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-submit btn-primary",
-                        attrs: { type: "submit" },
-                        on: { click: _vm.checkForm }
-                      },
-                      [_vm._v(_vm._s(_vm.submitorUpdate))]
-                    )
-                  ]
+                  [_vm._v(_vm._s(_vm.submitorUpdate))]
                 )
-              : _vm._e()
-          ])
+              ])
+            : _vm._e()
         ])
       ])
     ])
@@ -3640,16 +3579,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-12 col-xl-3" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { staticClass: "form-label" }, [_vm._v("Upload Photo2")]),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control",
-            attrs: { type: "file", name: "anyotherInfo" }
-          })
-        ])
+    return _c("div", { staticClass: "grid grid-cols-12 gap-2" }, [
+      _c("div", { staticClass: "intro-y col-span-12 sm:col-span-4" }, [
+        _c("div", { staticClass: "mb-2" }, [_vm._v("Upload Photo2 ")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "input w-full border col-span-4",
+          attrs: { type: "file", name: "anyotherInfo" }
+        })
       ])
     ])
   }
@@ -3796,7 +3733,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "tbody",
-            _vm._l(_vm.ReportIncidentList, function(incident, index) {
+            _vm._l(_vm.StudentsList, function(incident, index) {
               return _c("tr", { key: index }, [
                 _c("td", [_vm._v(_vm._s(incident.incidentCode))]),
                 _vm._v(" "),

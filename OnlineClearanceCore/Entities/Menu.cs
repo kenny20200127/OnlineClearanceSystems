@@ -26,6 +26,7 @@ namespace OnlineClearanceCore.Core.Entities
         public int? MenuGroupId { get; set; }
 
         public bool IsActive { get; set; }
+        public string menuicon { get; set; }
 
         public DateTime CreatedOn { get; set; }
 

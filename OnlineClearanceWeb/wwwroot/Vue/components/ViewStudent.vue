@@ -16,7 +16,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(incident,index) in ReportIncidentList" :key="index">
+                    <tr v-for="(incident,index) in StudentsList" :key="index">
                         <td>{{ incident.incidentCode }}</td>
                         <td>{{ incident.firstName }}  {{ incident.otherName }}</td>
                         <td>{{ incident.address }}</td>
@@ -43,7 +43,7 @@ export default {
     
             data() {
                 return {
-                    ReportIncidentList: null,
+                    StudentsList: null,
                     responseMessage:''
                 };
             },
@@ -52,12 +52,12 @@ export default {
         },
     watch:{
          '$store.state.objectToUpdate':function (newVal, oldVal) {
-            this.getAllReportIncident();
+            this.getAllStudents();
             //this.processDelete();
         }
     },
     mounted () {
-        this.getAllReportIncident();
+        this.getAllStudents();
        // this.processDelete();
      },
      methods: {
@@ -67,21 +67,21 @@ export default {
          },
          processDelete: function (id) {
 
-             axios.get(`/api/ReportIncident/RemoveReportIncident/${id}`)
+             axios.get(`/api/Students/RemoveStudents/${id}`)
                  .then(response => {
                      if (response.data.responseCode == '200') {
-                         alert("ReportIncident successfully deleted");
-                         this.getAllReportIncident();
+                         alert("Students successfully deleted");
+                         this.getAllStudents();
                      }
                  }).catch(e => {
                             this.errors.push(e)
                         });
 
          },
-         getAllReportIncident: function () {
+         getAllStudents: function () {
              axios
-            .get('/api/ReportIncident/getAllReportIncident')
-            .then(response => (this.ReportIncidentList = response.data))
+            .get('/api/Students/getAllStudents')
+            .then(response => (this.StudentsList = response.data))
          }
     }
     

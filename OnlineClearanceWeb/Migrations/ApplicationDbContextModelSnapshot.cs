@@ -166,6 +166,8 @@ namespace OnlineClearanceWeb.Migrations
 
                     b.Property<DateTime>("UpdatedOn");
 
+                    b.Property<string>("menuicon");
+
                     b.HasKey("Id");
 
                     b.HasIndex("Code")

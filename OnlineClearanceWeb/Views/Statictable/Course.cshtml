@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewData["Title"] = "Course Setup";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="intro-y flex items-center mt-8">
+    <h2 class="text-lg font-medium mr-auto">
+        Course Setup
+    </h2>
+</div>
+<div class="grid grid-cols-12 gap-6 mt-12">
+    <div class="intro-y col-span-12 lg:col-span-12">
+        <div class="intro-y box">
+            <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
+                <h2 class="font-medium text-base mr-auto">
+                    Add Course
+                </h2>
+            </div>
+            <div class="intro-y col-span-12 lg:col-span-12">
+                <!-- BEGIN: Vertical Form -->
+                <div class="intro-y box">
+                    <create-course></create-course>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="grid grid-cols-12 gap-6 mt-12">
+    <div class="intro-y col-span-12 lg:col-span-12">
+        <div class="intro-y box">
+            <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
+                <h2 class="font-medium text-base mr-auto">
+                    List of Courses
+                </h2>
+            </div>
+            <div class="intro-y col-span-12 lg:col-span-12">
+                <!-- BEGIN: Vertical Form -->
+                <div class="intro-y box">
+                    <view-course></view-course>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -15,44 +15,44 @@ namespace OnlineClearanceWeb.Services
         {
             this.unitOfWork = unitOfWork;
         }
-        public async Task<bool> AddReportIncident(Student bl_sheet)
+        public async Task<bool> AddStudents(Student bl_sheet)
         {
-            unitOfWork.ReportIncidents.Create(bl_sheet);
+            unitOfWork.Students.Create(bl_sheet);
             return await unitOfWork.Done();
         }
 
-        public IEnumerable<Student> GetReportIncident()
+        public IEnumerable<Student> GetStudents()
         {
-            return unitOfWork.ReportIncidents.All();
+            return unitOfWork.Students.All();
         }
-        public IEnumerable<Student> GetReportIncidentByCase()
+        public IEnumerable<Student> GetStudentsByCase()
         {
-            return unitOfWork.ReportIncidents.GetStudentByCase();
+            return unitOfWork.Students.GetStudentByCase();
         }
         public Task<Student> GetStudentByCode(string bcode)
         {
-            return unitOfWork.ReportIncidents.GetStudentByCode(x=>x.StudentId==bcode);
+            return unitOfWork.Students.GetStudentByCode(x=>x.StudentId==bcode);
         }
 
-        public Task<Student> GetReportIncidentById(int id)
+        public Task<Student> GetStudentsById(int id)
         {
-            return unitOfWork.ReportIncidents.Find(id);
+            return unitOfWork.Students.Find(id);
         }
 
-        public Student GetReportIncidentSingleRecord()
+        public Student GetStudentsSingleRecord()
         {
-            return unitOfWork.ReportIncidents.GetStudents();
+            return unitOfWork.Students.GetStudents();
         }
 
-        public void RemoveReportIncident(Student bl_sheet)
+        public void RemoveStudents(Student bl_sheet)
         {
-            unitOfWork.ReportIncidents.Remove(bl_sheet);
+            unitOfWork.Students.Remove(bl_sheet);
             unitOfWork.Done();
         }
 
-        public async Task<bool> UpdateReportIncident(Student bl_sheet)
+        public async Task<bool> UpdateStudents(Student bl_sheet)
         {
-            unitOfWork.ReportIncidents.Update(bl_sheet);
+            unitOfWork.Students.Update(bl_sheet);
             return await unitOfWork.Done();
         }
     }

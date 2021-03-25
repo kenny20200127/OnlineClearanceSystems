@@ -7,6 +7,7 @@ using OnlineClearanceWeb.IServices;
 using OnlineClearanceWeb.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Rewrite.Internal.UrlActions;
+using Microsoft.AspNetCore.Http;
 
 namespace OnlineClearanceWeb.Controllers
 {
@@ -41,7 +42,9 @@ namespace OnlineClearanceWeb.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+           // HttpContext.Session.SetString("StudentNumber", login.UserName);
             return RedirectToAction("Index", "Student");
+
 
         }
 

@@ -1,0 +1,75 @@
+@using OnlineClearanceCore.Core.Entities
+@using OnlineClearanceCore.Models
+
+@model User
+
+
+@{
+    var userMenus = new List<RoleMenu>();
+
+    var counter = 0;
+    foreach (var role in Model.UserRoles)
+    {
+        userMenus.AddRange(role.Role.RoleMenus);
+    }
+
+    var menuGroups = userMenus.GroupBy(
+        x => x.Menu.MenuGroup,
+        x => x.Menu,
+        (menuGroup, menu) => new { Group = menuGroup, menus = menu.ToList() });
+}
+
+<!-- BEGIN: Side Menu -->
+<nav class="side-nav">
+    <a href="" class="intro-x flex items-center pl-5 pt-4">
+        <img alt="Online Clearance Logo" class="w-10" src="~/img/logo/logo.png">
+        <span class="hidden xl:block text-white text-lg ml-3"> Online Clearance<span class="font-medium">Portal</span> </span>
+    </a>
+    <div class="side-nav__devider my-6"></div>
+    <ul>
+        @foreach (var group in menuGroups)
+        {
+            counter++;
+            if (group.Group == null)
+            {
+                @foreach (var menu in group.menus)
+                {
+
+                    <li>
+                        <a href="/@menu.Controller/@menu.Action" class="side-menu @((ViewContext.RouteData.Values["Action"].ToString() == menu.Action && ViewContext.RouteData.Values["Controller"].ToString() == menu.Controller) ? "side-menu--active" : "")">
+                            <div class="side-menu__icon"> <i data-feather="@menu.menuicon"></i> </div>
+                            <div class="side-menu__title">@menu.Name</div>
+                        </a>
+
+                    </li>
+
+                }
+            }
+            else
+            {
+                var isinmenugroup = group.menus.FirstOrDefault(xx => xx.Action.Equals(ViewContext.RouteData.Values["Action"].ToString()) && (xx.Controller.Equals(ViewContext.RouteData.Values["Controller"].ToString())));
+                <li>
+                    <a href="javascript:;" class="side-menu @(isinmenugroup == null ?"" : "side-menu--active") ">
+                        <div class="side-menu__icon"> <i data-feather="box"></i> </div>
+                        <div class="side-menu__title"> @group.Group.Name <i data-feather="chevron-down" class="side-menu__sub-icon"></i> </div>
+                    </a>
+                    <ul class="">
+                        @foreach (var menu in group.menus)
+                        {
+                            <li>
+                                <a asp-controller="@menu.Controller" class="side-menu " asp-action="@menu.Action">
+                                    <div class="side-menu__icon"> <i data-feather="@menu.menuicon"></i> </div>
+                                    <div class="side-menu__title">
+                                        @menu.Name
+                                    </div>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </li>
+            }
+        }
+
+    </ul>
+</nav>
+<!-- END: Side Menu -->

@@ -8,13 +8,13 @@ namespace OnlineClearanceWeb.IServices
 {
     public interface IStudentService
     {
-        IEnumerable<Student> GetReportIncident();
-        IEnumerable<Student> GetReportIncidentByCase();
-        Student GetReportIncidentSingleRecord();
-        void RemoveReportIncident(Student bl_sheet);
-        Task<Student> GetReportIncidentById(int id);
-        Task<bool> AddReportIncident(Student bl_sheet);
+        IEnumerable<Student> GetStudents();
+        IEnumerable<Student> GetStudentsByCase();
+        Student GetStudentsSingleRecord();
+        void RemoveStudents(Student bl_sheet);
+        Task<Student> GetStudentsById(int id);
+        Task<bool> AddStudents(Student bl_sheet);
         Task<Student> GetStudentByCode(string bcode);
-        Task<bool> UpdateReportIncident(Student bl_sheet);
+        Task<bool> UpdateStudents(Student bl_sheet);
     }
 }

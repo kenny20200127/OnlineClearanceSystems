@@ -24,20 +24,20 @@ namespace OnlineClearanceWeb.Controllers.Api.ReferenceTable
         [HttpGet]
         public IEnumerable<Student> Get()
         {
-            return service.GetReportIncident();
+            return service.GetStudents();
         }
         //api/Student/getAllStudent
-        [Route("getAllStudentbyCase")]
+        [Route("getAllStudentbyCase/{Studentid}")]
         [HttpGet]
-        public IEnumerable<Student> GetByCase()
+        public async Task<Student> GetByCase(string Studentid)
         {
-            return service.GetReportIncidentByCase();
+            return await service.GetStudentByCode(Studentid);
         }
 
         //api/Student/createStudent
         [Route("createStudent")]
         [HttpPost]
-        public IActionResult createReportIncident([FromBody] Student value)
+        public IActionResult createStudents([FromBody] Student value)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace OnlineClearanceWeb.Controllers.Api.ReferenceTable
                 value.StudentId = "SPY" + "/" + "CS" + DateTime.Now.Day.ToString() + "/" + DateTime.Now.Year.ToString() + 0001;
                 value.datecreated = DateTime.Now;
                 value.createdby = User.Identity.Name;
-                service.AddReportIncident(value);
+                service.AddStudents(value);
 
                 return Ok(new { responseCode = 200, responseDescription = "Created Successfully" });
             }
@@ -63,10 +63,10 @@ namespace OnlineClearanceWeb.Controllers.Api.ReferenceTable
         [HttpGet]
         public IActionResult Remove(int id)
         {
-            var balsheet = service.GetReportIncidentById(id).Result;
+            var balsheet = service.GetStudentsById(id).Result;
             if (balsheet == null) return NotFound();
 
-            service.RemoveReportIncident(balsheet);
+            service.RemoveStudents(balsheet);
             return Ok(new { responseCode = 200, responseDescription = "Deleted Successful" });
         }
 
@@ -99,7 +99,7 @@ namespace OnlineClearanceWeb.Controllers.Api.ReferenceTable
                 getbal.datecreated = value.datecreated;
 
 
-                service.UpdateReportIncident(getbal);
+                service.UpdateStudents(getbal);
 
                 return Ok(new { responseCode = 200, responseDescription = "Updated Successfully" });
             }

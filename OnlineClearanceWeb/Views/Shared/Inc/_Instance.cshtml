@@ -1,0 +1,8 @@
+﻿@if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT").ToLower() != "production")
+{
+    <section class="text-center">
+        <div class="alert alert-info text-dark" style="margin-bottom: 0;">
+            @Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") instance
+        </div>
+    </section>
+}

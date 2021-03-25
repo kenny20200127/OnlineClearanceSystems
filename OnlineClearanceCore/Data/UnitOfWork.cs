@@ -20,7 +20,7 @@ namespace OnlineClearanceCore.Core.Data
             MenuGroups = new MenuGroupRepository(context);
             UserRoles = new UserRoleRepository(context);
             Ind = new DepartmentRepository(context);
-            ReportIncidents = new StudentRepository(context);
+            Students = new StudentRepository(context);
             States = new StatesRepository(context);
             LocalGovernments = new LocalGovtRepository(context);
         }
@@ -34,7 +34,7 @@ namespace OnlineClearanceCore.Core.Data
         public IRoleMenuRepository RoleMenus { get; set; }
 
         public IMenuGroupRepository MenuGroups { get; set; }
-        public IStudent ReportIncidents { get; set; }
+        public IStudent Students { get; set; }
         public IDepartmentRepository Ind { get; set; }
         public IStatesRepository States { get; set; }
         public ILocalGovtRepository LocalGovernments { get; set; }

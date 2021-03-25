@@ -72,6 +72,7 @@
 	postPost() {
 
 	if(this.submitorUpdate == 'Submit'){
+		alert("i am here")
 	axios.post(`/api/Department/createDepartment`, this.postBody )
 	.then(response => {
 	this.responseMessage = response.data.responseDescription;this.canProcess = true;
@@ -103,7 +104,7 @@
 	computed: {
 	setter(){
 	let objecttoedit = this.$store.state.objectToUpdate;
-	if(objecttoedit.unitcode){
+	if(objecttoedit.id){
 	this.postBody.name = objecttoedit.name;
 	this.postBody.description = objecttoedit.description;
 	}

@@ -13,7 +13,7 @@ namespace OnlineClearanceCore.Core.Data
         IMenuRepository Menus { get; }
         IRoleMenuRepository RoleMenus { get; }
         IMenuGroupRepository MenuGroups { get; }
-        IStudent ReportIncidents { get; }
+        IStudent Students { get; }
         IDepartmentRepository Ind { get; }
         IStatesRepository States { get; }
         ILocalGovtRepository LocalGovernments { get; }

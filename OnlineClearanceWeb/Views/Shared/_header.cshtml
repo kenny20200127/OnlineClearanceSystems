@@ -5,7 +5,7 @@
                 <i class="feather icon-menu"></i>
             </a>
             <a href="index.html">
-                <img class="img-fluid" src="~/css/assets/images/logo.png" alt="Theme-Logo" />
+               LOGO
             </a>
             <a class="mobile-options">
                 <i class="feather icon-more-horizontal"></i>
@@ -32,8 +32,8 @@
                 <li class="header-notification">
                     <div class="dropdown-primary dropdown">
                         <div class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="feather icon-bell"></i>
-                            <span class="badge bg-c-pink">5</span>
+                            @*<i class="feather icon-bell"></i>
+                        <span class="badge bg-c-pink">5</span>*@
                         </div>
                         <ul class="show-notification notification-view dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
                             <li>
@@ -42,7 +42,7 @@
                             </li>
                             <li>
                                 <div class="media">
-                                    <img class="d-flex align-self-center img-radius" src="~/css/assets/images/avatar-4.jpg" alt="Generic placeholder image">
+                                    @*<img class="d-flex align-self-center img-radius" src="~/css/assets/images/avatar-4.jpg" alt="Generic placeholder image">*@
                                     <div class="media-body">
                                         <h5 class="notification-user">John Doe</h5>
                                         <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
@@ -52,7 +52,7 @@
                             </li>
                             <li>
                                 <div class="media">
-                                    <img class="d-flex align-self-center img-radius" src="~/css/assets/images/avatar-3.jpg" alt="Generic placeholder image">
+                                    @* <img class="d-flex align-self-center img-radius" src="~/css/assets/images/avatar-3.jpg" alt="Generic placeholder image">*@
                                     <div class="media-body">
                                         <h5 class="notification-user">Joseph William</h5>
                                         <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
@@ -62,7 +62,7 @@
                             </li>
                             <li>
                                 <div class="media">
-                                    <img class="d-flex align-self-center img-radius" src="~/css/assets/images/avatar-4.jpg" alt="Generic placeholder image">
+                                    @*<img class="d-flex align-self-center img-radius" src="~/css/assets/images/avatar-4.jpg" alt="Generic placeholder image">*@
                                     <div class="media-body">
                                         <h5 class="notification-user">Sara Soudein</h5>
                                         <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
@@ -76,45 +76,18 @@
                 <li class="header-notification">
                     <div class="dropdown-primary dropdown">
                         <div class="displayChatbox dropdown-toggle" data-toggle="dropdown">
-                            <i class="feather icon-message-square"></i>
-                            <span class="badge bg-c-green">3</span>
+                            @*<i class="feather icon-message-square"></i>
+                        <span class="badge bg-c-green">3</span>*@
                         </div>
                     </div>
                 </li>
                 <li class="user-profile header-notification">
                     <div class="dropdown-primary dropdown">
-                        <div class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="~/css/assets/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
-                            <span>John Doe</span>
-                            <i class="feather icon-chevron-down"></i>
-                        </div>
-                        <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-                            <li>
-                                <a href="#!">
-                                    <i class="feather icon-settings"></i> Settings
-                                </a>
-                            </li>
-                            <li>
-                                <a href="user-profile.html">
-                                    <i class="feather icon-user"></i> Profile
-                                </a>
-                            </li>
-                            <li>
-                                <a href="email-inbox.html">
-                                    <i class="feather icon-mail"></i> My Messages
-                                </a>
-                            </li>
-                            <li>
-                                <a href="auth-lock-screen.html">
-                                    <i class="feather icon-lock"></i> Lock Screen
-                                </a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("Logout","Authentication")">
-                                    <i class="feather icon-log-out"></i> Logout
-                                </a>
-                            </li>
-                        </ul>
+
+                        <a href="@Url.Action("Logout","Authentication")">
+                            <i class="feather icon-log-out"></i> Logout
+                        </a>
+
                     </div>
                 </li>
             </ul>

@@ -1,7 +1,60 @@
 ﻿
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Students";
+    Layout = "";
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Online Clearance</title>
 
-<h1>Index</h1>
+    <!---------------------------------Login page css---->
+    <link rel="shortcut icon" type="image/x-icon" href="~/img/favicon.ico">
+
+    <!-- main CSS
+        ============================================ -->
+    <link href="~/src/css/app.css" rel="stylesheet" />
+    <script src="~/dist/app.js" defer></script>
+</head>
+<body class="app">
+
+    <div id="app" class="content">
+        <div class="intro-y flex items-center mt-8">
+            <h2 class="text-lg font-medium mr-auto">
+                student
+            </h2>
+        </div>
+        <div class="grid grid-cols-12 gap-6 mt-12">
+            <div class="intro-y col-span-12 lg:col-span-12">
+                <div class="intro-y box">
+                    <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
+                        <h2 class="font-medium text-base mr-auto">
+                            Add student
+                        </h2>
+                    </div>
+                    <div class="intro-y col-span-12 lg:col-span-12">
+                        <!-- BEGIN: Vertical Form -->
+                        <div class="intro-y box">
+                            <create-student></create-student>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+                        <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+                        <!-- main JS
+                    ============================================ -->
+                        <script src="~/src/js/app.js"></script>
+
+                        <script src="~/js/site.js" asp-append-version="true"></script>
+
+</body>
+</html>
 

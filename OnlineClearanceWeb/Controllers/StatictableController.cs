@@ -8,7 +8,7 @@ namespace OnlineClearanceWeb.Controllers
 {
     public class StatictableController : Controller
     {
-        public IActionResult ReportIncident()
+        public IActionResult Course()
         {
             return View();
         }
