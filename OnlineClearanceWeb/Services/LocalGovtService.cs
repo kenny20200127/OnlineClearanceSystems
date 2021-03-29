@@ -51,7 +51,7 @@ namespace OnlineClearanceWeb.Services
             unitOfWork.Done();
         }
 
-        public LocalGovernment GetLocalGovernmentByDesc(string desc)
+        public IEnumerable<LocalGovernment> GetLocalGovernmentByDesc(string desc)
         {
             return unitOfWork.LocalGovernments.GetLocalGovernmentByDesc(desc);
         }

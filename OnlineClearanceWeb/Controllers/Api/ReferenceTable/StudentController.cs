@@ -24,7 +24,8 @@ namespace OnlineClearanceWeb.Controllers.Api.ReferenceTable
         [HttpGet]
         public IEnumerable<Student> Get()
         {
-            return service.GetStudents();
+            var st=service.GetStudents();
+            return st;
         }
         //api/Student/getAllStudent
         [Route("getAllStudentbyCase/{Studentid}")]

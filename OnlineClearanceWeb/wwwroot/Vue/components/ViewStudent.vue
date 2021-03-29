@@ -4,28 +4,28 @@
         
         <div class="card-body">
             <div v-if="responseMessage" class="has-error"> {{ responseMessage }}</div>
-            <table id="datatables-buttons" class="table table-striped" style="width:100%">
+            <table id="datatables-buttons" class="table table-striped table-bordered table-hover" style="width:100%">
                 <thead>
                     <tr>
-                        <th>Incident Code</th>
+                        <th>Student Id</th>
                         <th>Name</th>
                         <th>Address</th>
-                        <th>Incident Date</th>
-                        <th>Incident Type</th>
+                        <th>Graduation Date</th>
+                        <th>Department</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="(incident,index) in StudentsList" :key="index">
-                        <td>{{ incident.incidentCode }}</td>
-                        <td>{{ incident.firstName }}  {{ incident.otherName }}</td>
+                        <td>{{ incident.studentId }}</td>
+                        <td>{{ incident.firstName }}  {{ incident.otherNames }}</td>
                         <td>{{ incident.address }}</td>
                         <td>{{ incident.incidentDate }}</td>
-                        <td>{{ incident.Department }}</td>
+                        <td>{{ incident.department }}</td>
                         
                         <td>
-                            <button type="button" class="btn btn-submit btn-primary" @click="processRetrieve(incident)">Edit</button>
-                            <button type="button" class="btn btn-submit btn-primary" @click="processDelete(incident.id)">Delete</button>
+                            <button type="button" class="button bg-theme-1 text-white mt-5" @click="processRetrieve(incident)">Approve</button>
+                            <button type="button" class="button bg-theme-1 text-white mt-5" @click="processDelete(incident.id)">Decline </button>
                         </td>
                     </tr>
                 </tbody>
@@ -80,7 +80,7 @@ export default {
          },
          getAllStudents: function () {
              axios
-            .get('/api/Students/getAllStudents')
+            .get('/api/Student/getAllStudent')
             .then(response => (this.StudentsList = response.data))
          }
     }

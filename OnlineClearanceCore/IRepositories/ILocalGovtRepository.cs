@@ -11,7 +11,7 @@ namespace OnlineClearanceCore.Core.IRepositories
     public interface ILocalGovtRepository : IRepository<LocalGovernment>
     {
         Task<LocalGovernment> GetLocalGovernmentByCode(Expression<Func<LocalGovernment, bool>> predicate);
-        LocalGovernment GetLocalGovernmentByDesc(string desc);
+        IEnumerable<LocalGovernment> GetLocalGovernmentByDesc(string desc);
        // List<LocalGovernmentView> GetLocalGovernmentForReport();
     }
 }

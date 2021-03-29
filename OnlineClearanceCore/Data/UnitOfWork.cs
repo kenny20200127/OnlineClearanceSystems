@@ -21,6 +21,7 @@ namespace OnlineClearanceCore.Core.Data
             UserRoles = new UserRoleRepository(context);
             Ind = new DepartmentRepository(context);
             Students = new StudentRepository(context);
+            Courses = new CourseRepository(context);
             States = new StatesRepository(context);
             LocalGovernments = new LocalGovtRepository(context);
         }
@@ -37,6 +38,7 @@ namespace OnlineClearanceCore.Core.Data
         public IStudent Students { get; set; }
         public IDepartmentRepository Ind { get; set; }
         public IStatesRepository States { get; set; }
+        public ICourseRepository Courses { get; set; }
         public ILocalGovtRepository LocalGovernments { get; set; }
 
         public async Task<bool> Done()

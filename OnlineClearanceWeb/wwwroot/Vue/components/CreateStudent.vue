@@ -14,8 +14,8 @@
                         <div class="intro-y col-span-12 sm:col-span-4">
                        
                              <div class="mb-2">Department </div>
-                            <select class="input w-full border col-span-4" v-model="postBody.department" required @change="SelectedValue">
-                              <option v-for="dept in departmentList" v-bind:value="dept.name" v-bind:key="dept.name"> {{ dept.description }} </option>
+                            <select class="input w-full border col-span-4" v-model="postBody.department" required @change="coursechange">
+                              <option v-for="dept in DepartmentList" v-bind:value="dept.name" v-bind:key="dept.name"> {{ dept.description }} </option>
                            </select>
                     </div>
                      <div class="intro-y col-span-12 sm:col-span-4">
@@ -72,18 +72,22 @@
                             <input class="input w-full border col-span-4" name="tel" v-model="postBody.tel" placeholder="" />
                         </div>
                     
-                     <div class="intro-y col-span-12 sm:col-span-4">
-                       
-                             <div class="mb-2">Local Government </div>
-                            <input class="input w-full border col-span-4" name="lga" v-model="postBody.lga" placeholder="" />
-                        </div>
-           
-                      <div class="intro-y col-span-12 sm:col-span-4">
+                    <div class="intro-y col-span-12 sm:col-span-4">
                        
                              <div class="mb-2">State </div>
-                            <input class="input w-full border col-span-4" name="state" v-model="postBody.state" placeholder="" />
-                        </div>
-                 
+                            <select class="input w-full border col-span-4" v-model="postBody.state" required @change="lgachange">
+                              <option v-for="st in StateList" v-bind:value="st.name" v-bind:key="st.name"> {{ st.description }} </option>
+                           </select>
+                    </div>
+                        <div class="intro-y col-span-12 sm:col-span-4">
+                       
+                             <div class="mb-2">Local Government </div>
+                            <select class="input w-full border col-span-4" v-model="postBody.lga" required @change="SelectedValue">
+                              <option v-for="lg in LocalGovtList" v-bind:value="lg.name" v-bind:key="lg.name"> {{ lg.description }} </option>
+                           </select>
+                    </div>
+                   
+                                   
                      
                 </div>
             <div class="grid grid-cols-12 gap-2">
@@ -135,6 +139,9 @@
             submitorUpdate : 'Submit',
             canProcess : true,
             DepartmentList:null,
+            CourseList:null,
+            StateList:null,
+            LocalGovtList:null,
             incidentList:null,
             records:["Yes","No"],
             autoselectenabled:false,
@@ -165,9 +172,9 @@
         .then(response=>{
             this.DepartmentList=response.data
         }),
-           axios.get(`/api/course/getAllCourse`)
+           axios.get(`/api/States/getAllStatess`)
         .then(response=>{
-            this.courseList=response.data
+            this.StateList=response.data
 
         })
    
@@ -196,6 +203,22 @@
     },
 
     methods: {
+        coursechange(){
+            alert(this.postBody.department);
+             axios.get(`/api/course/getCourseByCode/${this.postBody.department}`)
+        .then(response=>{
+            this.courseList=response.data
+
+        })
+        },
+        lgachange(){
+            alert(this.postBody.state);
+             axios.get(`/api/LocalGovernment/getAllLocalGovernmentByState/${this.postBody.state}`)
+        .then(response=>{
+            this.LocalGovtList=response.data
+
+        })
+        },
          SelectedValue(){
       axios.get(`/api/Student/getAllStudentbyCase/${this.postBody.studentid}`)
         .then(response=>{

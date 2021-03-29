@@ -25,6 +25,14 @@ namespace OnlineClearanceWeb.Controllers
         {
             return View();
         }
+        public IActionResult ApprovedStudents()
+        {
+            return View();
+        }
+        public IActionResult DeclinedStudents()
+        {
+            return View();
+        }
         public IActionResult ViewStudents()
         {
             return View();
@@ -55,7 +63,7 @@ namespace OnlineClearanceWeb.Controllers
 
             var listApplication = new List<StudentVm>();
          
-            string studentnumber = HttpContext.Session.GetString("StudentNumber");
+            //string studentnumber = HttpContext.Session.GetString("StudentNumber");
             using (var stream = new MemoryStream())
             {
                 await formFile.CopyToAsync(stream, cancellationToken);
@@ -82,7 +90,7 @@ namespace OnlineClearanceWeb.Controllers
                     string email = String.IsNullOrEmpty(worksheet.Cells[1, 13].ToString()) ? "" : worksheet.Cells[1, 13].Value.ToString().Trim();
                     string tel = String.IsNullOrEmpty(worksheet.Cells[1, 14].ToString()) ? "" : worksheet.Cells[1, 14].Value.ToString().Trim();
                    
-                    if (studentnumber != "studentnumber" || FirstName != "FirstName" || OtherNames != "OtherNames" || department != "department")
+                    if (StudentId != "StudentId" || FirstName != "FirstName" || OtherNames != "OtherNames" || department != "department")
                     {
                         return BadRequest("File not in the Right format");
                     }

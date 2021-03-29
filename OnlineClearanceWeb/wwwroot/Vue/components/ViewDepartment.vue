@@ -4,7 +4,7 @@
         
         <div class="card-body">
             <div v-if="responseMessage" class="has-error"> {{ responseMessage }}</div>
-            <table id="datatables-buttons" class="table table-striped" style="width:100%">
+            <table id="datatables-buttons" class="table table-striped table-bordered table-hover" style="width:100%">
                 <thead>
                     <tr>
                         <th>Code</th>
@@ -19,8 +19,8 @@
                        
                        
                         <td>
-                            <button type="button" class="btn btn-submit btn-primary" @click="processRetrieve(Department)">Edit</button>
-                            <button type="button" class="btn btn-submit btn-primary" @click="processDelete(Department.id)">Delete</button></td>
+                            <button type="button" class="button bg-theme-1 text-white mt-5" @click="processRetrieve(Department)">Edit</button>
+                            <button type="button" class="button bg-theme-1 text-white mt-5" @click="processDelete(Department.id)">Delete</button></td>
                     </tr>
                 </tbody>
               

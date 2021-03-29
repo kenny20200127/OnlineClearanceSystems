@@ -25,9 +25,9 @@ namespace OnlineClearanceCore.Core.Repositories
             return await context.LocalGovernments.FirstOrDefaultAsync(predicate);
         }
 
-        public LocalGovernment GetLocalGovernmentByDesc(string desc)
+        public IEnumerable<LocalGovernment> GetLocalGovernmentByDesc(string desc)
         {
-            return context.LocalGovernments.FirstOrDefault(x => x.Description.ToUpper() == desc.ToUpper()); 
+            return context.LocalGovernments.Where(x => x.statecode == desc).ToList(); 
         }
 
         //public List<LocalGovernmentView> GetLocalGovernmentForReport()

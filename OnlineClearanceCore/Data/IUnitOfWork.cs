@@ -16,6 +16,7 @@ namespace OnlineClearanceCore.Core.Data
         IStudent Students { get; }
         IDepartmentRepository Ind { get; }
         IStatesRepository States { get; }
+        ICourseRepository Courses { get; }
         ILocalGovtRepository LocalGovernments { get; }
 
         Task<bool> Done();

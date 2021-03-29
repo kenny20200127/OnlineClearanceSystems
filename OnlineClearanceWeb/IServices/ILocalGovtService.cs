@@ -16,6 +16,6 @@ namespace OnlineClearanceWeb.IServices
         Task<LocalGovernment> GetLocalGovernmentByCode(string bcode);
         Task<bool> AddLocalGovernment(LocalGovernment bl_sheet);
         Task<bool> UpdateLocalGovernment(LocalGovernment bl_sheet);
-        LocalGovernment GetLocalGovernmentByDesc(string desc);
+        IEnumerable<LocalGovernment> GetLocalGovernmentByDesc(string desc);
     }
 }

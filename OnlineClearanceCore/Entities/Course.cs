@@ -17,5 +17,6 @@ namespace OnlineClearanceCore.Core.Entities
 
         [StringLength(50)]
         public string Description { get; set; }
+        public string departmentcode { get; set; }
     }
 }

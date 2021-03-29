@@ -16,6 +16,7 @@ namespace OnlineClearanceCore.Core.Data
         DbSet<MenuGroup> MenuGroups { get; set; }
         DbSet<Student> Students { get; set; }
         DbSet<Department> Departments { get; set; }
+        DbSet<Course> Courses { get; set; }
         DbSet<States> States { get; set; }
         DbSet<LocalGovernment> LocalGovernments { get; set; }
     }

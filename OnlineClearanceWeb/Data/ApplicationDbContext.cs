@@ -27,8 +27,9 @@ namespace OnlineClearanceWeb.Data
     public DbSet<Student> Students { get; set; }
     public DbSet<Department> Departments { get; set; }
     public  DbSet<States> States { get; set; }
+    public DbSet<Course> Courses { get; set; }
     public  DbSet<LocalGovernment> LocalGovernments { get; set; }
-        protected override void OnModelCreating(ModelBuilder builder)
+    protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
 

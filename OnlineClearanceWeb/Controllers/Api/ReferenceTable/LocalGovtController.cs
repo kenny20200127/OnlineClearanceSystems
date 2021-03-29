@@ -25,6 +25,12 @@ namespace OnlineClearanceWeb.Controllers.Api.ReferenceTable
         {
             return LocalGovernmentService.GetLocalGovernments();
         }
+        [Route("getAllLocalGovernmentByState/{state}")]
+        [HttpGet]
+        public IEnumerable<LocalGovernment> Getstate(string state)
+        {
+            return LocalGovernmentService.GetLocalGovernmentByDesc(state);
+        }
 
         // GET: api/LocalGovernment
         [Route("getLocalGovernmentByCode/{id}")]

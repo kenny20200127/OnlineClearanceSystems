@@ -70,6 +70,7 @@ namespace OnlineClearanceWeb
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IStatesService, StatesService>();
             services.AddScoped<ILocalGovtService, LocalGovtService>();
+            services.AddScoped<ICourseService, CourseService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

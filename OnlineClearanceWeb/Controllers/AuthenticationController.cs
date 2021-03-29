@@ -27,6 +27,10 @@ namespace OnlineClearanceWeb.Controllers
         {
             return View();
         }
+        public IActionResult StudentLogin()
+        {
+            return View();
+        }
 
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel login)

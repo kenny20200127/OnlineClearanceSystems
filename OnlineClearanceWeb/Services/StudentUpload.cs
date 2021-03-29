@@ -49,8 +49,7 @@ namespace OnlineClearanceWeb.Services
                         createdby = user
 
                     });
-                
-               
+
                     res.Add(s);
                 }
 
