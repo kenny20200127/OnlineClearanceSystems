@@ -14,6 +14,8 @@
                         <th>Department</th>
                         <th>Course</th>
                         <th>GPA</th>
+                        <th>Decline Date</th>
+                        <th>Remark</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -26,9 +28,11 @@
                         <td>{{ incident.department }}</td>
                         <td>{{ incident.course }}</td>
                         <td>{{ incident.gpa }}</td>
+                        <td>{{ incident.approvedDate }}</td>
+                        <td>{{ incident.remark }}</td>
                         
                         <td>
-                            <button type="button" class="button bg-theme-1 text-white mt-5" @click="processRetrieve(incident)">Approve</button>
+                            <button type="button" class="button bg-theme-1 text-white mt-5" @click="processRetrieve(incident)">Approved</button>
                             <button type="button" class="button bg-theme-1 text-white mt-5" @click="processDelete(incident.id)">Decline </button>
                         </td>
                     </tr>

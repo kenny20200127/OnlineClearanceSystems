@@ -14,6 +14,8 @@
                         <th>Department</th>
                         <th>Course</th>
                         <th>GPA</th>
+                        <th>approvedDate Date</th>
+                        <th>Remark</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -22,15 +24,17 @@
                         <td>{{ incident.studentId }}</td>
                         <td>{{ incident.firstName }}  {{ incident.otherNames }}</td>
                         <td>{{ incident.address }}</td>
-                        <td>{{ incident.graduatedDate }}</td>
+                        <td>{{ incident.incidentDate }}</td>
                         <td>{{ incident.department }}</td>
                         <td>{{ incident.course }}</td>
                         <td>{{ incident.gpa }}</td>
+                        <td>{{ incident.approvedDate }}</td>
+                        <td>{{ incident.remark }}</td>
                         
-                        <td>
+                        <!-- <td>
                             <button type="button" class="button bg-theme-1 text-white mt-5" @click="processRetrieve(incident)">Approve</button>
                             <button type="button" class="button bg-theme-1 text-white mt-5" @click="processDelete(incident.id)">Decline </button>
-                        </td>
+                        </td> -->
                     </tr>
                 </tbody>
               

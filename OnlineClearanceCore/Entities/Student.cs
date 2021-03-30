@@ -26,6 +26,13 @@ namespace OnlineClearanceCore.Core.Entities
 		public string email { get; set; }
 		public string tel { get; set; }
 		public string remarks { get; set; }
+        public DateTime GraduatedDate { get; set; }
+        public string GPA { get; set; }
+        public DateTime ApprovedDate { get; set; }
+		public DateTime ApplicationDate { get; set; }
+		public string ApprovedBy { get; set; }
+		public string Status { get; set; }
+
 		public DateTime datecreated { get; set; }
 		public string createdby { get; set; }
 	}

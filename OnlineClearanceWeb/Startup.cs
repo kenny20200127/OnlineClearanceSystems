@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using AutoMapper;
 
 namespace OnlineClearanceWeb
 {
@@ -57,6 +58,7 @@ namespace OnlineClearanceWeb
                 options.SignIn.RequireConfirmedEmail = false;
             }).AddEntityFrameworkStores<ApplicationDbContext>();
 
+            services.AddScoped<IMapper,Mapper>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IRoleService, RoleService>();
             services.AddScoped<IMenuService, MenuService>();
@@ -71,6 +73,9 @@ namespace OnlineClearanceWeb
             services.AddScoped<IStatesService, StatesService>();
             services.AddScoped<ILocalGovtService, LocalGovtService>();
             services.AddScoped<ICourseService, CourseService>();
+            
+
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

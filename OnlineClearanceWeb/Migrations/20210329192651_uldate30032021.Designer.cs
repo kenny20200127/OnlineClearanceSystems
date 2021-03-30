@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnlineClearanceWeb.Data;
 
 namespace OnlineClearanceWeb.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210329192651_uldate30032021")]
+    partial class uldate30032021
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -300,8 +302,6 @@ namespace OnlineClearanceWeb.Migrations
 
                     b.Property<string>("Address");
 
-                    b.Property<DateTime>("ApplicationDate");
-
                     b.Property<string>("ApprovedBy");
 
                     b.Property<DateTime>("ApprovedDate");
@@ -323,8 +323,6 @@ namespace OnlineClearanceWeb.Migrations
                     b.Property<string>("OtherNames");
 
                     b.Property<string>("Photo");
-
-                    b.Property<string>("Status");
 
                     b.Property<string>("StudentId");
 
