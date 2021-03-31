@@ -88,7 +88,7 @@ export default {
          },
          getAllStudents: function () {
              axios
-            .get('/api/Student/getAllStudent')
+            .get('/api/Student/getAllApproveStudent')
             .then(response => (this.StudentsList = response.data))
          }
     }

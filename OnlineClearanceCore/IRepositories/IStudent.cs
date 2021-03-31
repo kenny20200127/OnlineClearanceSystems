@@ -12,5 +12,7 @@ namespace OnlineClearanceCore.Core.IRepositories
         Task<Student> GetStudentByCode(Expression<Func<Student, bool>> predicate);
         Student GetStudents();
         List<Student> GetStudentByCase();
+        IEnumerable<Student> GetStudentByApproval();
+        IEnumerable<Student> GetStudentByDecline();
     }
 }

@@ -16,7 +16,7 @@
   BS3 width:1005 for inputs breaks editable form in popup 
   See: https://github.com/vitalets/x-editable/issues/393
 */
-.editableform .form-control {
+.editableform .input w-full border mt-2 flex-1 {
     width: auto;
 }
 

@@ -1920,6 +1920,403 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./wwwroot/Vue/components/CreateApproval.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./wwwroot/Vue/components/CreateApproval.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuejs_datepicker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuejs-datepicker */ "./node_modules/vuejs-datepicker/dist/vuejs-datepicker.esm.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    vuejsDatepicker: vuejs_datepicker__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return _defineProperty({
+      errors: null,
+      responseMessage: '',
+      submitorUpdate: 'Submit',
+      canProcess: true,
+      DepartmentList: null,
+      CourseList: null,
+      StateList: null,
+      LocalGovtList: null,
+      incidentList: null,
+      statusList: null,
+      records: ["Yes", "No"],
+      autoselectenabled: false,
+      postBody: {
+        studentid: '',
+        firstName: '',
+        OtherName: '',
+        address: '',
+        tel: '',
+        email: '',
+        state: null,
+        lga: '',
+        campus: '',
+        course: null,
+        department: '',
+        college: '',
+        graduationdate: null,
+        dob: null,
+        gpa: '',
+        status: null,
+        approvedbyHOD: '',
+        approvedbyLIB: '',
+        approvedbyAdmin: '',
+        approvedDateHOD: null,
+        approvedDateLIB: null,
+        approvedDateAdmin: null,
+        adminremark: '',
+        libremark: '',
+        hodremark: '',
+        photo2: ''
+      }
+    }, "statusList", [{
+      value: '',
+      text: 'Status'
+    }, {
+      value: 'Approve',
+      text: 'Approve'
+    }, {
+      value: 'Decline',
+      text: 'Decline'
+    }]);
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    //  alert('i am here');
+    axios.get("/api/Department/getAllDepartments").then(function (response) {
+      _this.DepartmentList = response.data;
+    }), axios.get("/api/States/getAllStatess").then(function (response) {
+      _this.StateList = response.data;
+    });
+  },
+  watch: {
+    '$store.state.objectToUpdate': function $storeStateObjectToUpdate(newVal, oldVal) {
+      this.postBody.address = this.$store.state.objectToUpdate.address, this.postBody.studentid = this.$store.state.objectToUpdate.studentId, this.postBody.firstName = this.$store.state.objectToUpdate.firstName, this.postBody.OtherName = this.$store.state.objectToUpdate.otherNames, this.postBody.tel = this.$store.state.objectToUpdate.tel, this.postBody.email = this.$store.state.objectToUpdate.email, this.postBody.state = this.$store.state.objectToUpdate.state, this.postBody.campus = this.$store.state.objectToUpdate.campus, this.postBody.lga = this.$store.state.objectToUpdate.lga, this.postBody.course = this.$store.state.objectToUpdate.courseProgram, this.postBody.graduationdate = this.$store.state.objectToUpdate.graduatedDate, this.postBody.dob = this.$store.state.objectToUpdate.dob, this.postBody.tel = this.$store.state.objectToUpdate.tel, this.postBody.department = this.$store.state.objectToUpdate.department, this.postBody.college = this.$store.state.objectToUpdate.college, this.postBody.approvedbyHOD = this.$store.state.objectToUpdate.approvedbyHOD, this.postBody.approvedDateHOD = this.$store.state.objectToUpdate.approvedDateHOD, this.postBody.hodremark = this.$store.state.objectToUpdate.hodremark, this.postBody.approvedbyAdmin = this.$store.state.objectToUpdate.approvedbyAdmin, this.postBody.approvedDateAdmin = this.$store.state.objectToUpdate.approvedDateAdmin, this.postBody.adminremark = this.$store.state.objectToUpdate.adminremark, this.postBody.approvedbyLIB = this.$store.state.objectToUpdate.approvedbyLIB, this.postBody.approvedDateLIB = this.$store.state.objectToUpdate.approvedDateLIB, this.postBody.libremark = this.$store.state.objectToUpdate.libremark, this.submitorUpdate = 'Update';
+    }
+  },
+  methods: {
+    coursechange: function coursechange() {
+      var _this2 = this;
+
+      alert(this.postBody.department);
+      axios.get("/api/course/getCourseByCode/".concat(this.postBody.department)).then(function (response) {
+        _this2.courseList = response.data;
+      });
+    },
+    lgachange: function lgachange() {
+      var _this3 = this;
+
+      alert(this.postBody.state);
+      axios.get("/api/LocalGovernment/getAllLocalGovernmentByState/".concat(this.postBody.state)).then(function (response) {
+        _this3.LocalGovtList = response.data;
+      });
+    },
+    SelectedValue: function SelectedValue() {
+      var _this4 = this;
+
+      axios.get("/api/Student/getAllStudentbyCase/".concat(this.postBody.studentid)).then(function (response) {
+        _this4.studentList = response.data;
+        _this4.postBody.firstName = response.data.firstName;
+        _this4.postBody.OtherName = response.data.OtherName;
+        _this4.postBody.dob = response.data.dob;
+        _this4.postBody.campus = response.data.campus;
+        _this4.postBody.course = response.data.course;
+        _this4.postBody.lga = response.data.lga;
+        _this4.postBody.state = response.data.state;
+        _this4.postBody.address = response.data.ad;
+      });
+    },
+    checkForm: function checkForm(e) {
+      if (this.postBody.studentid) {
+        e.preventDefault();
+        this.canProcess = false;
+        this.postPost();
+      } else {
+        this.errors = [];
+        this.errors.push('Student ID is Required');
+      }
+    },
+    postPost: function postPost() {
+      var _this5 = this;
+
+      if (this.submitorUpdate == 'Submit') {
+        axios.post("/api/Student/createStudent", this.postBody).then(function (response) {
+          _this5.responseMessage = response.data.responseDescription;
+          _this5.canProcess = true;
+
+          if (response.data.responseCode == '200') {
+            _this5.postBody.studentid = '';
+            _this5.postBody.firstName = '';
+            _this5.postBody.address = '';
+            _this5.postBody.OtherName = '';
+            _this5.postBody.tel = '';
+            _this5.postBody.dob = '';
+            _this5.postBody.department = '';
+            _this5.postBody.college = '';
+            _this5.postBody.course = '';
+            _this5.postBody.lga = '';
+            _this5.postBody.state = '';
+            _this5.postBody.email = '';
+            _this5.postBody.campus = '';
+          }
+        })["catch"](function (e) {
+          _this5.errors.push(e);
+        });
+      }
+
+      if (this.submitorUpdate == 'Update') {
+        axios.put("/api/Student/updateStudent", this.postBody).then(function (response) {
+          _this5.responseMessage = response.data.responseDescription;
+          _this5.canProcess = true;
+
+          if (response.data.responseCode == '200') {
+            _this5.postBody.studentid = '';
+            _this5.postBody.firstName = '';
+            _this5.postBody.address = '';
+            _this5.postBody.OtherName = '';
+            _this5.postBody.tel = '';
+            _this5.postBody.dob = '';
+            _this5.postBody.department = '';
+            _this5.postBody.college = '';
+            _this5.postBody.course = '';
+            _this5.postBody.lga = '';
+            _this5.postBody.state = '';
+            _this5.postBody.email = '';
+            _this5.postBody.campus = '';
+            _this5.$store.state.objectToUpdate = "update";
+          }
+        })["catch"](function (e) {
+          _this5.errors.push(e);
+        });
+      }
+    }
+  },
+  computed: {
+    setter: function setter() {
+      var objecttoedit = this.$store.state.objectToUpdate;
+
+      if (objecttoedit.studentid) {
+        this.postBody.address = objecttoedit.address, this.postBody.studentid = objecttoedit.studentid, this.postBody.firstName = objecttoedit.firstName, this.postBody.OtherName = objecttoedit.OtherName, this.postBody.tel = objecttoedit.tel, this.postBody.email = objecttoedit.email, this.postBody.state = objecttoedit.state, this.postBody.town = objecttoedit.town, this.postBody.lga = objecttoedit.lga, this.postBody.college = objecttoedit.college, this.postBody.campus = objecttoedit.campus, this.postBody.department = objecttoedit.department, this.postBody.course = objecttoedit.course;
+      }
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./wwwroot/Vue/components/CreateCourse.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./wwwroot/Vue/components/CreateCourse.vue?vue&type=script&lang=js& ***!
@@ -2346,6 +2743,50 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2362,6 +2803,7 @@ __webpack_require__.r(__webpack_exports__);
       StateList: null,
       LocalGovtList: null,
       incidentList: null,
+      statusList: null,
       records: ["Yes", "No"],
       autoselectenabled: false,
       postBody: {
@@ -2379,10 +2821,31 @@ __webpack_require__.r(__webpack_exports__);
         college: '',
         graduationdate: '',
         dob: '',
+        gpa: '',
+        status: '',
+        approvedbyHOD: '',
+        approvedbyLIB: '',
+        approvedbyAdmin: '',
+        approvedDateHOD: '',
+        approvedDateLIB: '',
+        approvedDateAdmin: '',
+        adminremark: '',
+        libremark: '',
+        hodremark: '',
         photo2: ''
       }
     };
   },
+  statusList: [{
+    value: '',
+    text: 'Status'
+  }, {
+    value: 'Approve',
+    text: 'Approve'
+  }, {
+    value: 'Decline',
+    text: 'Decline'
+  }],
   mounted: function mounted() {
     var _this = this;
 
@@ -2395,7 +2858,16 @@ __webpack_require__.r(__webpack_exports__);
   },
   watch: {
     '$store.state.objectToUpdate': function $storeStateObjectToUpdate(newVal, oldVal) {
-      this.postBody.address = this.$store.state.objectToUpdate.address, this.postBody.studentid = this.$store.state.objectToUpdate.studentid, this.postBody.firstName = this.$store.state.objectToUpdate.firstName, this.postBody.OtherName = this.$store.state.objectToUpdate.OtherName, this.postBody.tel = this.$store.state.objectToUpdate.tel, this.postBody.email = this.$store.state.objectToUpdate.email, this.postBody.state = this.$store.state.objectToUpdate.state, this.postBody.campus = this.$store.state.objectToUpdate.campus, this.postBody.lga = this.$store.state.objectToUpdate.lga, this.postBody.course = this.$store.state.objectToUpdate.course, this.postBody.graduationdate = this.$store.state.objectToUpdate.graduationdate, this.postBody.dob = this.$store.state.objectToUpdate.dob, this.postBody.tel = this.$store.state.objectToUpdate.tel, this.postBody.department = this.$store.state.objectToUpdate.department, this.postBody.college = this.$store.state.objectToUpdate.college, this.submitorUpdate = 'Update';
+      this.postBody.address = this.$store.state.objectToUpdate.address, this.postBody.studentid = this.$store.state.objectToUpdate.studentId, this.postBody.firstName = this.$store.state.objectToUpdate.firstName, this.postBody.OtherName = this.$store.state.objectToUpdate.otherNames, this.postBody.tel = this.$store.state.objectToUpdate.tel, this.postBody.email = this.$store.state.objectToUpdate.email, this.postBody.state = this.$store.state.objectToUpdate.state, this.postBody.campus = this.$store.state.objectToUpdate.campus, this.postBody.lga = this.$store.state.objectToUpdate.lga, this.postBody.course = this.$store.state.objectToUpdate.courseProgram, this.postBody.graduationdate = this.$store.state.objectToUpdate.graduatedDate, this.postBody.dob = this.$store.state.objectToUpdate.dob, this.postBody.tel = this.$store.state.objectToUpdate.tel, this.postBody.department = this.$store.state.objectToUpdate.department, this.postBody.college = this.$store.state.objectToUpdate.college, //   this.postBody.approvedbyHOD = this.$store.state.objectToUpdate.approvedbyHOD,
+      //   this.postBody.approvedDateHOD = this.$store.state.objectToUpdate.approvedDateHOD,
+      //    this.postBody.hodremark = this.$store.state.objectToUpdate.hodremark,
+      //   this.postBody.approvedbyAdmin = this.$store.state.objectToUpdate.approvedbyAdmin,
+      //   this.postBody.approvedDateAdmin = this.$store.state.objectToUpdate.approvedDateAdmin,
+      //   this.postBody.adminremark = this.$store.state.objectToUpdate.adminremark,
+      //   this.postBody.approvedbyLIB = this.$store.state.objectToUpdate.approvedbyLIB,
+      //   this.postBody.approvedDateLIB = this.$store.state.objectToUpdate.approvedDateLIB,
+      //   this.postBody.libremark = this.$store.state.objectToUpdate.libremark,
+      this.submitorUpdate = 'Update';
     }
   },
   methods: {
@@ -2603,7 +3075,7 @@ __webpack_require__.r(__webpack_exports__);
     getAllStudents: function getAllStudents() {
       var _this2 = this;
 
-      axios.get('/api/Student/getAllStudent').then(function (response) {
+      axios.get('/api/Student/getAllApproveStudent').then(function (response) {
         return _this2.StudentsList = response.data;
       });
     }
@@ -2801,7 +3273,7 @@ __webpack_require__.r(__webpack_exports__);
     getAllStudents: function getAllStudents() {
       var _this2 = this;
 
-      axios.get('/api/Student/getAllStudent').then(function (response) {
+      axios.get('/api/Student/getAllDeclineStudent').then(function (response) {
         return _this2.StudentsList = response.data;
       });
     }
@@ -3467,6 +3939,568 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
                          (this && this.clearImmediate);
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./wwwroot/Vue/components/CreateApproval.vue?vue&type=template&id=2cf0be7b&":
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./wwwroot/Vue/components/CreateApproval.vue?vue&type=template&id=2cf0be7b& ***!
+  \****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm.errors
+      ? _c("div", { staticClass: "has-error" }, [
+          _vm._v(" " + _vm._s([_vm.errors]))
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.responseMessage
+      ? _c("div", { staticClass: "has-error" }, [
+          _vm._v(" " + _vm._s(_vm.responseMessage))
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _c("form", { attrs: { method: "post" }, on: { submit: _vm.checkForm } }, [
+      _c("div", { staticClass: "p-5", attrs: { id: "vertical-form" } }, [
+        _c("div", { staticClass: "preview" }, [
+          _c("div", { staticClass: "grid grid-cols-12 gap-2" }, [
+            _c("div", { staticClass: "intro-y col-span-12 sm:col-span-4" }, [
+              _c("div", { staticClass: "mb-2" }, [_vm._v("Student Id ")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.postBody.studentid,
+                    expression: "postBody.studentid"
+                  }
+                ],
+                staticClass: "input w-full border col-span-4",
+                attrs: { type: "text", name: "studentid", required: "" },
+                domProps: { value: _vm.postBody.studentid },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.postBody, "studentid", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "intro-y col-span-12 sm:col-span-4" }, [
+              _c("div", { staticClass: "mb-2" }, [_vm._v("Department ")]),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.postBody.department,
+                      expression: "postBody.department"
+                    }
+                  ],
+                  staticClass: "input w-full border col-span-4",
+                  attrs: { name: "department", required: "" },
+                  on: {
+                    change: [
+                      function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.postBody,
+                          "department",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      },
+                      _vm.coursechange
+                    ]
+                  }
+                },
+                _vm._l(_vm.DepartmentList, function(dept) {
+                  return _c(
+                    "option",
+                    { key: dept.name, domProps: { value: dept.name } },
+                    [_vm._v(" " + _vm._s(dept.description) + " ")]
+                  )
+                }),
+                0
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "intro-y col-span-12 sm:col-span-4" }, [
+              _c("div", { staticClass: "mb-2" }, [_vm._v("Course ")]),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.postBody.course,
+                      expression: "postBody.course"
+                    }
+                  ],
+                  staticClass: "input w-full border col-span-4",
+                  attrs: { name: "course", required: "" },
+                  on: {
+                    change: [
+                      function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.postBody,
+                          "course",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      },
+                      _vm.SelectedValue
+                    ]
+                  }
+                },
+                _vm._l(_vm.courseList, function(dept) {
+                  return _c(
+                    "option",
+                    { key: dept.name, domProps: { value: dept.name } },
+                    [_vm._v(" " + _vm._s(dept.description) + " ")]
+                  )
+                }),
+                0
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "grid grid-cols-12 gap-2" }, [
+            _c(
+              "div",
+              { staticClass: "intro-y col-span-12 sm:col-span-4" },
+              [
+                _c("div", { staticClass: "mb-2" }, [
+                  _vm._v("Graduation Date ")
+                ]),
+                _vm._v(" "),
+                _c("vuejsDatepicker", {
+                  staticClass: "input w-full border col-span-4",
+                  attrs: { type: "text", name: "graduationdate" },
+                  model: {
+                    value: _vm.postBody.graduationdate,
+                    callback: function($$v) {
+                      _vm.$set(_vm.postBody, "graduationdate", $$v)
+                    },
+                    expression: "postBody.graduationdate"
+                  }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "intro-y col-span-12 sm:col-span-4" }, [
+              _c("div", { staticClass: "mb-2" }, [_vm._v("Campus ")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.postBody.campus,
+                    expression: "postBody.campus"
+                  }
+                ],
+                staticClass: "input w-full border col-span-4",
+                attrs: { type: "text", name: "campus", required: "" },
+                domProps: { value: _vm.postBody.campus },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.postBody, "campus", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "intro-y col-span-12 sm:col-span-4" }, [
+              _c("div", { staticClass: "mb-2" }, [_vm._v("College ")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.postBody.college,
+                    expression: "postBody.college"
+                  }
+                ],
+                staticClass: "input w-full border col-span-4",
+                attrs: { type: "text", name: "college", required: "" },
+                domProps: { value: _vm.postBody.college },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.postBody, "college", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "grid grid-cols-12 gap-2" }, [
+            _c("div", { staticClass: "intro-y col-span-12 sm:col-span-4" }, [
+              _c("div", { staticClass: "mb-2" }, [_vm._v("Status")]),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.postBody.status,
+                      expression: "postBody.status"
+                    }
+                  ],
+                  staticClass: "input w-full border flex-1",
+                  attrs: { name: "status", placeholder: "", required: "" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.postBody,
+                        "status",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                _vm._l(_vm.statusList, function(st) {
+                  return _c(
+                    "option",
+                    { key: st.value, domProps: { value: st.value } },
+                    [_vm._v(" " + _vm._s(st.text) + " ")]
+                  )
+                }),
+                0
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "grid grid-cols-12 gap-2" }, [
+            _c("div", { staticClass: "intro-y col-span-12 sm:col-span-4" }, [
+              _c("div", { staticClass: "mb-2" }, [_vm._v("HOD Approval ")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.postBody.approvedbyHOD,
+                    expression: "postBody.approvedbyHOD"
+                  }
+                ],
+                staticClass: "input w-full border col-span-4",
+                attrs: { type: "text", name: "approvedbyHOD" },
+                domProps: { value: _vm.postBody.approvedbyHOD },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.postBody, "approvedbyHOD", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "intro-y col-span-12 sm:col-span-4" },
+              [
+                _c("div", { staticClass: "mb-2" }, [
+                  _vm._v("HOD Approval Date")
+                ]),
+                _vm._v(" "),
+                _c("vuejsDatepicker", {
+                  attrs: {
+                    "input-class": "input w-full border flex-1",
+                    name: "approvedDateHOD",
+                    "aria-placeholder": ""
+                  },
+                  model: {
+                    value: _vm.postBody.approvedDateHOD,
+                    callback: function($$v) {
+                      _vm.$set(_vm.postBody, "approvedDateHOD", $$v)
+                    },
+                    expression: "postBody.approvedDateHOD"
+                  }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "intro-y col-span-12 sm:col-span-4" }, [
+              _c("div", { staticClass: "mb-2" }, [_vm._v(" HOD Remark ")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.postBody.hodremark,
+                    expression: "postBody.hodremark"
+                  }
+                ],
+                staticClass: "input w-full border col-span-4",
+                attrs: { type: "text", name: "hodremark" },
+                domProps: { value: _vm.postBody.hodremark },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.postBody, "hodremark", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "grid grid-cols-12 gap-2" }, [
+            _c("div", { staticClass: "intro-y col-span-12 sm:col-span-4" }, [
+              _c("div", { staticClass: "mb-2" }, [
+                _vm._v("School Library Approval ")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.postBody.approvedbyLIB,
+                    expression: "postBody.approvedbyLIB"
+                  }
+                ],
+                staticClass: "input w-full border col-span-4",
+                attrs: { type: "text", name: "approvedbyLIB" },
+                domProps: { value: _vm.postBody.approvedbyLIB },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.postBody, "approvedbyLIB", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "intro-y col-span-12 sm:col-span-4" },
+              [
+                _c("div", { staticClass: "mb-2" }, [
+                  _vm._v("Library Approval Date")
+                ]),
+                _vm._v(" "),
+                _c("vuejsDatepicker", {
+                  attrs: {
+                    "input-class": "input w-full border flex-1",
+                    name: "approvedDateLIB",
+                    "aria-placeholder": ""
+                  },
+                  model: {
+                    value: _vm.postBody.approvedDateLIB,
+                    callback: function($$v) {
+                      _vm.$set(_vm.postBody, "approvedDateLIB", $$v)
+                    },
+                    expression: "postBody.approvedDateLIB"
+                  }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "intro-y col-span-12 sm:col-span-4" }, [
+              _c("div", { staticClass: "mb-2" }, [
+                _vm._v(" School Library Remark ")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.postBody.libremark,
+                    expression: "postBody.libremark"
+                  }
+                ],
+                staticClass: "input w-full border col-span-4",
+                attrs: { type: "text", name: "libremark" },
+                domProps: { value: _vm.postBody.libremark },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.postBody, "libremark", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "grid grid-cols-12 gap-2" }, [
+            _c("div", { staticClass: "intro-y col-span-12 sm:col-span-4" }, [
+              _c("div", { staticClass: "mb-2" }, [
+                _vm._v(" School Admin Approval ")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.postBody.approvedbyAdmin,
+                    expression: "postBody.approvedbyAdmin"
+                  }
+                ],
+                staticClass: "input w-full border col-span-4",
+                attrs: { type: "text", name: "approvedbyAdmin" },
+                domProps: { value: _vm.postBody.approvedbyAdmin },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.postBody,
+                      "approvedbyAdmin",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "intro-y col-span-12 sm:col-span-4" },
+              [
+                _c("div", { staticClass: "mb-2" }, [
+                  _vm._v("Admin Approval Date")
+                ]),
+                _vm._v(" "),
+                _c("vuejsDatepicker", {
+                  attrs: {
+                    "input-class": "input w-full border flex-1",
+                    name: "approvedDateAdmin",
+                    "aria-placeholder": ""
+                  },
+                  model: {
+                    value: _vm.postBody.approvedDateAdmin,
+                    callback: function($$v) {
+                      _vm.$set(_vm.postBody, "approvedDateAdmin", $$v)
+                    },
+                    expression: "postBody.approvedDateAdmin"
+                  }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "intro-y col-span-12 sm:col-span-4" }, [
+              _c("div", { staticClass: "mb-2" }, [
+                _vm._v(" School Admin Remark ")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.postBody.adminremark,
+                    expression: "postBody.adminremark"
+                  }
+                ],
+                staticClass: "input w-full border col-span-4",
+                attrs: { type: "text", name: "adminremark" },
+                domProps: { value: _vm.postBody.adminremark },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.postBody, "adminremark", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _vm.canProcess
+            ? _c("div", { attrs: { role: "group" } }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "button bg-theme-1 text-white mt-5",
+                    attrs: { type: "submit" },
+                    on: { click: _vm.checkForm }
+                  },
+                  [_vm._v(_vm._s(_vm.submitorUpdate))]
+                )
+              ])
+            : _vm._e()
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
 
 /***/ }),
 
@@ -4257,7 +5291,54 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm._m(0),
+          _c("div", { staticClass: "grid grid-cols-12 gap-2" }, [
+            _c("div", { staticClass: "intro-y col-span-12 sm:col-span-6" }, [
+              _c("div", { staticClass: "mb-2" }, [_vm._v("Status")]),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.postBody.status,
+                      expression: "postBody.status"
+                    }
+                  ],
+                  staticClass: "input w-full border flex-1",
+                  attrs: { name: "status", placeholder: "", required: "" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.postBody,
+                        "status",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                _vm._l(_vm.statusList, function(st) {
+                  return _c(
+                    "option",
+                    { key: st.value, domProps: { value: st.value } },
+                    [_vm._v(" " + _vm._s(st.text) + " ")]
+                  )
+                }),
+                0
+              )
+            ])
+          ]),
           _vm._v(" "),
           _vm.canProcess
             ? _c("div", { attrs: { role: "group" } }, [
@@ -4277,23 +5358,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "grid grid-cols-12 gap-2" }, [
-      _c("div", { staticClass: "intro-y col-span-12 sm:col-span-4" }, [
-        _c("div", { staticClass: "mb-2" }, [_vm._v("Upload Photo2 ")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "input w-full border col-span-4",
-          attrs: { type: "file", name: "anyotherInfo" }
-        })
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -20717,6 +21782,7 @@ module.exports = g;
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
+	"./components/CreateApproval.vue": "./wwwroot/Vue/components/CreateApproval.vue",
 	"./components/CreateCourse.vue": "./wwwroot/Vue/components/CreateCourse.vue",
 	"./components/CreateDepartment.vue": "./wwwroot/Vue/components/CreateDepartment.vue",
 	"./components/CreateStudent.vue": "./wwwroot/Vue/components/CreateStudent.vue",
@@ -20790,6 +21856,75 @@ var app = new Vue({
   el: "#app",
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"]
 });
+
+/***/ }),
+
+/***/ "./wwwroot/Vue/components/CreateApproval.vue":
+/*!***************************************************!*\
+  !*** ./wwwroot/Vue/components/CreateApproval.vue ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CreateApproval_vue_vue_type_template_id_2cf0be7b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CreateApproval.vue?vue&type=template&id=2cf0be7b& */ "./wwwroot/Vue/components/CreateApproval.vue?vue&type=template&id=2cf0be7b&");
+/* harmony import */ var _CreateApproval_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateApproval.vue?vue&type=script&lang=js& */ "./wwwroot/Vue/components/CreateApproval.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CreateApproval_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CreateApproval_vue_vue_type_template_id_2cf0be7b___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CreateApproval_vue_vue_type_template_id_2cf0be7b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "wwwroot/Vue/components/CreateApproval.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./wwwroot/Vue/components/CreateApproval.vue?vue&type=script&lang=js&":
+/*!****************************************************************************!*\
+  !*** ./wwwroot/Vue/components/CreateApproval.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateApproval_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./CreateApproval.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./wwwroot/Vue/components/CreateApproval.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateApproval_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./wwwroot/Vue/components/CreateApproval.vue?vue&type=template&id=2cf0be7b&":
+/*!**********************************************************************************!*\
+  !*** ./wwwroot/Vue/components/CreateApproval.vue?vue&type=template&id=2cf0be7b& ***!
+  \**********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateApproval_vue_vue_type_template_id_2cf0be7b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./CreateApproval.vue?vue&type=template&id=2cf0be7b& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./wwwroot/Vue/components/CreateApproval.vue?vue&type=template&id=2cf0be7b&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateApproval_vue_vue_type_template_id_2cf0be7b___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateApproval_vue_vue_type_template_id_2cf0be7b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 

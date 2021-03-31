@@ -45,14 +45,14 @@
                         <div class="intro-y col-span-12 sm:col-span-4">
                        
                              <div class="mb-2">Department </div>
-                            <select class="input w-full border col-span-4" v-model="postBody.department" required @change="coursechange">
+                            <select class="input w-full border col-span-4" v-model="postBody.department" name="department" required @change="coursechange">
                               <option v-for="dept in DepartmentList" v-bind:value="dept.name" v-bind:key="dept.name"> {{ dept.description }} </option>
                            </select>
                     </div>
                      <div class="intro-y col-span-12 sm:col-span-4">
                    
                              <div class="mb-2">Course </div>
-                            <select class="input w-full border col-span-4" v-model="postBody.course" required @change="SelectedValue">
+                            <select class="input w-full border col-span-4" v-model="postBody.course" name="course" required @change="SelectedValue">
                               <option v-for="dept in courseList" v-bind:value="dept.name" v-bind:key="dept.name"> {{ dept.description }} </option>
                            </select>
                           
@@ -77,7 +77,7 @@
                         </div>
                        
                  </div>
-             <div class="grid grid-cols-12 gap-2">
+             <!-- <div class="grid grid-cols-12 gap-2">
                      <div class="intro-y col-span-12 sm:col-span-4">
                        
                              <div class="mb-2">First Name </div>
@@ -133,21 +133,21 @@
                              <div class="mb-2">Email </div>
                             <input class="input w-full border col-span-4" name="email" v-model="postBody.email" placeholder="" />
                         </div>
-                </div>
+                </div> -->
             <div class="grid grid-cols-12 gap-2">
-                <div class="intro-y col-span-12 sm:col-span-6">
+                <div class="intro-y col-span-12 sm:col-span-4">
                                 <div class="mb-2">Status</div>
                                 <select class="input w-full border flex-1" v-model="postBody.status" name="status" placeholder="" required>
                                     <option v-for="st in statusList" v-bind:value="st.value" v-bind:key="st.value"> {{ st.text }} </option>
                                 </select>
                             </div>
             </div>
-             <!-- <div class="grid grid-cols-12 gap-2">
+             <div class="grid grid-cols-12 gap-2">
                       <div class="intro-y col-span-12 sm:col-span-4">
                           <div class="mb-2">HOD Approval </div>
                             <input type="text" class="input w-full border col-span-4" name="approvedbyHOD" v-model="postBody.approvedbyHOD" />
                         </div>
-                        <div class="intro-y col-span-12 sm:col-span-6">
+                        <div class="intro-y col-span-12 sm:col-span-4">
                                 <div class="mb-2">HOD Approval Date</div>
                                 <vuejsDatepicker v-model="postBody.approvedDateHOD" input-class="input w-full border flex-1" name="approvedDateHOD" aria-placeholder=""></vuejsDatepicker>
                             </div>
@@ -162,7 +162,7 @@
                           <div class="mb-2">School Library Approval </div>
                             <input type="text" class="input w-full border col-span-4" name="approvedbyLIB" v-model="postBody.approvedbyLIB" />
                         </div>
-                        <div class="intro-y col-span-12 sm:col-span-6">
+                        <div class="intro-y col-span-12 sm:col-span-4">
                                 <div class="mb-2">Library Approval Date</div>
                                 <vuejsDatepicker v-model="postBody.approvedDateLIB" input-class="input w-full border flex-1" name="approvedDateLIB" aria-placeholder=""></vuejsDatepicker>
                             </div>
@@ -177,7 +177,7 @@
                           <div class="mb-2"> School Admin Approval </div>
                             <input type="text" class="input w-full border col-span-4" name="approvedbyAdmin" v-model="postBody.approvedbyAdmin" />
                         </div>
-                          <div class="intro-y col-span-12 sm:col-span-6">
+                          <div class="intro-y col-span-12 sm:col-span-4">
                                 <div class="mb-2">Admin Approval Date</div>
                                 <vuejsDatepicker v-model="postBody.approvedDateAdmin" input-class="input w-full border flex-1" name="approvedDateAdmin" aria-placeholder=""></vuejsDatepicker>
                             </div>
@@ -186,7 +186,7 @@
                             <input type="text" class="input w-full border col-span-4" name="adminremark" v-model="postBody.adminremark" />
                         </div>
                     </div>
-                 -->
+                
                         <div v-if="canProcess" role="group">
                             <button class="button bg-theme-1 text-white mt-5" v-on:click="checkForm" type="submit">{{submitorUpdate}}</button>
                      
@@ -228,37 +228,38 @@
                 address:'',
                 tel:'',
                 email:'',
-                state:'',
+                state:null,
                 lga:'',
                 campus:'',
-                course:'',
+                course:null,
                 department:'',
                 college:'',
-                graduationdate:'',
-                dob:'',
+                graduationdate:null,
+                dob:null,
                 gpa:'',
-                status:'',
+                status:null,
                 approvedbyHOD:'',
                 approvedbyLIB:'',
                 approvedbyAdmin:'',
-                approvedDateHOD:'',
-                approvedDateLIB:'',
-                approvedDateAdmin:'',
+                approvedDateHOD:null,
+                approvedDateLIB:null,
+                approvedDateAdmin:null,
                 adminremark:'',
                 libremark:'',
                 hodremark:'',
                 photo2:''
          
-            }
-    
-        }
-    },
-     statusList: [
+            },
+             statusList: [
             { value: '', text: 'Status' },
             { value: 'Approve', text: 'Approve' },
             { value: 'Decline', text: 'Decline' },
            
             ],
+    
+        }
+    },
+    
   mounted(){
       
         //  alert('i am here');
@@ -290,16 +291,16 @@
           this.postBody.tel = this.$store.state.objectToUpdate.tel,
           this.postBody.department = this.$store.state.objectToUpdate.department,
           this.postBody.college = this.$store.state.objectToUpdate.college,
-        //   this.postBody.approvedbyHOD = this.$store.state.objectToUpdate.approvedbyHOD,
-        //   this.postBody.approvedDateHOD = this.$store.state.objectToUpdate.approvedDateHOD,
-        //    this.postBody.hodremark = this.$store.state.objectToUpdate.hodremark,
-        //   this.postBody.approvedbyAdmin = this.$store.state.objectToUpdate.approvedbyAdmin,
-        //   this.postBody.approvedDateAdmin = this.$store.state.objectToUpdate.approvedDateAdmin,
-        //   this.postBody.adminremark = this.$store.state.objectToUpdate.adminremark,
+          this.postBody.approvedbyHOD = this.$store.state.objectToUpdate.approvedbyHOD,
+          this.postBody.approvedDateHOD = this.$store.state.objectToUpdate.approvedDateHOD,
+           this.postBody.hodremark = this.$store.state.objectToUpdate.hodremark,
+          this.postBody.approvedbyAdmin = this.$store.state.objectToUpdate.approvedbyAdmin,
+          this.postBody.approvedDateAdmin = this.$store.state.objectToUpdate.approvedDateAdmin,
+          this.postBody.adminremark = this.$store.state.objectToUpdate.adminremark,
 
-        //   this.postBody.approvedbyLIB = this.$store.state.objectToUpdate.approvedbyLIB,
-        //   this.postBody.approvedDateLIB = this.$store.state.objectToUpdate.approvedDateLIB,
-        //   this.postBody.libremark = this.$store.state.objectToUpdate.libremark,
+          this.postBody.approvedbyLIB = this.$store.state.objectToUpdate.approvedbyLIB,
+          this.postBody.approvedDateLIB = this.$store.state.objectToUpdate.approvedDateLIB,
+          this.postBody.libremark = this.$store.state.objectToUpdate.libremark,
        
           
           this.submitorUpdate = 'Update';

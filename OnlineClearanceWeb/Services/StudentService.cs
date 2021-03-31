@@ -25,6 +25,14 @@ namespace OnlineClearanceWeb.Services
         {
             return unitOfWork.Students.All();
         }
+        public IEnumerable<Student> GetApproveStudents()
+        {
+            return unitOfWork.Students.GetStudentByApproval();
+        }
+        public IEnumerable<Student> GetDeclineStudents()
+        {
+            return unitOfWork.Students.GetStudentByDecline();
+        }
         public IEnumerable<Student> GetStudentsByCase()
         {
             return unitOfWork.Students.GetStudentByCase();

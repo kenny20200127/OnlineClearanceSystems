@@ -2,8 +2,10 @@
 using OnlineClearanceCore.Core.Data;
 using OnlineClearanceCore.Core.Entities;
 using OnlineClearanceCore.Models;
+using OnlineClearanceWeb.IServices;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Threading.Tasks;
 
 namespace OnlineClearanceWeb.Services
@@ -12,13 +14,15 @@ namespace OnlineClearanceWeb.Services
     {
         private readonly List<StudentVm> Captures;
         private readonly IUnitOfWork unitOfWork;
+        private readonly IUserService userService;
         private string user;
 
-        public StudentUpload(List<StudentVm> Captures, IUnitOfWork unitOfWork,string _user)
+        public StudentUpload(List<StudentVm> Captures, IUnitOfWork unitOfWork,string _user, IUserService userService)
         {
             this.Captures = Captures;
             this.unitOfWork = unitOfWork;
             user = _user;
+            this.userService = userService;
 
         }
 
@@ -39,6 +43,7 @@ namespace OnlineClearanceWeb.Services
                         DOB = Convert.ToDateTime(s.DOB),
                         Address = s.Address,
                         College = s.College,
+                        Campus=s.Campus,
                         department = s.department,
                         CourseProgram = s.CourseProgram,
                         lga = s.lga,
@@ -50,7 +55,25 @@ namespace OnlineClearanceWeb.Services
 
                     });
 
+             
+                var newUser = new User
+                {
+                    FirstName = s.FirstName,
+                    LastName = s.OtherNames,
+                    UpdatedOn = DateTime.Now,
+                    Email = s.email,
+                    CreatedOn = DateTime.Now,
+                    UserName = s.email,
+                    IsActive = true,
+                };
+                int[] Roles = { 2 };
+                var createdUser = await userService.CreateUser(newUser,Roles, s.StudentId, 1);
+                if (createdUser.Success)
+                {
                     res.Add(s);
+                    continue;
+                }
+                    
                 }
 
             await unitOfWork.Done();

@@ -2,6 +2,23 @@
 @{
     ViewData["Title"] = "View Students";
 }
+<div class="grid grid-cols-12 gap-6 mt-12">
+    <div class="intro-y col-span-12 lg:col-span-12">
+        <div class="intro-y box">
+            <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
+                <h2 class="font-medium text-base mr-auto">
+                    Approval student
+                </h2>
+            </div>
+            <div class="intro-y col-span-12 lg:col-span-12">
+                <!-- BEGIN: Vertical Form yes -->
+                <div class="intro-y box">
+                    <create-approval></create-approval>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="intro-y flex items-center mt-8">
     <h1 class="text-lg font-medium mr-auto">
         Pending Students To Be Cleared
@@ -22,7 +39,7 @@
         </div>
     </div>
 </div>
-    
+
 
 
 

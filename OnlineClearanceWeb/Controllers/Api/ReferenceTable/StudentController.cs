@@ -27,6 +27,20 @@ namespace OnlineClearanceWeb.Controllers.Api.ReferenceTable
             var st=service.GetStudents();
             return st;
         }
+        [Route("getAllApproveStudent")]
+        [HttpGet]
+        public IEnumerable<Student> GetApprove()
+        {
+            var st = service.GetApproveStudents();
+            return st;
+        }
+        [Route("getAllDeclineStudent")]
+        [HttpGet]
+        public IEnumerable<Student> Getdecline()
+        {
+            var st = service.GetDeclineStudents();
+            return st;
+        }
         //api/Student/getAllStudent
         [Route("getAllStudentbyCase/{Studentid}")]
         [HttpGet]
@@ -83,19 +97,25 @@ namespace OnlineClearanceWeb.Controllers.Api.ReferenceTable
                 var getbal = service.GetStudentByCode(value.StudentId.Trim()).Result;
 
                 getbal.StudentId = value.StudentId;
-                getbal.FirstName = value.FirstName;
-                getbal.OtherNames = value.OtherNames;
-                getbal.Address = value.Address;
-                getbal.DOB = value.DOB;
+               
                 getbal.Campus = value.Campus;
                 getbal.department = value.department;
                 getbal.CourseProgram = value.CourseProgram;
-                getbal.email = value.email;
-                getbal.lga = value.lga;
-                getbal.Photo = value.Photo;
-                getbal.state = value.state;
-                getbal.tel = value.tel;
+                //getbal.email = value.email;
+                //getbal.tel = value.tel;
                 getbal.College = value.College;
+                getbal.Status = value.Status;
+
+                getbal.ApprovedByHOD = value.ApprovedByHOD;
+                getbal.ApprovedDateHOD = value.ApprovedDateHOD;
+                getbal.hodremark = value.hodremark;
+                getbal.ApprovedByAdmin = value.ApprovedByAdmin;
+                getbal.ApprovedDateAdmin = value.ApprovedDateAdmin;
+                getbal.adminremark = value.adminremark;
+                getbal.ApprovedByLibrary= value.ApprovedByLibrary;
+                getbal.ApprovedDateLIB = value.ApprovedDateLIB;
+                getbal.libremark = value.libremark;
+
                 getbal.createdby = value.createdby;
                 getbal.datecreated = value.datecreated;
 

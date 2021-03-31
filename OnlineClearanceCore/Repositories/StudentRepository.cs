@@ -33,6 +33,16 @@ namespace OnlineClearanceCore.Core.Repositories
             var list= context.Students;
             return list.ToList();
         }
+        public IEnumerable<Student> GetStudentByApproval()
+        {
+            var list = context.Students.Where(x=>x.Status=="Approve");
+            return list.ToList();
+        }
+        public IEnumerable<Student> GetStudentByDecline()
+        {
+            var list = context.Students.Where(x=>x.Status=="Decline");
+            return list.ToList();
+        }
 
     }
 }

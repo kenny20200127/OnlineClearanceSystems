@@ -58,7 +58,7 @@ namespace OnlineClearanceWeb
                 options.SignIn.RequireConfirmedEmail = false;
             }).AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.AddScoped<IMapper,Mapper>();
+            services.AddAutoMapper(typeof(Startup));
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IRoleService, RoleService>();
             services.AddScoped<IMenuService, MenuService>();

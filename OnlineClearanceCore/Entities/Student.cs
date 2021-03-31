@@ -25,11 +25,19 @@ namespace OnlineClearanceCore.Core.Entities
 		public string state { get; set; }
 		public string email { get; set; }
 		public string tel { get; set; }
-		public string remarks { get; set; }
-        public DateTime GraduatedDate { get; set; }
+		public string adminremark { get; set; }
+		public string hodremark { get; set; }
+		public string libremark { get; set; }
+		public DateTime GraduatedDate { get; set; }
         public string GPA { get; set; }
         public DateTime ApprovedDate { get; set; }
 		public DateTime ApplicationDate { get; set; }
+		public string ApprovedByHOD { get; set; }
+		public DateTime ApprovedDateHOD { get; set; }
+		public string ApprovedByLibrary { get; set; }
+		public DateTime ApprovedDateLIB { get; set; }
+		public string ApprovedByAdmin { get; set; }
+		public DateTime ApprovedDateAdmin { get; set; }
 		public string ApprovedBy { get; set; }
 		public string Status { get; set; }
 

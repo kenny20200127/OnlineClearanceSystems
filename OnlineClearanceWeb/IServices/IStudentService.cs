@@ -9,6 +9,8 @@ namespace OnlineClearanceWeb.IServices
     public interface IStudentService
     {
         IEnumerable<Student> GetStudents();
+        IEnumerable<Student> GetApproveStudents();
+        IEnumerable<Student> GetDeclineStudents();
         IEnumerable<Student> GetStudentsByCase();
         Student GetStudentsSingleRecord();
         void RemoveStudents(Student bl_sheet);
