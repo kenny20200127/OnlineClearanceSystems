@@ -24,7 +24,7 @@
                         <td>{{ incident.studentId }}</td>
                         <td>{{ incident.firstName }}  {{ incident.otherNames }}</td>
                         <td>{{ incident.address }}</td>
-                        <td>{{ incident.incidentDate }}</td>
+                        <td>{{ incident.graduationDate }}</td>
                         <td>{{ incident.department }}</td>
                         <td>{{ incident.course }}</td>
                         <td>{{ incident.gpa }}</td>

@@ -19,5 +19,6 @@ namespace OnlineClearanceWeb.IServices
         Task<Student> GetStudentByCode(string bcode);
         IEnumerable<Student> GetStudentReport(string bcode);
         Task<bool> UpdateStudents(Student bl_sheet);
+        IEnumerable<Student> GetStudentGenReport(string status);
     }
 }

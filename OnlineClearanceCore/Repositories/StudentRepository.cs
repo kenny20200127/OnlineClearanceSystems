@@ -43,6 +43,20 @@ namespace OnlineClearanceCore.Core.Repositories
             var list = context.Students.Where(x => x.StudentId ==studentid);
             return list.ToList();
         }
+        public IEnumerable<Student> GetStudentGenReport(string status)
+        {
+            if (status == "All")
+            {
+                var listall = context.Students;
+                return listall.ToList();
+            }
+            else
+            {
+                var list = context.Students.Where(x => x.Status == status);
+                return list.ToList();
+            }
+        }
+        
         public IEnumerable<Student> GetAllUnclearedStudent()
         {
             var list = context.Students.Where(x=> x.Status != "Decline");

@@ -45,6 +45,10 @@ namespace OnlineClearanceWeb.Services
         {
             return unitOfWork.Students.GetStudentReport(bcode);
         }
+        public IEnumerable<Student> GetStudentGenReport(string status)
+        {
+            return unitOfWork.Students.GetStudentGenReport(status);
+        }
 
         public Task<Student> GetStudentsById(int id)
         {

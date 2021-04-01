@@ -16,5 +16,6 @@ namespace OnlineClearanceCore.Core.IRepositories
         IEnumerable<Student> GetStudentByDecline();
         IEnumerable<Student> GetAllUnclearedStudent();
         IEnumerable<Student> GetStudentReport(string studentid);
+        IEnumerable<Student> GetStudentGenReport(string status);
     }
 }

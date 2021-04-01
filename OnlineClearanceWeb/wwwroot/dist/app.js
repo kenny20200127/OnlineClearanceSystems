@@ -5359,7 +5359,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(incident.address))]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(incident.incidentDate))]),
+                _c("td", [_vm._v(_vm._s(incident.graduationDate))]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(incident.department))]),
                 _vm._v(" "),

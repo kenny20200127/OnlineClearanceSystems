@@ -46,23 +46,31 @@ namespace OnlineClearanceWeb.Controllers
                 TempData["ErrorMessage"] = auth.Message;
                 return RedirectToAction("Login", "Authentication");
             }
-            if (login.type == "Admin")
+            if (login.type == "Admin" && auth.Data.EmailConfirmed == true)
             {
                 return RedirectToAction("Index", "Home");
             }
-             var gal = studentService.GetStudentByCode(login.UserName.Trim()).Result;
-            var dd = context.Students.Where(s => s.StudentId == login.UserName && s.Status == "Approve").FirstOrDefault();
-            if (dd!=null)
+            else if(login.type == "Student" && auth.Data.EmailConfirmed == false)
             {
-                HttpContext.Session.SetString("StudentNumber", login.UserName);
-                return RedirectToAction("StudentsReport", "Student");
-                
-            }
-            
-            HttpContext.Session.SetString("StudentNumber", login.UserName);
-            ViewBag.studentid = login.UserName;
-            return RedirectToAction("Index", "Student");
+                var gal = studentService.GetStudentByCode(login.UserName.Trim()).Result;
+                var dd = context.Students.Where(s => s.StudentId == login.UserName && s.Status == "Approve").FirstOrDefault();
+                if (dd != null)
+                {
+                    HttpContext.Session.SetString("StudentNumber", login.UserName);
+                    return RedirectToAction("StudentsReport", "Student");
 
+                }
+
+                HttpContext.Session.SetString("StudentNumber", login.UserName);
+                ViewBag.studentid = login.UserName;
+                return RedirectToAction("Index", "Student");
+            }
+            else
+            {
+                TempData["ErrorMessage"] = auth.Message;
+                ViewBag.message="User Not Found";
+                return RedirectToAction("homepage", "Home");
+            }
 
         }
 

@@ -1,0 +1,84 @@
+﻿@model IEnumerable<OnlineClearanceCore.Core.Entities.Student>
+@{
+    ViewData["Title"] = "View Students";
+}
+<div class="grid grid-cols-12 gap-6 mt-12">
+    <div class="intro-y col-span-12 lg:col-span-12">
+        <div class="intro-y box">
+            <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
+                <h2 class="font-medium text-base mr-auto">
+                    Approval student
+                </h2>
+            </div>
+            <div class="intro-y col-span-12 lg:col-span-12">
+                <!-- BEGIN: Vertical Form yes -->
+                <div class="intro-y box">
+                    @using (Html.BeginForm("StudentGeneralReport", "Student"))
+                    {
+                        <select class="input w-full border flex-1" name="status">
+                            <option value="ALL">All</option>
+                            <option value="Approve">Approve</option>
+                            <option value="Decline">Decline</option>
+                        </select>
+                        <label>Print</label><input type="checkbox" name="check" class="input w-full border flex-1" />
+                        <button type="submit" class="button bg-theme-1 text-white mt-5">Process</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="grid grid-cols-12 gap-6 mt-12">
+    <div class="intro-y col-span-12 lg:col-span-12">
+        <div class="intro-y box">
+            <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
+                <h5>Students</h5>
+            </div>
+            <div class="intro-y col-span-12 lg:col-span-12">
+                <!-- BEGIN: Vertical Form -->
+                <div class="intro-y box">
+                    <div class="card-body">
+                        <table id="datatables-buttons" class="table table-striped table-bordered table-hover" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Student Id</th>
+                                    <th>Name</th>
+                                    <th>Address</th>
+                                    <th>Graduation Date</th>
+                                    <th>Department</th>
+                                    <th>Course</th>
+                                    <th>GPA</th>
+                                    <th>approvedDate Date</th>
+                                  
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var a in Model)
+                                {
+                                <tr >
+                                    <td>@a.StudentId </td>
+                                    <td>@a.FirstName   @a.OtherNames </td>
+                                    <td>@a.Address </td>
+                                    <td>@a.GraduatedDate </td>
+                                    <td>@a.department </td>
+                                    <td>@a.CourseProgram </td>
+                                    <td>@a.GPA </td>
+                                    <td>@a.ApprovedDate </td>
+                                    <td></td>
+                                </tr>
+                                }
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

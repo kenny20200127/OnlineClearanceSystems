@@ -34,8 +34,25 @@ namespace OnlineClearanceWeb.Controllers
             ViewBag.studentid = HttpContext.Session.GetString("StudentNumber");
             return View();
         }
+        [HttpGet]
+        public IActionResult StudentGeneralReport()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> StudentGeneralReport(string status,bool check)
+        {
+            string studentid = HttpContext.Session.GetString("StudentNumber");
+            var stud = studentService.GetStudentGenReport(status).ToList();
+            if (check == true)
+            {
+                return await generatePdf.GetPdf("Views/Student/StudentReport.cshtml", stud);
+            }
+            return View(stud);
+        }
         public async Task<IActionResult> StudentsReport()
         {
+           // string image = Server.MapPath("~/img/logo/download.png");
             string studentid = HttpContext.Session.GetString("StudentNumber");
             var stud = studentService.GetStudentReport(studentid).ToList();
             return await generatePdf.GetPdf("Views/Student/StudentReport.cshtml", stud);
