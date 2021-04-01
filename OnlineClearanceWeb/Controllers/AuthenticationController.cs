@@ -15,13 +15,17 @@ namespace OnlineClearanceWeb.Controllers
     {
         private readonly IAuthenticationService authenticationService;
         private readonly IUserService userService;
+        private readonly ITrafficMgtDbContext context;
+        private readonly IStudentService studentService;
 
         private readonly IUnitOfWork unitOfWork;
-        public AuthenticationController(IAuthenticationService authenticationService, IUserService userService, IUnitOfWork unitOfWork)
+        public AuthenticationController(IStudentService studentService,ITrafficMgtDbContext context,IAuthenticationService authenticationService, IUserService userService, IUnitOfWork unitOfWork)
         {
             this.authenticationService = authenticationService;
             this.userService = userService;
             this.unitOfWork = unitOfWork;
+            this.context = context;
+          this.studentService= studentService;
         }
         public IActionResult  Login()
         {
@@ -46,7 +50,17 @@ namespace OnlineClearanceWeb.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-           // HttpContext.Session.SetString("StudentNumber", login.UserName);
+             var gal = studentService.GetStudentByCode(login.UserName.Trim()).Result;
+            var dd = context.Students.Where(s => s.StudentId == login.UserName && s.Status == "Approve").FirstOrDefault();
+            if (dd!=null)
+            {
+                HttpContext.Session.SetString("StudentNumber", login.UserName);
+                return RedirectToAction("StudentsReport", "Student");
+                
+            }
+            
+            HttpContext.Session.SetString("StudentNumber", login.UserName);
+            ViewBag.studentid = login.UserName;
             return RedirectToAction("Index", "Student");
 
 

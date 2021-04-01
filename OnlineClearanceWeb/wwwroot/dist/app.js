@@ -2131,9 +2131,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2204,7 +2201,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   watch: {
     '$store.state.objectToUpdate': function $storeStateObjectToUpdate(newVal, oldVal) {
-      this.postBody.address = this.$store.state.objectToUpdate.address, this.postBody.studentid = this.$store.state.objectToUpdate.studentId, this.postBody.firstName = this.$store.state.objectToUpdate.firstName, this.postBody.OtherName = this.$store.state.objectToUpdate.otherNames, this.postBody.tel = this.$store.state.objectToUpdate.tel, this.postBody.email = this.$store.state.objectToUpdate.email, this.postBody.state = this.$store.state.objectToUpdate.state, this.postBody.campus = this.$store.state.objectToUpdate.campus, this.postBody.lga = this.$store.state.objectToUpdate.lga, this.postBody.course = this.$store.state.objectToUpdate.courseProgram, this.postBody.graduationdate = this.$store.state.objectToUpdate.graduatedDate, this.postBody.dob = this.$store.state.objectToUpdate.dob, this.postBody.tel = this.$store.state.objectToUpdate.tel, this.postBody.department = this.$store.state.objectToUpdate.department, this.postBody.college = this.$store.state.objectToUpdate.college, this.postBody.approvedbyHOD = this.$store.state.objectToUpdate.approvedbyHOD, this.postBody.approvedDateHOD = this.$store.state.objectToUpdate.approvedDateHOD, this.postBody.hodremark = this.$store.state.objectToUpdate.hodremark, this.postBody.approvedbyAdmin = this.$store.state.objectToUpdate.approvedbyAdmin, this.postBody.approvedDateAdmin = this.$store.state.objectToUpdate.approvedDateAdmin, this.postBody.adminremark = this.$store.state.objectToUpdate.adminremark, this.postBody.approvedbyLIB = this.$store.state.objectToUpdate.approvedbyLIB, this.postBody.approvedDateLIB = this.$store.state.objectToUpdate.approvedDateLIB, this.postBody.libremark = this.$store.state.objectToUpdate.libremark, this.submitorUpdate = 'Update';
+      this.postBody.address = this.$store.state.objectToUpdate.address, this.postBody.studentid = this.$store.state.objectToUpdate.studentId, this.postBody.firstName = this.$store.state.objectToUpdate.firstName, this.postBody.OtherName = this.$store.state.objectToUpdate.otherNames, this.postBody.tel = this.$store.state.objectToUpdate.tel, this.postBody.email = this.$store.state.objectToUpdate.email, this.postBody.state = this.$store.state.objectToUpdate.state, this.postBody.campus = this.$store.state.objectToUpdate.campus, this.postBody.lga = this.$store.state.objectToUpdate.lga, this.postBody.course = this.$store.state.objectToUpdate.courseProgram, this.postBody.graduationdate = this.$store.state.objectToUpdate.graduatedDate, this.postBody.dob = this.$store.state.objectToUpdate.dob, this.postBody.tel = this.$store.state.objectToUpdate.tel, this.postBody.department = this.$store.state.objectToUpdate.department, this.postBody.college = this.$store.state.objectToUpdate.college, this.postBody.approvedbyHOD = this.$store.state.objectToUpdate.approvedByHOD, this.postBody.approvedDateHOD = this.$store.state.objectToUpdate.approvedDateHOD, this.postBody.hodremark = this.$store.state.objectToUpdate.hodremark, this.postBody.approvedbyAdmin = this.$store.state.objectToUpdate.approvedByAdmin, this.postBody.approvedDateAdmin = this.$store.state.objectToUpdate.approvedDateAdmin, this.postBody.adminremark = this.$store.state.objectToUpdate.adminremark, this.postBody.approvedbyLIB = this.$store.state.objectToUpdate.approvedByLIB, this.postBody.approvedDateLIB = this.$store.state.objectToUpdate.approvedDateLIB, this.postBody.libremark = this.$store.state.objectToUpdate.libremark, this.submitorUpdate = 'Update';
     }
   },
   methods: {
@@ -2787,11 +2784,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     vuejsDatepicker: vuejs_datepicker__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
+  props: ["studentid"],
   data: function data() {
     return {
       errors: null,
@@ -2802,7 +2801,7 @@ __webpack_require__.r(__webpack_exports__);
       CourseList: null,
       StateList: null,
       LocalGovtList: null,
-      incidentList: null,
+      selectedphotofile: null,
       statusList: null,
       records: ["Yes", "No"],
       autoselectenabled: false,
@@ -2832,7 +2831,7 @@ __webpack_require__.r(__webpack_exports__);
         adminremark: '',
         libremark: '',
         hodremark: '',
-        photo2: ''
+        Photo: ''
       }
     };
   },
@@ -2854,6 +2853,24 @@ __webpack_require__.r(__webpack_exports__);
       _this.DepartmentList = response.data;
     }), axios.get("/api/States/getAllStatess").then(function (response) {
       _this.StateList = response.data;
+    }), this.postBody.studentid = this.studentid; // alert(this.postBody.studentid);
+
+    axios.get("/api/Student/getAllStudentbyCase").then(function (response) {
+      _this.studentList = response.data;
+      _this.postBody.firstName = response.data.firstName;
+      _this.postBody.OtherName = response.data.OtherName;
+      _this.postBody.dob = response.data.dob;
+      _this.postBody.email = response.data.email;
+      _this.postBody.campus = response.data.campus;
+      _this.postBody.college = response.date.college;
+      _this.postBody.course = response.data.courseProgram;
+      _this.postBody.tel = response.data.tel;
+      _this.postBody.lga = response.data.lga;
+      _this.postBody.state = response.data.state;
+      _this.postBody.address = response.data.address;
+      _this.postBody.graduationdate = response.data.graduatedDate;
+      _this.postBody.department = response.data.department;
+      alert(_this.postBody.tel);
     });
   },
   watch: {
@@ -2874,33 +2891,22 @@ __webpack_require__.r(__webpack_exports__);
     coursechange: function coursechange() {
       var _this2 = this;
 
-      alert(this.postBody.department);
+      // alert(this.postBody.department);
       axios.get("/api/course/getCourseByCode/".concat(this.postBody.department)).then(function (response) {
-        _this2.courseList = response.data;
+        _this2.CourseList = response.data;
       });
     },
     lgachange: function lgachange() {
       var _this3 = this;
 
-      alert(this.postBody.state);
+      // alert(this.postBody.state);
       axios.get("/api/LocalGovernment/getAllLocalGovernmentByState/".concat(this.postBody.state)).then(function (response) {
         _this3.LocalGovtList = response.data;
       });
     },
-    SelectedValue: function SelectedValue() {
-      var _this4 = this;
-
-      axios.get("/api/Student/getAllStudentbyCase/".concat(this.postBody.studentid)).then(function (response) {
-        _this4.studentList = response.data;
-        _this4.postBody.firstName = response.data.firstName;
-        _this4.postBody.OtherName = response.data.OtherName;
-        _this4.postBody.dob = response.data.dob;
-        _this4.postBody.campus = response.data.campus;
-        _this4.postBody.course = response.data.course;
-        _this4.postBody.lga = response.data.lga;
-        _this4.postBody.state = response.data.state;
-        _this4.postBody.address = response.data.ad;
-      });
+    OnFileSelected: function OnFileSelected(event) {
+      alert(event.target.files[0]);
+      this.selectedphotofile = event.target.files[0];
     },
     checkForm: function checkForm(e) {
       if (this.postBody.studentid) {
@@ -2913,56 +2919,62 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     postPost: function postPost() {
-      var _this5 = this;
+      var _this4 = this;
+
+      var fb = new FormData();
+      fb.append("image", this.selectedphotofile, this.selectedphotofile.name); //    axios.post("~/img/"+this.selectedphotofile.name);
+
+      this.postBody.Photo = "~/img/" + this.selectedphotofile.name;
 
       if (this.submitorUpdate == 'Submit') {
+        alert("here");
         axios.post("/api/Student/createStudent", this.postBody).then(function (response) {
-          _this5.responseMessage = response.data.responseDescription;
-          _this5.canProcess = true;
+          _this4.responseMessage = response.data.responseDescription;
+          _this4.canProcess = true;
 
           if (response.data.responseCode == '200') {
-            _this5.postBody.studentid = '';
-            _this5.postBody.firstName = '';
-            _this5.postBody.address = '';
-            _this5.postBody.OtherName = '';
-            _this5.postBody.tel = '';
-            _this5.postBody.dob = '';
-            _this5.postBody.department = '';
-            _this5.postBody.college = '';
-            _this5.postBody.course = '';
-            _this5.postBody.lga = '';
-            _this5.postBody.state = '';
-            _this5.postBody.email = '';
-            _this5.postBody.campus = '';
+            _this4.postBody.studentid = '';
+            _this4.postBody.firstName = '';
+            _this4.postBody.address = '';
+            _this4.postBody.OtherName = '';
+            _this4.postBody.tel = '';
+            _this4.postBody.dob = '';
+            _this4.postBody.department = '';
+            _this4.postBody.college = '';
+            _this4.postBody.course = '';
+            _this4.postBody.lga = '';
+            _this4.postBody.state = '';
+            _this4.postBody.email = '';
+            _this4.postBody.campus = '';
           }
         })["catch"](function (e) {
-          _this5.errors.push(e);
+          _this4.errors.push(e);
         });
       }
 
       if (this.submitorUpdate == 'Update') {
         axios.put("/api/Student/updateStudent", this.postBody).then(function (response) {
-          _this5.responseMessage = response.data.responseDescription;
-          _this5.canProcess = true;
+          _this4.responseMessage = response.data.responseDescription;
+          _this4.canProcess = true;
 
           if (response.data.responseCode == '200') {
-            _this5.postBody.studentid = '';
-            _this5.postBody.firstName = '';
-            _this5.postBody.address = '';
-            _this5.postBody.OtherName = '';
-            _this5.postBody.tel = '';
-            _this5.postBody.dob = '';
-            _this5.postBody.department = '';
-            _this5.postBody.college = '';
-            _this5.postBody.course = '';
-            _this5.postBody.lga = '';
-            _this5.postBody.state = '';
-            _this5.postBody.email = '';
-            _this5.postBody.campus = '';
-            _this5.$store.state.objectToUpdate = "update";
+            _this4.postBody.studentid = '';
+            _this4.postBody.firstName = '';
+            _this4.postBody.address = '';
+            _this4.postBody.OtherName = '';
+            _this4.postBody.tel = '';
+            _this4.postBody.dob = '';
+            _this4.postBody.department = '';
+            _this4.postBody.college = '';
+            _this4.postBody.course = '';
+            _this4.postBody.lga = '';
+            _this4.postBody.state = '';
+            _this4.postBody.email = '';
+            _this4.postBody.campus = '';
+            _this4.$store.state.objectToUpdate = "update";
           }
         })["catch"](function (e) {
-          _this5.errors.push(e);
+          _this4.errors.push(e);
         });
       }
     }
@@ -3987,7 +3999,12 @@ var render = function() {
                   }
                 ],
                 staticClass: "input w-full border col-span-4",
-                attrs: { type: "text", name: "studentid", required: "" },
+                attrs: {
+                  type: "text",
+                  name: "studentid",
+                  required: "",
+                  readonly: ""
+                },
                 domProps: { value: _vm.postBody.studentid },
                 on: {
                   input: function($event) {
@@ -4003,101 +4020,63 @@ var render = function() {
             _c("div", { staticClass: "intro-y col-span-12 sm:col-span-4" }, [
               _c("div", { staticClass: "mb-2" }, [_vm._v("Department ")]),
               _vm._v(" "),
-              _c(
-                "select",
-                {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.postBody.department,
-                      expression: "postBody.department"
-                    }
-                  ],
-                  staticClass: "input w-full border col-span-4",
-                  attrs: { name: "department", required: "" },
-                  on: {
-                    change: [
-                      function($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function(o) {
-                            return o.selected
-                          })
-                          .map(function(o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.$set(
-                          _vm.postBody,
-                          "department",
-                          $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        )
-                      },
-                      _vm.coursechange
-                    ]
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.postBody.department,
+                    expression: "postBody.department"
                   }
+                ],
+                staticClass: "input w-full border col-span-4",
+                attrs: {
+                  type: "text",
+                  name: "department",
+                  required: "",
+                  readonly: ""
                 },
-                _vm._l(_vm.DepartmentList, function(dept) {
-                  return _c(
-                    "option",
-                    { key: dept.name, domProps: { value: dept.name } },
-                    [_vm._v(" " + _vm._s(dept.description) + " ")]
-                  )
-                }),
-                0
-              )
+                domProps: { value: _vm.postBody.department },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.postBody, "department", $event.target.value)
+                  }
+                }
+              })
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "intro-y col-span-12 sm:col-span-4" }, [
               _c("div", { staticClass: "mb-2" }, [_vm._v("Course ")]),
               _vm._v(" "),
-              _c(
-                "select",
-                {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.postBody.course,
-                      expression: "postBody.course"
-                    }
-                  ],
-                  staticClass: "input w-full border col-span-4",
-                  attrs: { name: "course", required: "" },
-                  on: {
-                    change: [
-                      function($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function(o) {
-                            return o.selected
-                          })
-                          .map(function(o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.$set(
-                          _vm.postBody,
-                          "course",
-                          $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        )
-                      },
-                      _vm.SelectedValue
-                    ]
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.postBody.course,
+                    expression: "postBody.course"
                   }
+                ],
+                staticClass: "input w-full border col-span-4",
+                attrs: {
+                  type: "text",
+                  name: "course",
+                  required: "",
+                  readonly: ""
                 },
-                _vm._l(_vm.courseList, function(dept) {
-                  return _c(
-                    "option",
-                    { key: dept.name, domProps: { value: dept.name } },
-                    [_vm._v(" " + _vm._s(dept.description) + " ")]
-                  )
-                }),
-                0
-              )
+                domProps: { value: _vm.postBody.course },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.postBody, "course", $event.target.value)
+                  }
+                }
+              })
             ])
           ]),
           _vm._v(" "),
@@ -4138,7 +4117,12 @@ var render = function() {
                   }
                 ],
                 staticClass: "input w-full border col-span-4",
-                attrs: { type: "text", name: "campus", required: "" },
+                attrs: {
+                  type: "text",
+                  name: "campus",
+                  required: "",
+                  readonly: ""
+                },
                 domProps: { value: _vm.postBody.campus },
                 on: {
                   input: function($event) {
@@ -4164,7 +4148,12 @@ var render = function() {
                   }
                 ],
                 staticClass: "input w-full border col-span-4",
-                attrs: { type: "text", name: "college", required: "" },
+                attrs: {
+                  type: "text",
+                  name: "college",
+                  required: "",
+                  readonly: ""
+                },
                 domProps: { value: _vm.postBody.college },
                 on: {
                   input: function($event) {
@@ -4871,28 +4860,25 @@ var render = function() {
                     }
                   ],
                   staticClass: "input w-full border col-span-4",
-                  attrs: { required: "" },
+                  attrs: { name: "department", required: "" },
                   on: {
-                    change: [
-                      function($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function(o) {
-                            return o.selected
-                          })
-                          .map(function(o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.$set(
-                          _vm.postBody,
-                          "department",
-                          $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        )
-                      },
-                      _vm.coursechange
-                    ]
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.postBody,
+                        "department",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
                   }
                 },
                 _vm._l(_vm.DepartmentList, function(dept) {
@@ -4921,7 +4907,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "input w-full border col-span-4",
-                  attrs: { required: "" },
+                  attrs: { name: "course", required: "" },
                   on: {
                     change: [
                       function($event) {
@@ -4945,7 +4931,7 @@ var render = function() {
                     ]
                   }
                 },
-                _vm._l(_vm.courseList, function(dept) {
+                _vm._l(_vm.CourseList, function(dept) {
                   return _c(
                     "option",
                     { key: dept.name, domProps: { value: dept.name } },
@@ -4958,29 +4944,81 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "grid grid-cols-12 gap-2" }, [
+            _c("div", { staticClass: "intro-y col-span-12 sm:col-span-4" }, [
+              _c("div", { staticClass: "mb-2" }, [_vm._v("First Name ")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.postBody.firstName,
+                    expression: "postBody.firstName"
+                  }
+                ],
+                staticClass: "input w-full border col-span-4",
+                attrs: { name: "firstName", placeholder: "" },
+                domProps: { value: _vm.postBody.firstName },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.postBody, "firstName", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "intro-y col-span-12 sm:col-span-4" }, [
+              _c("div", { staticClass: "mb-2" }, [_vm._v("Other Name ")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.postBody.otherName,
+                    expression: "postBody.otherName"
+                  }
+                ],
+                staticClass: "input w-full border col-span-4",
+                attrs: { name: "otherNames", placeholder: "" },
+                domProps: { value: _vm.postBody.otherName },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.postBody, "otherName", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
             _c(
               "div",
               { staticClass: "intro-y col-span-12 sm:col-span-4" },
               [
-                _c("div", { staticClass: "mb-2" }, [
-                  _vm._v("Graduation Date ")
-                ]),
+                _c("div", { staticClass: "mb-2" }, [_vm._v("DOB ")]),
                 _vm._v(" "),
                 _c("vuejsDatepicker", {
                   staticClass: "input w-full border col-span-4",
-                  attrs: { type: "text", name: "graduationdate" },
+                  attrs: { type: "text", name: "dob" },
                   model: {
-                    value: _vm.postBody.graduationdate,
+                    value: _vm.postBody.dob,
                     callback: function($$v) {
-                      _vm.$set(_vm.postBody, "graduationdate", $$v)
+                      _vm.$set(_vm.postBody, "dob", $$v)
                     },
-                    expression: "postBody.graduationdate"
+                    expression: "postBody.dob"
                   }
                 })
               ],
               1
-            ),
-            _vm._v(" "),
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "grid grid-cols-12 gap-2" }, [
             _c("div", { staticClass: "intro-y col-span-12 sm:col-span-4" }, [
               _c("div", { staticClass: "mb-2" }, [_vm._v("Campus ")]),
               _vm._v(" "),
@@ -5031,77 +5069,25 @@ var render = function() {
                   }
                 }
               })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "grid grid-cols-12 gap-2" }, [
-            _c("div", { staticClass: "intro-y col-span-12 sm:col-span-4" }, [
-              _c("div", { staticClass: "mb-2" }, [_vm._v("First Name ")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.postBody.firstName,
-                    expression: "postBody.firstName"
-                  }
-                ],
-                staticClass: "input w-full border col-span-4",
-                attrs: { name: "firstName", placeholder: "" },
-                domProps: { value: _vm.postBody.firstName },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.postBody, "firstName", $event.target.value)
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "intro-y col-span-12 sm:col-span-4" }, [
-              _c("div", { staticClass: "mb-2" }, [_vm._v("Other Name ")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.postBody.otherName,
-                    expression: "postBody.otherName"
-                  }
-                ],
-                staticClass: "input w-full border col-span-4",
-                attrs: { name: "otherName", placeholder: "" },
-                domProps: { value: _vm.postBody.otherName },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.postBody, "otherName", $event.target.value)
-                  }
-                }
-              })
             ]),
             _vm._v(" "),
             _c(
               "div",
               { staticClass: "intro-y col-span-12 sm:col-span-4" },
               [
-                _c("div", { staticClass: "mb-2" }, [_vm._v("DOB ")]),
+                _c("div", { staticClass: "mb-2" }, [
+                  _vm._v("Graduation Date ")
+                ]),
                 _vm._v(" "),
                 _c("vuejsDatepicker", {
                   staticClass: "input w-full border col-span-4",
-                  attrs: { type: "text", name: "dob" },
+                  attrs: { type: "text", name: "graduationdate" },
                   model: {
-                    value: _vm.postBody.dob,
+                    value: _vm.postBody.graduationdate,
                     callback: function($$v) {
-                      _vm.$set(_vm.postBody, "dob", $$v)
+                      _vm.$set(_vm.postBody, "graduationdate", $$v)
                     },
-                    expression: "postBody.dob"
+                    expression: "postBody.graduationdate"
                   }
                 })
               ],
@@ -5151,7 +5137,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "input w-full border col-span-4",
-                  attrs: { required: "" },
+                  attrs: { name: "state", required: "" },
                   on: {
                     change: [
                       function($event) {
@@ -5201,28 +5187,25 @@ var render = function() {
                     }
                   ],
                   staticClass: "input w-full border col-span-4",
-                  attrs: { required: "" },
+                  attrs: { name: "lga", required: "" },
                   on: {
-                    change: [
-                      function($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function(o) {
-                            return o.selected
-                          })
-                          .map(function(o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.$set(
-                          _vm.postBody,
-                          "lga",
-                          $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        )
-                      },
-                      _vm.SelectedValue
-                    ]
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.postBody,
+                        "lga",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
                   }
                 },
                 _vm._l(_vm.LocalGovtList, function(lg) {
@@ -5293,50 +5276,12 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "grid grid-cols-12 gap-2" }, [
             _c("div", { staticClass: "intro-y col-span-12 sm:col-span-6" }, [
-              _c("div", { staticClass: "mb-2" }, [_vm._v("Status")]),
+              _c("div", { staticClass: "mb-2" }, [_vm._v("Passport Upload")]),
               _vm._v(" "),
-              _c(
-                "select",
-                {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.postBody.status,
-                      expression: "postBody.status"
-                    }
-                  ],
-                  staticClass: "input w-full border flex-1",
-                  attrs: { name: "status", placeholder: "", required: "" },
-                  on: {
-                    change: function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.$set(
-                        _vm.postBody,
-                        "status",
-                        $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      )
-                    }
-                  }
-                },
-                _vm._l(_vm.statusList, function(st) {
-                  return _c(
-                    "option",
-                    { key: st.value, domProps: { value: st.value } },
-                    [_vm._v(" " + _vm._s(st.text) + " ")]
-                  )
-                }),
-                0
-              )
+              _c("input", {
+                attrs: { type: "file" },
+                on: { change: _vm.OnFileSelected }
+              })
             ])
           ]),
           _vm._v(" "),

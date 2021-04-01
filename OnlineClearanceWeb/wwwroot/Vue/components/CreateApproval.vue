@@ -40,21 +40,18 @@
                <div class="grid grid-cols-12 gap-2">
                       <div class="intro-y col-span-12 sm:col-span-4">
                              <div class="mb-2">Student Id </div>
-                            <input type="text" name="studentid" class="input w-full border col-span-4" v-model="postBody.studentid" required  />
+                            <input type="text" name="studentid" class="input w-full border col-span-4" v-model="postBody.studentid" required readonly />
                         </div>
                         <div class="intro-y col-span-12 sm:col-span-4">
                        
                              <div class="mb-2">Department </div>
-                            <select class="input w-full border col-span-4" v-model="postBody.department" name="department" required @change="coursechange">
-                              <option v-for="dept in DepartmentList" v-bind:value="dept.name" v-bind:key="dept.name"> {{ dept.description }} </option>
-                           </select>
+                            <input type="text" name="department" class="input w-full border col-span-4" v-model="postBody.department" required readonly  />
                     </div>
                      <div class="intro-y col-span-12 sm:col-span-4">
                    
                              <div class="mb-2">Course </div>
-                            <select class="input w-full border col-span-4" v-model="postBody.course" name="course" required @change="SelectedValue">
-                              <option v-for="dept in courseList" v-bind:value="dept.name" v-bind:key="dept.name"> {{ dept.description }} </option>
-                           </select>
+                            <input type="text" name="course" class="input w-full border col-span-4" v-model="postBody.course" required readonly  />
+
                           
                         </div>
                   
@@ -67,13 +64,13 @@
                          <div class="intro-y col-span-12 sm:col-span-4">
                        
                              <div class="mb-2">Campus </div>
-                            <input type="text" name="campus" class="input w-full border col-span-4" v-model="postBody.campus" required  />
+                            <input type="text" name="campus" class="input w-full border col-span-4" v-model="postBody.campus" required readonly />
                         </div>
                         
                          <div class="intro-y col-span-12 sm:col-span-4">
                        
                              <div class="mb-2">College </div>
-                            <input type="text" name="college" class="input w-full border col-span-4" v-model="postBody.college" required  />
+                            <input type="text" name="college" class="input w-full border col-span-4" v-model="postBody.college" required readonly />
                         </div>
                        
                  </div>
@@ -291,14 +288,14 @@
           this.postBody.tel = this.$store.state.objectToUpdate.tel,
           this.postBody.department = this.$store.state.objectToUpdate.department,
           this.postBody.college = this.$store.state.objectToUpdate.college,
-          this.postBody.approvedbyHOD = this.$store.state.objectToUpdate.approvedbyHOD,
+          this.postBody.approvedbyHOD = this.$store.state.objectToUpdate.approvedByHOD,
           this.postBody.approvedDateHOD = this.$store.state.objectToUpdate.approvedDateHOD,
            this.postBody.hodremark = this.$store.state.objectToUpdate.hodremark,
-          this.postBody.approvedbyAdmin = this.$store.state.objectToUpdate.approvedbyAdmin,
+          this.postBody.approvedbyAdmin = this.$store.state.objectToUpdate.approvedByAdmin,
           this.postBody.approvedDateAdmin = this.$store.state.objectToUpdate.approvedDateAdmin,
           this.postBody.adminremark = this.$store.state.objectToUpdate.adminremark,
 
-          this.postBody.approvedbyLIB = this.$store.state.objectToUpdate.approvedbyLIB,
+          this.postBody.approvedbyLIB = this.$store.state.objectToUpdate.approvedByLIB,
           this.postBody.approvedDateLIB = this.$store.state.objectToUpdate.approvedDateLIB,
           this.postBody.libremark = this.$store.state.objectToUpdate.libremark,
        

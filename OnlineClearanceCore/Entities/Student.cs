@@ -14,7 +14,7 @@ namespace OnlineClearanceCore.Core.Entities
 		public string StudentId { get; set; }
         public string FirstName { get; set; }
 		public string OtherNames { get; set; }
-		public DateTime DOB { get; set; }
+		public DateTime? DOB { get; set; }
 		public string Address { get; set; }
 		public string College { get; set; }
 		public string Campus { get; set; }
@@ -28,16 +28,16 @@ namespace OnlineClearanceCore.Core.Entities
 		public string adminremark { get; set; }
 		public string hodremark { get; set; }
 		public string libremark { get; set; }
-		public DateTime GraduatedDate { get; set; }
+		public DateTime? GraduatedDate { get; set; }
         public string GPA { get; set; }
         public DateTime ApprovedDate { get; set; }
-		public DateTime ApplicationDate { get; set; }
+		public DateTime? ApplicationDate { get; set; }
 		public string ApprovedByHOD { get; set; }
-		public DateTime ApprovedDateHOD { get; set; }
+		public DateTime? ApprovedDateHOD { get; set; }
 		public string ApprovedByLibrary { get; set; }
-		public DateTime ApprovedDateLIB { get; set; }
+		public DateTime? ApprovedDateLIB { get; set; }
 		public string ApprovedByAdmin { get; set; }
-		public DateTime ApprovedDateAdmin { get; set; }
+		public DateTime? ApprovedDateAdmin { get; set; }
 		public string ApprovedBy { get; set; }
 		public string Status { get; set; }
 

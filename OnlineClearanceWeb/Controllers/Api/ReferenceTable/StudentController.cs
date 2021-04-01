@@ -42,10 +42,11 @@ namespace OnlineClearanceWeb.Controllers.Api.ReferenceTable
             return st;
         }
         //api/Student/getAllStudent
-        [Route("getAllStudentbyCase/{Studentid}")]
+        [Route("getAllStudentbyCase")]
         [HttpGet]
-        public async Task<Student> GetByCase(string Studentid)
+        public async Task<Student> GetByCase()
         {
+            string Studentid = HttpContext.Session.GetString("StudentNumber");
             return await service.GetStudentByCode(Studentid);
         }
 

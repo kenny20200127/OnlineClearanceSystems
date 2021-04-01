@@ -35,7 +35,17 @@ namespace OnlineClearanceCore.Core.Repositories
         }
         public IEnumerable<Student> GetStudentByApproval()
         {
-            var list = context.Students.Where(x=>x.Status=="Approve");
+            var list = context.Students.Where(x => x.Status == "Approve");
+            return list.ToList();
+        }
+        public IEnumerable<Student> GetStudentReport(string studentid)
+        {
+            var list = context.Students.Where(x => x.StudentId ==studentid);
+            return list.ToList();
+        }
+        public IEnumerable<Student> GetAllUnclearedStudent()
+        {
+            var list = context.Students.Where(x=> x.Status != "Decline");
             return list.ToList();
         }
         public IEnumerable<Student> GetStudentByDecline()

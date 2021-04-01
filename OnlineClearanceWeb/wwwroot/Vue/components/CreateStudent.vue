@@ -42,28 +42,45 @@
                              <div class="mb-2">Student Id </div>
                             <input type="text" name="studentid" class="input w-full border col-span-4" v-model="postBody.studentid" required  />
                         </div>
+                        
                         <div class="intro-y col-span-12 sm:col-span-4">
                        
                              <div class="mb-2">Department </div>
-                            <select class="input w-full border col-span-4" v-model="postBody.department" required @change="coursechange">
+                            <select class="input w-full border col-span-4" v-model="postBody.department" name="department" required >
                               <option v-for="dept in DepartmentList" v-bind:value="dept.name" v-bind:key="dept.name"> {{ dept.description }} </option>
                            </select>
                     </div>
                      <div class="intro-y col-span-12 sm:col-span-4">
                    
                              <div class="mb-2">Course </div>
-                            <select class="input w-full border col-span-4" v-model="postBody.course" required @change="SelectedValue">
-                              <option v-for="dept in courseList" v-bind:value="dept.name" v-bind:key="dept.name"> {{ dept.description }} </option>
+                            <select class="input w-full border col-span-4" v-model="postBody.course" name="course" required @change="SelectedValue">
+                              <option v-for="dept in CourseList" v-bind:value="dept.name" v-bind:key="dept.name"> {{ dept.description }} </option>
                            </select>
                           
                         </div>
                   
                 </div>
-           <div class="grid grid-cols-12 gap-2">
-                    <div class="intro-y col-span-12 sm:col-span-4">
-                             <div class="mb-2">Graduation Date </div>
-                             <vuejsDatepicker type="text" name="graduationdate" class="input w-full border col-span-4" v-model="postBody.graduationdate" ></vuejsDatepicker>
+                 <div class="grid grid-cols-12 gap-2">
+                     <div class="intro-y col-span-12 sm:col-span-4">
+                       
+                             <div class="mb-2">First Name </div>
+                            <input class="input w-full border col-span-4" name="firstName" v-model="postBody.firstName" placeholder="" />
                         </div>
+                   
+                     <div class="intro-y col-span-12 sm:col-span-4">
+                       
+                             <div class="mb-2">Other Name </div>
+                            <input class="input w-full border col-span-4" name="otherNames" v-model="postBody.otherName" placeholder="" />
+                        </div>
+                
+                     <div class="intro-y col-span-12 sm:col-span-4">
+                       
+                             <div class="mb-2">DOB </div>
+                           <vuejsDatepicker type="text" name="dob" class="input w-full border col-span-4" v-model="postBody.dob" ></vuejsDatepicker>
+                        </div>
+                </div>
+           <div class="grid grid-cols-12 gap-2">
+                    
                          <div class="intro-y col-span-12 sm:col-span-4">
                        
                              <div class="mb-2">Campus </div>
@@ -75,27 +92,12 @@
                              <div class="mb-2">College </div>
                             <input type="text" name="college" class="input w-full border col-span-4" v-model="postBody.college" required  />
                         </div>
-                       
+                       <div class="intro-y col-span-12 sm:col-span-4">
+                             <div class="mb-2">Graduation Date </div>
+                             <vuejsDatepicker type="text" name="graduationdate" class="input w-full border col-span-4" v-model="postBody.graduationdate" ></vuejsDatepicker>
+                        </div>
                  </div>
-             <div class="grid grid-cols-12 gap-2">
-                     <div class="intro-y col-span-12 sm:col-span-4">
-                       
-                             <div class="mb-2">First Name </div>
-                            <input class="input w-full border col-span-4" name="firstName" v-model="postBody.firstName" placeholder="" />
-                        </div>
-                   
-                     <div class="intro-y col-span-12 sm:col-span-4">
-                       
-                             <div class="mb-2">Other Name </div>
-                            <input class="input w-full border col-span-4" name="otherName" v-model="postBody.otherName" placeholder="" />
-                        </div>
-                
-                     <div class="intro-y col-span-12 sm:col-span-4">
-                       
-                             <div class="mb-2">DOB </div>
-                           <vuejsDatepicker type="text" name="dob" class="input w-full border col-span-4" v-model="postBody.dob" ></vuejsDatepicker>
-                        </div>
-                </div>
+            
             <div class="grid grid-cols-12 gap-2">
                       <div class="intro-y col-span-12 sm:col-span-4">
                        
@@ -106,14 +108,14 @@
                     <div class="intro-y col-span-12 sm:col-span-4">
                        
                              <div class="mb-2">State </div>
-                            <select class="input w-full border col-span-4" v-model="postBody.state" required @change="lgachange">
+                            <select class="input w-full border col-span-4" name="state" v-model="postBody.state" required @change="lgachange">
                               <option v-for="st in StateList" v-bind:value="st.name" v-bind:key="st.name"> {{ st.description }} </option>
                            </select>
                     </div>
                         <div class="intro-y col-span-12 sm:col-span-4">
                        
                              <div class="mb-2">Local Government </div>
-                            <select class="input w-full border col-span-4" v-model="postBody.lga" required @change="SelectedValue">
+                            <select class="input w-full border col-span-4" name="lga" v-model="postBody.lga" required>
                               <option v-for="lg in LocalGovtList" v-bind:value="lg.name" v-bind:key="lg.name"> {{ lg.description }} </option>
                            </select>
                     </div>
@@ -136,10 +138,9 @@
                 </div>
             <div class="grid grid-cols-12 gap-2">
                 <div class="intro-y col-span-12 sm:col-span-6">
-                                <div class="mb-2">Status</div>
-                                <select class="input w-full border flex-1" v-model="postBody.status" name="status" placeholder="" required>
-                                    <option v-for="st in statusList" v-bind:value="st.value" v-bind:key="st.value"> {{ st.text }} </option>
-                                </select>
+                                <div class="mb-2">Passport Upload</div>
+                                   <input type="file" @change="OnFileSelected"/>
+
                             </div>
             </div>
              <!-- <div class="grid grid-cols-12 gap-2">
@@ -206,6 +207,7 @@
      components:{
         vuejsDatepicker
      },
+     props:["studentid"],
    
     data() {
         return {
@@ -217,7 +219,7 @@
             CourseList:null,
             StateList:null,
             LocalGovtList:null,
-            incidentList:null,
+            selectedphotofile:null,
             statusList:null,
             records:["Yes","No"],
             autoselectenabled:false,
@@ -247,7 +249,7 @@
                 adminremark:'',
                 libremark:'',
                 hodremark:'',
-                photo2:''
+                Photo:''
          
             }
     
@@ -270,6 +272,27 @@
         .then(response=>{
             this.StateList=response.data
 
+        }),
+        this.postBody.studentid=this.studentid;
+        // alert(this.postBody.studentid);
+         axios.get(`/api/Student/getAllStudentbyCase`)
+        .then(response=>{
+            this.studentList=response.data
+            this.postBody.firstName=response.data.firstName
+            this.postBody.OtherName=response.data.OtherName
+            this.postBody.dob=response.data.dob
+            this.postBody.email=response.data.email
+            this.postBody.campus=response.data.campus
+            this.postBody.college=response.date.college
+            this.postBody.course=response.data.courseProgram
+            this.postBody.tel=response.data.tel
+            this.postBody.lga=response.data.lga
+            this.postBody.state=response.data.state
+            this.postBody.address=response.data.address
+            this.postBody.graduationdate=response.data.graduatedDate
+            this.postBody.department=response.data.department
+  
+            alert(this.postBody.tel)
         })
    
     },
@@ -309,38 +332,26 @@
 
     methods: {
         coursechange(){
-            alert(this.postBody.department);
+            // alert(this.postBody.department);
              axios.get(`/api/course/getCourseByCode/${this.postBody.department}`)
         .then(response=>{
-            this.courseList=response.data
+            this.CourseList=response.data
 
         })
         },
         lgachange(){
-            alert(this.postBody.state);
+            // alert(this.postBody.state);
              axios.get(`/api/LocalGovernment/getAllLocalGovernmentByState/${this.postBody.state}`)
         .then(response=>{
             this.LocalGovtList=response.data
 
         })
         },
-         SelectedValue(){
-      axios.get(`/api/Student/getAllStudentbyCase/${this.postBody.studentid}`)
-        .then(response=>{
-            this.studentList=response.data
-            this.postBody.firstName=response.data.firstName
-            this.postBody.OtherName=response.data.OtherName
-            this.postBody.dob=response.data.dob
-            this.postBody.campus=response.data.campus
-            this.postBody.course=response.data.course
-            this.postBody.lga=response.data.lga
-            this.postBody.state=response.data.state
-            this.postBody.address=response.data.ad
-  
-            
-        })
-
-    },  
+        OnFileSelected(event){
+            alert(event.target.files[0]);
+            this.selectedphotofile=event.target.files[0]
+        },
+     
         checkForm: function (e) {
             
          if (this.postBody.studentid) {
@@ -355,8 +366,12 @@
           }
         },
         postPost() {
-
+               const fb=new FormData();
+               fb.append("image",this.selectedphotofile,this.selectedphotofile.name)
+            //    axios.post("~/img/"+this.selectedphotofile.name);
+               this.postBody.Photo="~/img/"+this.selectedphotofile.name
                 if(this.submitorUpdate == 'Submit'){
+                    alert("here");
                     axios.post(`/api/Student/createStudent`, this.postBody )
                         .then(response => {
                             this.responseMessage = response.data.responseDescription;this.canProcess = true;

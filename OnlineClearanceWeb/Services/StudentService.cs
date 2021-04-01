@@ -23,7 +23,7 @@ namespace OnlineClearanceWeb.Services
 
         public IEnumerable<Student> GetStudents()
         {
-            return unitOfWork.Students.All();
+            return unitOfWork.Students.GetAllUnclearedStudent();
         }
         public IEnumerable<Student> GetApproveStudents()
         {
@@ -40,6 +40,10 @@ namespace OnlineClearanceWeb.Services
         public Task<Student> GetStudentByCode(string bcode)
         {
             return unitOfWork.Students.GetStudentByCode(x=>x.StudentId==bcode);
+        }
+        public IEnumerable<Student> GetStudentReport(string bcode)
+        {
+            return unitOfWork.Students.GetStudentReport(bcode);
         }
 
         public Task<Student> GetStudentsById(int id)

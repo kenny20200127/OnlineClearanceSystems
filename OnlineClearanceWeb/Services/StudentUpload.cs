@@ -63,11 +63,11 @@ namespace OnlineClearanceWeb.Services
                     UpdatedOn = DateTime.Now,
                     Email = s.email,
                     CreatedOn = DateTime.Now,
-                    UserName = s.email,
+                    UserName = s.StudentId,
                     IsActive = true,
                 };
                 int[] Roles = { 2 };
-                var createdUser = await userService.CreateUser(newUser,Roles, s.StudentId, 1);
+                var createdUser = await userService.CreateUser(newUser,Roles, s.FirstName, 1);
                 if (createdUser.Success)
                 {
                     res.Add(s);

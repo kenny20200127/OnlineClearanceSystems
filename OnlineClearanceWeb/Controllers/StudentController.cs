@@ -12,6 +12,7 @@ using OnlineClearanceCore.Core.Data;
 using OnlineClearanceCore.Models;
 using OnlineClearanceWeb.IServices;
 using OnlineClearanceWeb.Services;
+using Wkhtmltopdf.NetCore;
 
 namespace OnlineClearanceWeb.Controllers
 {
@@ -19,17 +20,29 @@ namespace OnlineClearanceWeb.Controllers
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly IUserService userService;
-        public StudentController(IUnitOfWork unitOfWork, IUserService userService)
+        private readonly IGeneratePdf generatePdf;
+        private readonly IStudentService studentService;
+        public StudentController(IUnitOfWork unitOfWork, IUserService userService, IGeneratePdf generatePdf, IStudentService studentService)
         {
             this.unitOfWork = unitOfWork;
             this.userService = userService;
+            this.generatePdf = generatePdf;
+            this.studentService = studentService;
         }
         public IActionResult Index()
         {
+            ViewBag.studentid = HttpContext.Session.GetString("StudentNumber");
             return View();
+        }
+        public async Task<IActionResult> StudentsReport()
+        {
+            string studentid = HttpContext.Session.GetString("StudentNumber");
+            var stud = studentService.GetStudentReport(studentid).ToList();
+            return await generatePdf.GetPdf("Views/Student/StudentReport.cshtml", stud);
         }
         public IActionResult ApprovedStudents()
         {
+           
             return View();
         }
         public IActionResult DeclinedStudents()

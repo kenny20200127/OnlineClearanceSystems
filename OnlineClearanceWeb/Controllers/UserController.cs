@@ -58,7 +58,17 @@ namespace OnlineClearanceWeb.Controllers
             return RedirectToAction(nameof(Index));
 
         }
-
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View(new UsersViewModel
+            {
+                Users = userService.GetUsers().ToList(),
+                Roles = roleService.GetActiveRoles()
+            });
+           
+        }
+        [HttpPost]
         public async Task<IActionResult> Create(UserViewModel user)
         {
             var newUser = new User

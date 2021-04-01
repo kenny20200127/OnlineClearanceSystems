@@ -19,6 +19,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using AutoMapper;
+using Wkhtmltopdf.NetCore;
 
 namespace OnlineClearanceWeb
 {
@@ -37,7 +38,7 @@ namespace OnlineClearanceWeb
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
+                options.CheckConsentNeeded = context => false;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
@@ -58,6 +59,7 @@ namespace OnlineClearanceWeb
                 options.SignIn.RequireConfirmedEmail = false;
             }).AddEntityFrameworkStores<ApplicationDbContext>();
 
+            services.AddWkhtmltopdf("wkhtmltopdf");
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IRoleService, RoleService>();
@@ -73,8 +75,8 @@ namespace OnlineClearanceWeb
             services.AddScoped<IStatesService, StatesService>();
             services.AddScoped<ILocalGovtService, LocalGovtService>();
             services.AddScoped<ICourseService, CourseService>();
-            
 
+            services.AddSession();
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -98,10 +100,11 @@ namespace OnlineClearanceWeb
 
 
             app.UseAuthentication();
+            app.UseSession();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+         
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
